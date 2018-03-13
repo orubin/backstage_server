@@ -1,0 +1,23 @@
+{
+  "name": "backstage_server",
+  "version": "1.0.0",
+  "description": "Backstage NodeJS Server",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orubin/backstage_server.git"
+  },
+  "author": "Or Rubin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orubin/backstage_server/issues"
+  },
+  "homepage": "https://github.com/orubin/backstage_server#readme"
+}
