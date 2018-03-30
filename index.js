@@ -6,7 +6,7 @@ const creator_db_actions = require('./creator_db_actions');
 var cassandra = require('cassandra-driver');
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3001
 
 //Connect to the cluster
 var client = new cassandra.Client({contactPoints: ['127.0.0.1'], keyspace: 'backstage_db'});
