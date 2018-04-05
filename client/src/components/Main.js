@@ -11,7 +11,7 @@ const Main = () => (
     <main>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/artist/:id"
+        <Route path="/artist/:id"
           render={(props) => <Artist artistId={props.match.params.id} {...props} /> }
         />
         <Route path="/explore" component={Explore} />
