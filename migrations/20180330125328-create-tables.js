@@ -14,41 +14,47 @@ exports.setup = function(options, seedLink) {
   seed = seedLink;
 };
 
-exports.up = function(db) {
+exports.up = function(db, callback) {
   db.createTable('users', {
-    id: { type: 'int', primaryKey: true },
-    name: 'string',
-    username: 'string',
-    email: 'string',
-    password: 'string',
-    description: 'string',
-    profile_image: 'string'
-  });
+    id: 'int',
+    name: 'varchar',
+    username: 'varchar',
+    email: 'varchar',
+    password: 'varchar',
+    description: 'varchar',
+    profile_image: 'varchar'
+  }, {
+    'primary_key': 'id'
+  }, callback);
 
   db.createTable('creators', {
-    id: { type: 'int', primaryKey: true },
-    name: 'string',
-    username: 'string',
-    email: 'string',
-    password: 'string',
-    description: 'string',
-    welcome_video: 'string',
-    paypal_account: 'string',
-    supporters: 'string',
-    posts: 'string',
-    rewards: 'string',
-    profile_image: 'string',
-    category: 'string'
-  });
+    id: 'int',
+    name: 'varchar',
+    username: 'varchar',
+    email: 'varchar',
+    password: 'varchar',
+    description: 'varchar',
+    welcome_video: 'varchar',
+    paypal_account: 'varchar',
+    supporters: 'varchar',
+    posts: 'varchar',
+    rewards: 'varchar',
+    profile_image: 'varchar',
+    category: 'varchar'
+  }, {
+    'primary_key': 'id'
+  }, callback);
 
   db.createTable('rewards', {
-    id: { type: 'int', primaryKey: true },
-    name: 'string',
-    image: 'string',
-    description: 'string',
+    id: 'int',
+    name: 'varchar',
+    image: 'varchar',
+    description: 'varchar',
     price: 'float'
-  });
-  return null;
+  }, {
+    'primary_key': 'id'
+  }, callback);
+
 };
 
 exports.down = function(db) {
