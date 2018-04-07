@@ -39,6 +39,16 @@ module.exports = {
         client.execute(query, params, { prepare: true })
 	},
 	LoadUser : function (req, res, client){
+		const query = 'SELECT * FROM users'; 
+		if(typeof(req.query.email) != "undefined"){
+			query += " WHERE email = '"+req.query.email+"'";
+		}
+        // Set the prepare flag in the query options
+        client.execute(query, function (err, result) {
+			res.send(result.rows[0]);
+		});
+	},
+	LoadUserOLD : function (req, res, client){
 		client.execute(function(err, keyspace){
 		    if(err){
 		    	throw(err);

@@ -58,26 +58,13 @@ module.exports = {
         client.execute(query, params, { prepare: true })
 	},
 	LoadCreator : function (req, res, client){
-		client.execute(function(err, keyspace){
-		    if(err){
-		    	throw(err);
-		    } else {
-		    	var query = "SELECT * FROM creators";
-		    	if(typeof(req.query.id) != "undefined"){
-		    		query += " WHERE id = '"+req.query.id+"'";
-		    	}
-				client.cql(query, [], function(err, results){
-					var data = [];
-					results.forEach(function(row){
-						var obj = {};
-					  	row.forEach(function(name,value,ts,ttl){
-					    	obj[name] = value;
-					  	});
-					  	data.push(obj);
-					});
-					res.send(data);
-				});
-		    }
+		const query = 'SELECT * FROM creators'; 
+		if(typeof(req.query.email) != "undefined"){
+			query += " WHERE id = '"+req.query.id+"'";
+		}
+        // Set the prepare flag in the query options
+        client.execute(query, function (err, result) {
+			res.send(result.rows[0]);
 		});
 	}
 }
