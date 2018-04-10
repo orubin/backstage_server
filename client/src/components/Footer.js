@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Footer extends Component {
   render() {
     return (
-      <footer className="page-footer teal lighten-3">
+      <footer className="page-footer teal lighten-1">
         <div className="container">
           <div className="row">
             <div className="col l4 s12">
@@ -22,7 +22,6 @@ class Footer extends Component {
         <div className="footer-copyright">
           <div className="container">
           © 2018 BackStage, MBI.
-          {/* <a class="grey-text text-lighten-4 right" href="#!">More Links</a> */}
           </div>
         </div>
       </footer>
