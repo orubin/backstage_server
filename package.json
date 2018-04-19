@@ -28,6 +28,9 @@
     "db-migrate": "^0.10.6",
     "db-migrate-cassandra": "0.0.5",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "material-ui": "^0.20.0",
+    "material-ui-next": "^1.0.0-beta.42",
+    "react": "^16.3.2"
   }
 }

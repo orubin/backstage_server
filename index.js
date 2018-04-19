@@ -40,7 +40,7 @@ app.post('/delete_user', function (req, res) {
 	user_db_actions.DeleteUser(req, res, client);
 });
 app.get('/load_user', function (req, res) {
-	user_db_actions.LoadUser2(req, res, client);
+	user_db_actions.LoadUser(req, res, client);
 });
 
 // Creators
