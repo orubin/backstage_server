@@ -57,14 +57,12 @@ module.exports = {
         // Set the prepare flag in the query options
         client.execute(query, params, { prepare: true })
 	},
-	LoadCreator : function (req, res, client){
-		const query = 'SELECT * FROM creators'; 
-		if(typeof(req.query.email) != "undefined"){
-			query += " WHERE id = '"+req.query.id+"'";
-		}
+	LoadCreator : function (client, id){
+		const query = 'SELECT * FROM creators WHERE id = ' + id;
         // Set the prepare flag in the query options
-        client.execute(query, function (err, result) {
-			res.send(result.rows[0]);
-		});
+        // client.execute(query, function (err, result) {
+		// 	return (result.rows[0]);
+		// });
+		return '{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}';
 	}
 }

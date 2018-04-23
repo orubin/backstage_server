@@ -64,7 +64,8 @@ app.get('/load_user', function (req, res) {
 
 // Creators
 app.get('/creator/:id', function(req, res) {
-    var json = JSON.parse('{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}');
+    var data = creator_db_actions.LoadCreator(client, req.params.id);
+    var json = JSON.parse(data);
     res.render('layouts/creator', {
       name: json['name'],
       description: json['description'],
