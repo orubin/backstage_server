@@ -8,7 +8,9 @@ const express = require('express')
 var hbs = require('hbs');
 var fs = require('fs');
 var bodyParser = require('body-parser');
-const app = express()
+const app = express();
+const bcrypt = require ('bcrypt');
+const jwt = require ('jsonwebtoken');
 const port = 3001
 
 //Connect to the cluster
@@ -59,7 +61,30 @@ app.post('/signup', function (req, res) {
     var data = user_db_actions.InsertUser(client, req.body.email, req.body.password);
 });
 app.post('/signin', function (req, res) {
-    var data = user_db_actions.LoadUser(client, req.body.email, req.body.password);
+    var data = user_db_actions.LoadUser(client, req.body.email);
+    if(data){
+        bcrypt.compare(req.body.password, data.password, (err, result) => {
+            if(err) {
+                return res.status(401).json({
+                    message: 'Auth failed'
+                })
+            }
+            if(result){
+                const token = jwt.sign({
+                    email: req.body.email,
+                    userId: data.id
+                }, 'SECRETKEY', {expiresIn: "1h"});
+                return res.status(200).json({
+                     message: 'Auth succesfull',
+                     token: token
+                });
+            }
+        });
+    } else {
+        res.status(401).json({
+            message: 'Auth failed'
+        })
+    }
 });
 
 app.post('/user', function (req, res) {
