@@ -7,22 +7,25 @@ var cassandra = require('cassandra-driver');
 const express = require('express')
 var hbs = require('hbs');
 var fs = require('fs');
+var bodyParser = require('body-parser');
 const app = express()
 const port = 3001
 
 //Connect to the cluster
-var client = new cassandra.Client({contactPoints: ['127.0.0.1'], keyspace: 'backstage_db'});
+var client = new cassandra.Client({ contactPoints: ['127.0.0.1'], keyspace: 'backstage_db' });
 
 app.engine('.hbs', exphbs({
-//   defaultLayout: 'main',
-  extname: '.hbs',
-  layoutsDir: path.join(__dirname, 'views/layouts'),
-  partialsDir: [
-    __dirname + '/views/layouts/partials',
-  ]
+    //   defaultLayout: 'main',
+    extname: '.hbs',
+    layoutsDir: path.join(__dirname, 'views/layouts'),
+    partialsDir: [
+        __dirname + '/views/layouts/partials',
+    ]
 }))
 
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'views'));
@@ -32,58 +35,69 @@ var partialsDir = __dirname + '/views/layouts/partials';
 var filenames = fs.readdirSync(partialsDir);
 
 filenames.forEach(function (filename) {
-  var matches = /^([^.]+).hbs$/.exec(filename);
-  if (!matches) {
-    return;
-  }
-  var name = matches[1];
-  var template = fs.readFileSync(partialsDir + '/' + filename, 'utf8');
-  hbs.registerPartial(name, template);
+    var matches = /^([^.]+).hbs$/.exec(filename);
+    if (!matches) {
+        return;
+    }
+    var name = matches[1];
+    var template = fs.readFileSync(partialsDir + '/' + filename, 'utf8');
+    hbs.registerPartial(name, template);
 });
 
 app.get('/', (request, response) => {
     response.render('layouts/main', {
-      name: 'Backstage Server'
+        name: 'Backstage Server'
     })
-  })
+})
 
 // Users
-app.post('/user', function (req, res) {
-	if(typeof(req.body.UserEdit) != "undefined"){
-		user_db_actions.UpdateUser(req, res, client);
-	} else {
-		user_db_actions.InsertUser(req, res, client);
-	}
-});
-app.post('/delete_user', function (req, res) {	
-	user_db_actions.DeleteUser(req, res, client);
-});
-app.get('/load_user', function (req, res) {
-	user_db_actions.LoadUser(req, res, client);
+app.get('/sign', function (req, res) {
+    res.render('layouts/signup', {});
 });
 
-app.get('/creators', function(req, res) {
+app.post('/signup', function (req, res) {
+    var data = user_db_actions.InsertUser(client, req.body.email, req.body.password);
+});
+app.post('/signin', function (req, res) {
+    var data = user_db_actions.LoadUser(client, req.body.email, req.body.password);
+});
+
+app.post('/user', function (req, res) {
+    if (typeof (req.body.UserEdit) != "undefined") {
+        user_db_actions.UpdateUser(req, res, client);
+    } else {
+        user_db_actions.InsertUser(req, res, client);
+    }
+});
+app.post('/delete_user', function (req, res) {
+    user_db_actions.DeleteUser(req, res, client);
+});
+app.get('/load_user', function (req, res) {
+    user_db_actions.LoadUser(req, res, client);
+});
+
+app.get('/creators', function (req, res) {
     var creators = JSON.parse('{"creators":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
     res.render('layouts/creators', creators);
 });
-app.get('/profile', function(req, res) {
+app.get('/profile', function (req, res) {
     res.render('layouts/profile');
 });
-app.get('/messages', function(req, res) {
+app.get('/messages', function (req, res) {
     res.render('layouts/messages');
 });
-app.get('/categories', function(req, res) {
+app.get('/categories', function (req, res) {
     var categories = JSON.parse('{"categories":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
     res.render('layouts/categories', categories);
 });
-app.get('/category/:id', function(req, res) {
+app.get('/category/:id', function (req, res) {
     // var data = category_db_actions.LoadCategory(client, req.params.id);
     var data = creator_db_actions.LoadCreators(client, req.params.id);
     res.render('layouts/category', data);
 });
 
 // Creators
-app.get('/creators/:id', function(req, res) {
+app.get('/creators/:id', function (req, res) {
     var data = creator_db_actions.LoadCreator(client, req.params.id);
     res.render('layouts/creator', JSON.parse(data));
 });
@@ -99,7 +113,7 @@ app.post('update_creator', function (req, res) {
 app.post('delete_creator', function (req, res) {
     creator_db_actions.DeleteCreator(req, res, client);
 });
-  
+
 app.listen(port, (err) => {
     if (err) {
         return console.log('Something bad happened', err)

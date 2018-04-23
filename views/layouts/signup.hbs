@@ -1,0 +1,342 @@
+<html>
+
+<head>
+    <title>Sign Up / In</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <style>
+        /* form */
+
+        body {
+            background: #efefef;
+        }
+
+        .form-body {
+            background: #fff;
+            padding: 20px;
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-top: 3px solid#3e4043;
+        }
+
+        .innter-form {
+            padding-top: 20px;
+        }
+
+        .final-login li {
+            width: 50%;
+        }
+
+        .nav-tabs {
+            border-bottom: none !important;
+        }
+
+        .nav-tabs>li {
+            color: #222 !important;
+        }
+
+        .nav-tabs>li.active>a,
+        .nav-tabs>li.active>a:hover,
+        .nav-tabs>li.active>a:focus {
+            color: #fff;
+            background-color: #d14d42;
+            border: none !important;
+            border-bottom-color: transparent;
+            border-radius: none !important;
+        }
+
+        .nav-tabs>li>a {
+            margin-right: 2px;
+            line-height: 1.428571429;
+            border: none !important;
+            border-radius: none !important;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        .social-login {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .social-login p {
+            margin: 15px 0;
+        }
+
+        .social-login ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .social-login ul li {
+            width: 33%;
+            float: left;
+            clear: fix;
+        }
+
+        .social-login ul li a {
+            font-size: 13px;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 0;
+            display: block;
+        }
+
+        .social-login ul li:nth-child(1) a {
+            background: #3b5998;
+        }
+
+        .social-login ul li:nth-child(2) a {
+            background: #e74c3d;
+        }
+
+        .social-login ul li:nth-child(3) a {
+            background: #3698d9;
+        }
+
+        .form-signin input[type=text],
+        input[type=password],
+        input[type=file],
+        textarea,
+        select,
+        email {
+            font-size: 13px;
+            padding: 10px;
+            border: 1px solid#ccc;
+            outline: none;
+            width: 100%;
+            margin: 8px 0;
+
+        }
+
+        .form-signin input[type=submit] {
+            border: 1px solid#e64b3b;
+            background: #e64b3b;
+            color: #fff;
+            padding: 10px 25px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-signin input[type=submit]:hover {
+            border: 1px solid#db3b2b;
+            background: #db3b2b;
+            color: #fff;
+        }
+
+        .form-signin button {
+            border: 1px solid#e64b3b;
+            background: #e64b3b;
+            color: #fff;
+            padding: 10px 25px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-signin button:hover {
+            border: 1px solid#db3b2b;
+            background: #db3b2b;
+            color: #fff;
+        }
+
+        .form-signin p {
+            font-size: 13px;
+            padding-top: 10px;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin .checkbox {
+            font-weight: normal;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            font-size: 16px;
+            height: auto;
+            padding: 10px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="text"],
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+        }
+
+        .form-signin label {
+            font-weight: normal;
+        }
+
+        .error {
+            color: #b94a48;
+        }
+    </style>
+</head>
+
+<body>
+    {{> header}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="form-body">
+                    <ul class="nav nav-tabs final-login">
+                        <li class="active">
+                            <a data-toggle="tab" href="#sectionA">Sign In</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#sectionB">Join us!</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="sectionA" class="tab-pane fade in active">
+                            <div class="innter-form">
+                                <form class="form-signin" method="post" action="/signup" id="form-signin2">
+                                    <label>Email Address</label>
+                                    <input type="text" name="username">
+                                    <label>Password</label>
+                                    <input type="password" name="password">
+                                    <button type="submit">Sign In</button>
+                                    <a href="/forgot">Forgot Password?</a>
+                                </form>
+                            </div>
+                            <div class="social-login">
+                                <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-facebook"></i> Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-google-plus"></i> Google+</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-twitter"></i> Twitter</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="sectionB" class="tab-pane fade">
+                            <div class="innter-form">
+                                <form class="form-signin" method="post" action="/signin" id="form-signin">
+                                    <label>Name</label>
+                                    <input type="text" name="username">
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="login">Email Address</label>
+                                        <div class="controls">
+                                            <input size="50" name="login" id="login" value="" type="text" class="form-control" placeholder="Login">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="password">Password:</label>
+                                        <div class="controls">
+                                            <input size="50" name="password" id="password" value="" type="password" class="form-control" placeholder="Password">
+                                        </div>
+                                    </div>
+
+
+                                    <button type="submit">Join now</button>
+                                    <p>By clicking Join now, you agree to hifriends's User Agreement, Privacy Policy, and Cookie
+                                        Policy.
+                                    </p>
+                                </form>
+                            </div>
+                            <div class="social-login">
+                                <p>- - - - - - - - - - - - - Register With - - - - - - - - - - - - - </p>
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-facebook"></i> Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-google-plus"></i> Google+</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-twitter"></i> Twitter</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br> {{> footer}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            jQuery.validator.addMethod("lettersonly", function (value, element) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return this.optional(element) || re.test(value);
+            }, "Not good for us...");
+            $('#form-signin').validate({
+                rules: {
+                    login: {
+                        minlength: 5,
+                        maxlength: 15,
+                        required: true,
+                        lettersonly: true
+                    },
+                    password: {
+                        minlength: 8,
+                        maxlength: 15,
+                        required: true,
+                        lettersonly: true
+                    },
+                },
+                highlight: function (element) {
+                    $(element).closest('.control-group').addClass('has-error');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+
+</html>
