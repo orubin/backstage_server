@@ -62,8 +62,20 @@ app.get('/load_user', function (req, res) {
 	user_db_actions.LoadUser(req, res, client);
 });
 
+app.get('/creators', function(req, res) {
+    res.render('layouts/creators');
+});
+app.get('/profile', function(req, res) {
+    res.render('layouts/profile');
+});
+app.get('/messages', function(req, res) {
+    res.render('layouts/messages');
+});
+app.get('/categories', function(req, res) {
+    res.render('layouts/categories');
+});
 // Creators
-app.get('/creator/:id', function(req, res) {
+app.get('/creators/:id', function(req, res) {
     var data = creator_db_actions.LoadCreator(client, req.params.id);
     var json = JSON.parse(data);
     res.render('layouts/creator', {
@@ -72,7 +84,7 @@ app.get('/creator/:id', function(req, res) {
       profile_picture: json['profile_picture'],
       cover_picture: json['cover_picture'],
       intro_video: json['intro_video']
-    })
+    });
 });
 app.get('load_creator', function (req, res) {
     creator_db_actions.LoadCreator(req, res, client);
