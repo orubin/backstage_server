@@ -14,8 +14,29 @@
 
 <body>
     {{> header}}
-    
-    <br><br><br><br><br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="row">
+        {{#categories}}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="{{img_src}}" alt="">
+                <div class="caption">
+                    <h3>{{name}}</h3>
+                    <p>{{description}}</p>
+                    <p>
+                        <a href="categories/{{id}}" class="btn btn-primary" role="button">Go there!</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{/categories}}
+    </div>
 
     {{> footer}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

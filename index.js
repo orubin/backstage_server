@@ -63,7 +63,8 @@ app.get('/load_user', function (req, res) {
 });
 
 app.get('/creators', function(req, res) {
-    res.render('layouts/creators');
+    var creators = JSON.parse('{"creators":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
+    res.render('layouts/creators', creators);
 });
 app.get('/profile', function(req, res) {
     res.render('layouts/profile');
@@ -72,8 +73,15 @@ app.get('/messages', function(req, res) {
     res.render('layouts/messages');
 });
 app.get('/categories', function(req, res) {
-    res.render('layouts/categories');
+    var categories = JSON.parse('{"categories":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
+    res.render('layouts/categories', categories);
 });
+app.get('/category/:id', function(req, res) {
+    // var data = category_db_actions.LoadCategory(client, req.params.id);
+    var data = creator_db_actions.LoadCreators(client, req.params.id);
+    res.render('layouts/category', data);
+});
+
 // Creators
 app.get('/creators/:id', function(req, res) {
     var data = creator_db_actions.LoadCreator(client, req.params.id);
