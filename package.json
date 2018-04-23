@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/orubin/backstage_server#readme",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "cassandra-driver": "^3.4.1",
     "cassandra-migrate": "^1.2.333",
     "cassandra-migration": "^2.5.0",

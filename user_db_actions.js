@@ -1,20 +1,35 @@
+const bcrypt = require ('bcrypt');
+
 module.exports = {
-	InsertUser : function (req, res, client){
-        const query = 'INSERT INTO users (email, name, phone, address, city) VALUES (?,?,?,?,?)'; 
-        const params = [ post.email, post.name, post.phone, post.address, post.city ];
-		client.execute(function(err, keyspace){
-		    if(err){
-		    	throw(err);
-		    } else {
-		    	var post = req.body;
-				client.cql("INSERT INTO users (email, name, phone, address, city) VALUES (?,?,?,?,?)", [post.email, post.name, post.phone, post.address, post.city], function(err, results){
-					res.redirect('/');
-				});
-		    }
-        });
+	InsertUser : function (client, email, password){
+		//check if user exists:
+		var existingUser = this.LoadUser(client, email);
+		if(existingUser){
+			return 'Existing';
+		}
+
+		const query = 'INSERT INTO users (email, password) VALUES (?,?)'; 
+		bcrypt.hash(password, 10, (err, hash) => {
+			if(err) {
+				return 500;
+			} else {
+				client.execute(query, [ email, hash ], { prepare: true })
+				.then(result => console.log('Row updated on the cluster'));
+			}
+		});
+
+		// client.execute(function(err, keyspace){
+		//     if(err){
+		//     	throw(err);
+		//     } else {
+		//     	var post = req.body;
+		// 		client.cql("INSERT INTO users (email, password) VALUES (?,?,?,?,?)", [post.email, post.name, post.phone, post.address, post.city], function(err, results){
+		// 			res.redirect('/');
+		// 		});
+		//     }
+        // });
         // Set the prepare flag in the query options
-        client.execute(query, params, { prepare: true })
-        .then(result => console.log('Row updated on the cluster'));
+
 	},
 	UpdateUser : function (req, res, client){
         var post = req.body;
@@ -38,7 +53,7 @@ module.exports = {
         // Set the prepare flag in the query options
         client.execute(query, params, { prepare: true })
 	},
-	LoadUser : function (req, res, client){
+	LoadUser : function (client, email){
 		const query = 'SELECT * FROM users'; 
 		if(typeof(req.query.email) != "undefined"){
 			query += " WHERE email = '"+req.query.email+"'";
