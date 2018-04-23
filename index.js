@@ -77,14 +77,7 @@ app.get('/categories', function(req, res) {
 // Creators
 app.get('/creators/:id', function(req, res) {
     var data = creator_db_actions.LoadCreator(client, req.params.id);
-    var json = JSON.parse(data);
-    res.render('layouts/creator', {
-      name: json['name'],
-      description: json['description'],
-      profile_picture: json['profile_picture'],
-      cover_picture: json['cover_picture'],
-      intro_video: json['intro_video']
-    });
+    res.render('layouts/creator', JSON.parse(data));
 });
 app.get('load_creator', function (req, res) {
     creator_db_actions.LoadCreator(req, res, client);
