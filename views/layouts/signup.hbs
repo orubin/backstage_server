@@ -221,9 +221,12 @@
                     <div class="tab-content">
                         <div id="sectionA" class="tab-pane fade in active">
                             <div class="innter-form">
-                                <form class="form-signin" method="post" action="/signup" id="form-signin2">
+                                {{#if message }}
+                                    <div class="alert alert-danger">{{ message }}</div>
+                                {{/if }}
+                                <form class="form-signin" method="post" action="/login" id="form-signin2">
                                     <label>Email Address</label>
-                                    <input type="text" name="username">
+                                    <input type="text" name="email">
                                     <label>Password</label>
                                     <input type="password" name="password">
                                     <button type="submit">Sign In</button>
@@ -251,14 +254,17 @@
                         </div>
                         <div id="sectionB" class="tab-pane fade">
                             <div class="innter-form">
-                                <form class="form-signin" method="post" action="/signin" id="form-signin">
+                                {{#if message }}
+                                    <div class="alert alert-danger">{{ message }}</div>
+                                {{/if }}
+                                <form class="form-signin" method="post" action="/signup" id="form-signin">
                                     <label>Name</label>
                                     <input type="text" name="username">
 
                                     <div class="control-group">
-                                        <label class="control-label" for="login">Email Address</label>
+                                        <label class="control-label" for="email">Email Address</label>
                                         <div class="controls">
-                                            <input size="50" name="login" id="login" value="" type="text" class="form-control" placeholder="Login">
+                                            <input size="50" name="email" id="email" value="" type="text" class="form-control" placeholder="email">
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -326,7 +332,7 @@
                         minlength: 8,
                         maxlength: 15,
                         required: true,
-                        lettersonly: true
+                        lettersonly: false
                     },
                 },
                 highlight: function (element) {

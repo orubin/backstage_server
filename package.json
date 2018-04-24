@@ -26,15 +26,23 @@
     "cassandra-driver": "^3.4.1",
     "cassandra-migrate": "^1.2.333",
     "cassandra-migration": "^2.5.0",
+    "connect-ensure-login": "^0.1.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "db-migrate": "^0.10.6",
     "db-migrate-cassandra": "0.0.5",
     "express": "^4.16.3",
+    "express-cassandra": "^2.2.0",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
     "hbs": "^4.0.1",
     "jquery-validation": "^1.17.0",
     "jsonwebtoken": "^8.2.1",
     "material-ui": "^0.20.0",
     "material-ui-next": "^1.0.0-beta.42",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "react": "^16.3.2"
   }
 }

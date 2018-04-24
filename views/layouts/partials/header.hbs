@@ -16,12 +16,14 @@
                 <li class="/">
                     <a href="/">Home</a>
                 </li>
-                <li>
-                    <a href="/profile">Profile</a>
-                </li>
-                <li>
-                    <a href="/messages">Messages</a>
-                </li>
+                {{#if user}}
+                    <li>
+                        <a href="/profile">Profile</a>
+                    </li>
+                    <li>
+                        <a href="/messages">Messages</a>
+                    </li>
+                {{/if}}
                 <li>
                     <a href="/creators">Creators</a>
                 </li>
@@ -29,7 +31,7 @@
                     <a href="/categories">Categories</a>
                 </li>
             </ul>
-            
+
             <div class="col-sm-3 col-md-3 pull-right">
                 <form class="navbar-form" role="search">
                     <div class="input-group">
@@ -43,9 +45,17 @@
                 </form>
             </div>
             <ul class="nav navbar-nav navbar-right">
+                {{#if user}}
+                <li>Howdy {{ user.name }}!</li>
                 <li>
-                    <a href="/sign">Login</a>
+                    <a href="/logout">Logout</a>
                 </li>
+                {{else}}
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+                {{/if}}
+
             </ul>
         </div>
     </div>
