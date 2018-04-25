@@ -46,5 +46,13 @@ module.exports = {
 		// 	return (result.rows[0]);
 		// });
 		return '{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}';
+	},
+	LoadCategories : function (client, id){
+		const query = 'SELECT * FROM categories WHERE id in (?)' + id;
+        // Set the prepare flag in the query options
+        // client.execute(query, function (err, result) {
+		// 	return (result.rows);
+		// });
+		return '{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}';
 	}
 }

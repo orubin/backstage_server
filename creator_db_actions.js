@@ -65,10 +65,10 @@ module.exports = {
 		// });
 		return '{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}';
 	},
-	LoadCreators : function (client, id){
-		const query = 'SELECT * FROM creators WHERE category_id = ' + id;
+	LoadCreators : function (client, ids){
+		const query = 'SELECT * FROM creators WHERE category_id in (?)';
         // Set the prepare flag in the query options
-        // client.execute(query, function (err, result) {
+        // client.execute(query, [ids] function (err, result) {
 		// 	return (result.rows[0]);
 		// });
 		return '{"creators":[{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}, {"name":"John2", "description":"Doe2", "profile_picture":"picture2", "cover_picture":"cover_picture2", "intro_video":"intro_video2"}]}';

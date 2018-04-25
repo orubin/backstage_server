@@ -10,6 +10,7 @@
     <!-- Optional Bootstrap theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="layouts/css/form.css">    
 </head>
 
 <body>
@@ -20,10 +21,53 @@
     <br>
     <br> 
     {{#if user}}
-        <div>
-            <p>Loggeed In!</p>
-        </div>
-    {{/if}}
+        {{#if message }}
+            <div class="alert alert-info">{{ message }}</div>
+        {{/if }}
+        <form class="form-signin" method="post" action="/update_user" id="form-signin">
+            <label>Name</label>
+            <input type="text" name="name" value={{ user.name }}>
+
+            <label>Your email:</label>
+            <lable>{{ user.email }}</lable>
+            <label>Name</label>
+
+            <button type="submit">Update</button>
+        </form>
+
+        <div><p>Your creators:</p></div>
+        {{#creators.creators}}
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="{{img_src}}" alt="">
+                    <div class="caption">
+                        <h3>{{name}}</h3>
+                        <p>{{description}}</p>
+                        <p>
+                            <a href="creators/{{id}}" class="btn btn-primary" role="button">Creator page</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {{/creators.creators}}
+
+        <div><p>Your categories:</p></div>
+        {{#categories.categories}}
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="{{img_src}}" alt="">
+                    <div class="caption">
+                        <h3>{{name}}</h3>
+                        <p>{{description}}</p>
+                        <p>
+                            <a href="categories/{{id}}" class="btn btn-primary" role="button">Visit Category Page</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {{/categories.categories}}
+
+    {{/if}} 
     {{> footer}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"

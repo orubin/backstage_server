@@ -3,6 +3,7 @@ const path = require('path')
 const exphbs = require('express-handlebars')
 const user_db_actions = require('./user_db_actions');
 const creator_db_actions = require('./creator_db_actions');
+const category_db_actions = require('./category_db_actions');
 var cassandra = require('cassandra-driver');
 const express = require('express')
 var hbs = require('hbs');
@@ -41,6 +42,8 @@ app.use(session({ secret: 'backstagekey', resave: false, saveUninitialized: fals
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.static(path.join(__dirname, '/views/layouts/css')));
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.set('view engine', '.hbs');
@@ -68,7 +71,7 @@ app.get('/', (request, response) => {
 
 // Users
 app.get('/login', function (req, res) {
-    res.render('layouts/signup', { message: req.flash('signupMessage') });
+    res.render('layouts/signup', { message: req.flash('signupMessage'), user : req.user });
 });
 
 app.post('/signup', passport.authenticate('local-signup', {
@@ -105,11 +108,14 @@ app.post('/signup', passport.authenticate('local-signup', {
 
 // process the login form
 app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/login', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
+    successRedirect: '/profile', // redirect to the secure profile section
+    failureRedirect: '/login', // redirect back to the signup page if there is an error
+    failureFlash: true // allow flash messages
 }));
 
+app.post('/update_user', function (req, res) {
+    user_db_actions.UpdateUser(req, res, client);
+});
 app.post('/delete_user', function (req, res) {
     user_db_actions.DeleteUser(req, res, client);
 });
@@ -120,13 +126,18 @@ app.get('/load_user', function (req, res) {
 app.get('/creators', function (req, res) {
     var creators = JSON.parse('{"creators":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
     res.render('layouts/creators', {
-        user : req.user, // get the user out of session and pass to template
+        user: req.user, // get the user out of session and pass to template
         creators: creators
     });
 });
 app.get('/profile', require('connect-ensure-login').ensureLoggedIn(), function (req, res) {
+    var categories_ids, creators_ids = user_db_actions.LoadCategoriesAndCreators(req.user.email);
+    var categories = category_db_actions.LoadCategories(categories_ids);
+    var creators = creator_db_actions.LoadCreators(creators_ids);
     res.render('layouts/profile', {
-        user : req.user // get the user out of session and pass to template
+        user: req.user, // get the user out of session and pass to template
+        categories: categories,
+        creators: creators
     });
 });
 
@@ -136,18 +147,22 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/messages', function (req, res) {
+    var messages = user_db_actions.LoadMessages(req.user);
     res.render('layouts/messages', {
-        user : req.user // get the user out of session and pass to template
+        user: req.user, // get the user out of session and pass to template
+        messages: messages
     });
 });
+
 app.get('/categories', function (req, res) {
     var categories = JSON.parse('{"categories":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
     res.render('layouts/categories', {
-        user : req.user, // get the user out of session and pass to template
+        user: req.user, // get the user out of session and pass to template
         categories: categories
     });
 });
-app.get('/category/:id', function (req, res) {
+
+app.get('/categories/:id', function (req, res) {
     // var data = category_db_actions.LoadCategory(client, req.params.id);
     var data = creator_db_actions.LoadCreators(client, req.params.id);
     res.render('layouts/category', {

@@ -5,8 +5,6 @@ module.exports = {
         password: "varchar",
         created_at: "timestamp",
         updated_at: "timestamp",
-        categories: "",
-        creators: ""
     },
     key: ["email"]
 }
