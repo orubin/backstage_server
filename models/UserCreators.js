@@ -1,10 +1,10 @@
 module.exports = {
     fields: {
-        user_id: "int",
-        message: "text",
-        email: "text",
+        id: "uuid",
+        user_email: "text",
+        creator_id: "int",
         created_at: "timestamp",
         updated_at: "timestamp"
     },
-    key: ["email"]
+    key: ["id"]
 }
