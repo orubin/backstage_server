@@ -12,13 +12,14 @@ const routes = require('express').Router();
 
 routes.get('/', (request, response) => {
   response.render('layouts/main', {
-      user : request.user // get the user out of session and pass to template
+      user : request.user, // get the user out of session and pass to template
+      title: 'BackStage'
   })
 })
 
 // Users
 routes.get('/login', function (req, res) {
-  res.render('layouts/signup', { message: req.flash('signupMessage'), user : req.user });
+  res.render('layouts/signup', { message: req.flash('signupMessage'), user : req.user, title: 'Sign Up / In' });
 });
 
 routes.post('/signup', passport.authenticate('local-signup', {
@@ -74,7 +75,8 @@ routes.get('/creators', function (req, res) {
   var creators = JSON.parse('{"creators":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
   res.render('layouts/creators', {
       user: req.user, // get the user out of session and pass to template
-      creators: creators
+      creators: creators,
+      title: 'Creators'
   });
 });
 routes.get('/profile', require('connect-ensure-login').ensureLoggedIn(), function (req, res) {
@@ -84,7 +86,8 @@ routes.get('/profile', require('connect-ensure-login').ensureLoggedIn(), functio
   res.render('layouts/profile', {
       user: req.user, // get the user out of session and pass to template
       categories: categories,
-      creators: creators
+      creators: creators,
+      title: 'Profile'
   });
 });
 
@@ -97,7 +100,8 @@ routes.get('/messages', function (req, res) {
   var messages = user_db_actions.LoadMessages(req.user);
   res.render('layouts/messages', {
       user: req.user, // get the user out of session and pass to template
-      messages: messages
+      messages: messages,
+      title: 'Messages'
   });
 });
 
@@ -105,7 +109,8 @@ routes.get('/categories', function (req, res) {
   var categories = JSON.parse('{"categories":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
   res.render('layouts/categories', {
       user: req.user, // get the user out of session and pass to template
-      categories: categories
+      categories: categories,
+      title: 'Categories'
   });
 });
 
@@ -114,7 +119,8 @@ routes.get('/categories/:id', function (req, res) {
   var data = creator_db_actions.LoadCreators(client, req.params.id);
   res.render('layouts/category', {
       user : req.user, // get the user out of session and pass to template
-      data: data
+      data: data,
+      title: 'Category ' + data.name
   });
 });
 
@@ -123,7 +129,8 @@ routes.get('/creators/:id', function (req, res) {
   var data = creator_db_actions.LoadCreator(client, req.params.id);
   res.render('layouts/creator', {
       user : req.user, // get the user out of session and pass to template
-      data: JSON.parse(data)
+      data: JSON.parse(data),
+      title: data.name
   });
 });
 routes.get('load_creator', function (req, res) {
