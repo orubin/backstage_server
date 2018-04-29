@@ -80,6 +80,20 @@ routes.get('/creators', function (req, res) {
   });
 });
 
+routes.get('/contact_us', function (req, res) {
+  res.render('layouts/contact_us', {
+    user: req.user, // get the user out of session and pass to template
+    title: 'Contact Us'
+  });
+});
+
+routes.get('/about_us', function (req, res) {
+  res.render('layouts/about_us', {
+    user: req.user, // get the user out of session and pass to template
+    title: 'About Us'
+  });
+});
+
 routes.get('/profile', require('connect-ensure-login').ensureLoggedIn(), function (req, res) {
   var categories_and_creators_ids = user_db_actions.LoadCategoriesAndCreators(req.user.email);
   var categories = category_db_actions.LoadCategories(categories_and_creators_ids[0]);

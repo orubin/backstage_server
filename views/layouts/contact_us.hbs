@@ -1,0 +1,27 @@
+{{> startfile}} {{> header}}
+
+<div class="row">
+    <form class="form-signin" method="post" action="/signup" id="form-signin">
+        <label>Name</label>
+        <input type="text" name="username">
+
+        <div class="control-group">
+            <label class="control-label" for="email">Email Address</label>
+            <div class="controls">
+                <input size="50" name="email" id="email" value="" type="text" class="form-control" placeholder="email">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="text">Your words:</label>
+            <div class="controls">
+                <input size="800" name="text" id="text" value="" type="text" class="form-control" placeholder="text">
+            </div>
+        </div>
+
+        <button type="submit">Send!</button>
+
+    </form>
+</div>
+
+{{> footer}} {{> endfile}}
