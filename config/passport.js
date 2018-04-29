@@ -65,7 +65,6 @@ module.exports = function (passport) {
         function (req, email, password, done) {
 
             // asynchronous
-            // User.findOne wont fire unless data is sent back
             process.nextTick(function () {
 
                 // find a user whose email is the same as the forms email

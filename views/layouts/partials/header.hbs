@@ -1,3 +1,4 @@
+{{!--
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -17,12 +18,12 @@
                     <a href="/">Home</a>
                 </li>
                 {{#if user}}
-                    <li>
-                        <a href="/profile">Profile</a>
-                    </li>
-                    <li>
-                        <a href="/messages">Messages</a>
-                    </li>
+                <li>
+                    <a href="/profile">Profile</a>
+                </li>
+                <li>
+                    <a href="/messages">Messages</a>
+                </li>
                 {{/if}}
                 <li>
                     <a href="/creators">Creators</a>
@@ -46,16 +47,148 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 {{#if user}}
-                    <li>
-                        Howdy {{ user.name }}!<a href="/logout"> Logout</a>
-                    </li>
-                    {{else}}
-                    <li>
-                        <a href="/login">Login</a>
-                    </li>
+                <li>
+                    Howdy {{ user.name }}!
+                    <a href="/logout"> Logout</a>
+                </li>
+                {{else}}
+                <li>
+                    <a href="/login">Login</a>
+                </li>
                 {{/if}}
-
             </ul>
         </div>
     </div>
+</nav> --}} {{!--
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="left brand-logo">BackStage</a>
+        <ul id="nav-mobile" class="hide-on-med-and-down">
+            <li class="/">
+                <a href="/">Home</a>
+            </li>
+            {{#if user}}
+            <li>
+                <a href="/profile">Profile</a>
+            </li>
+            <li>
+                <a href="/messages">Messages</a>
+            </li>
+            {{/if}}
+            <li>
+                <a href="/creators">Creators</a>
+            </li>
+            <li>
+                <a href="/categories">Categories</a>
+            </li>
+        </ul>
+
+        {{#if user}}
+        <li>
+            Howdy {{ user.name }}!
+            <a href="/logout"> Logout</a>
+        </li>
+        {{else}}
+        <li>
+            <a href="/login">Login</a>
+        </li>
+        {{/if}}
+
+        <div class="nav-wrapper">
+            <form>
+                <div class="right input-field">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav> --}}
+
+
+<nav style="background-color: #3c3d41">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo white-text">Backstage</a>
+        <ul class="hide-on-med-and-down right">
+            <li class="/">
+                <a href="/">Home</a>
+            </li>
+            {{#if user}}
+            <li>
+                <a href="/profile">Profile</a>
+            </li>
+            <li>
+                <a href="/messages">Messages</a>
+            </li>
+            {{/if}}
+            <li>
+                <a href="/creators">Creators</a>
+            </li>
+            <li>
+                <a href="/categories">Categories</a>
+            </li>
+            {{#if user}}
+            <li>
+                <a href="/logout"> Logout</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/login">Login</a>
+            </li>
+            {{/if}}
+            <li>
+                <div class="center row">
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6 s12 black-text">
+                                <i class="green-text material-icons prefix" style="top:0rem">search</i>
+                                <input type="text" class="blue-text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
 </nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li class="/">
+        <a href="/">Home</a>
+    </li>
+    {{#if user}}
+    <li>
+        <a href="/profile">Profile</a>
+    </li>
+    <li>
+        <a href="/messages">Messages</a>
+    </li>
+    {{/if}}
+    <li>
+        <a href="/creators">Creators</a>
+    </li>
+    <li>
+        <a href="/categories">Categories</a>
+    </li>
+    {{#if user}}
+    <li>
+        <a href="/logout"> Logout</a>
+    </li>
+    {{else}}
+    <li>
+        <a href="/login">Login</a>
+    </li>
+    {{/if}}
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+</script>

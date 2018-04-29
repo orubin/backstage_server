@@ -79,16 +79,25 @@ routes.get('/creators', function (req, res) {
       title: 'Creators'
   });
 });
+
 routes.get('/profile', require('connect-ensure-login').ensureLoggedIn(), function (req, res) {
-  var categories_ids, creators_ids = user_db_actions.LoadCategoriesAndCreators(req.user.email);
-  var categories = category_db_actions.LoadCategories(categories_ids);
-  var creators = creator_db_actions.LoadCreators(creators_ids);
+  var categories_and_creators_ids = user_db_actions.LoadCategoriesAndCreators(req.user.email);
+  var categories = category_db_actions.LoadCategories(categories_and_creators_ids[0]);
+  var creators = creator_db_actions.LoadCreators(categories_and_creators_ids[1]);
   res.render('layouts/profile', {
       user: req.user, // get the user out of session and pass to template
       categories: categories,
       creators: creators,
       title: 'Profile'
   });
+});
+
+routes.post('/follow_creator', function (req, res) {
+  user_db_actions.FollowCreator(req.user, req.body.creator_id);
+});
+
+routes.post('/unfollow_creator', function (req, res) {
+  user_db_actions.UnFollowCreator(req.user, req.body.creator_id);
 });
 
 routes.get('/logout', function(req, res) {
