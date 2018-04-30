@@ -1,6 +1,7 @@
 const user_db_actions = require('../user_db_actions');
 const creator_db_actions = require('../creator_db_actions');
 const category_db_actions = require('../category_db_actions');
+var nodemailer = require('nodemailer');
 var passport = require('passport');
 require('../config/passport')(passport); // pass passport for configuration
 
@@ -84,6 +85,31 @@ routes.get('/contact_us', function (req, res) {
   res.render('layouts/contact_us', {
     user: req.user, // get the user out of session and pass to template
     title: 'Contact Us'
+  });
+});
+
+routes.post('/contact_us', function (req, res) {
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'youremail@gmail.com',
+      pass: 'yourpassword'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'youremail@gmail.com',
+    to: 'myfriend@yahoo.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
   });
 });
 
