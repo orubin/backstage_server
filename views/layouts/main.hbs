@@ -10,11 +10,25 @@
 	    margin: 0;
 	    padding-top: 150px;
 	}
+	.carousel-slider {
+    	width: 600px !important;
+	}
+	.carousel-container {
+		margin-top: 150px;
+	}
 </style>
 {{> startfile}}
     {{> header}}
     <div class="row">
-    	<div class="col offset-s6 right">
+    	<div class="col s6 left carousel-container">
+			 <div class="carousel carousel-slider">
+			    <a class="carousel-item"><img src="https://lorempixel.com/800/400/food/1"></a>
+			    <a class="carousel-item"><img src="https://lorempixel.com/800/400/food/2"></a>
+			    <a class="carousel-item"><img src="https://lorempixel.com/800/400/food/3"></a>
+			    <a class="carousel-item"><img src="https://lorempixel.com/800/400/food/4"></a>
+			 </div>
+    	</div>
+    	<div class="col right">
     		<h2 class="text-style rtl header">We Help Artists Like You</h1>
     		<h2 class="text-style rtl">Get Paid For Their Work</h2>
     		<br>
