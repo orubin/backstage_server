@@ -1,7 +1,11 @@
 /* form */
 
 body {
-    background: #efefef;
+    background: white;
+}
+
+.rtl {
+    direction:rtl;
 }
 
 .form-body {
