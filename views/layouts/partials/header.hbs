@@ -32,6 +32,8 @@
         float: left;
         margin-left:2%;
         width:25%;
+        margin-top: -1%;
+        position: relative;
     }
     .header-search-bar {
         float: left;
@@ -47,7 +49,24 @@
        box-shadow: 0 1px 0 0 grey !important
      }
     .header-search-bar input {
-       border-bottom: 0px solid black !important;
+       border-bottom: 0px !important;
+    }
+
+
+    select {
+        font-size: 16px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        height: 45px;
+        border: 0px;
+    }
+    .header-search-selector:after {
+        content: '\f0dd';
+        font: normal normal normal 15px/1 FontAwesome;
+        float:left;
+        margin-top: -25%;
     }
 </style>
 
@@ -61,13 +80,13 @@
                     <li class="icon-button"><a><i class="material-icons grey-text text-darken-3">menu</i></a></li>
                 </ul>
                 <ul class="left header-left">
-                    <li><a class="grey-text text-darken-3">Sign Up</a></li>
-                    <li><a class="grey-text text-darken-3">Login</a></li>
+                    <li><a class="grey-text text-darken-3" href="/login">Sign Up</a></li>
+                    <li><a class="grey-text text-darken-3" href="/login">Login</a></li>
                     <li><a class="grey-text text-darken-3">Explore All</a></li>
                 </ul>
                 <div class="header-search-wrapper grey lighten-2">
-                    <div class="grey-text text-darken-3 header-search-selector">
-                        <select>
+                    <div class="grey-text text-darken-3 header-search-selector rtl">
+                        <select class="browser-default">
                             <option>All Creators</option>
                             <option>Option 2</option>
                             <option>Option 3</option>

@@ -1,76 +1,3 @@
-{{!--
-<style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #404268;
-    }
-
-    .column {
-        margin-left: 100px;
-        width: 140px;
-        height: 100%;
-        border: white;
-        float: left;
-        align: center;
-    }
-
-    .head {
-        font-size: 18px;
-        color: white;
-        margin-bottom: 10px;
-        top: 0;
-    }
-
-    p {
-        color: #c5c6d8;
-    }
-</style>
-
-<div class="footer">
-    <div class="column" style="margin-left:170px;">
-        <p class="head">Let's get social</p>
-        <p>Facebook</p>
-        <p>Twitter</p>
-        <p>Youtube</p>
-        <p>Linkedin</p>
-    </div>
-    <div class="column">
-        <p class="head">Bobs</p>
-        <p>Contact Us</p>
-        <p>Our Blog</p>
-        <p>Terms Of Use</p>
-        <p>Sign Up</p>
-        <p>Privacy Policy</p>
-    </div>
-    <div class="column">
-        <p class="head">Bits</p>
-        <p>Home</p>
-        <p>About Us</p>
-        <p>How It Works</p>
-        <p>FAQs</p>
-        <p>Our Team</p>
-    </div>
-    <div class="column">
-        <p class="head">Categories</p>
-        <p>View All</p>
-        <p>Category 1</p>
-        <p>Category 2</p>
-        <p>Category 3</p>
-        <p>Category 4</p>
-    </div>
-    <div class="column">
-        <p class="head">BackStage</p>
-        <select name="Language">
-            <option value="english">English</option>
-            <option value="hebrew">Hebrew</option>
-        </select>
-        <p class="head">&copy; 2018 BackStage</p>
-
-    </div>
-</div> --}}
 <style>
     #myFooter {
         background-color: #37474f;
@@ -212,6 +139,25 @@
     #myFooter li {
         margin:0 0 5px 0;
     }
+    select {
+        font-size: 16px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        height: 45px;
+        border: 0px;
+    }
+    .footer-language-selector:after {
+        content: '\f0dd';
+        font: normal normal normal 15px/1 FontAwesome;
+        float:left;
+        margin-top: -25%;
+        margin-left: 5%;
+    }
+    .footer-language-selector {
+        border-radius: 4px;
+    }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <footer id="myFooter">
@@ -316,12 +262,13 @@
                     <li>
                         <h5>BackStage</h5>
                     </li>
-                    <li class="ltr blue-grey darken-4">
-                        <select>
-                            <option>English</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                        </select>
+                    <li class="ltr">
+                        <div class="footer-language-selector rtl blue-grey darken-4">
+                            <select class="browser-default">
+                                <option>English</option>
+                                <option>Hebrew</option>
+                            </select>
+                        </div>
                     </li>
                     <li>
                         <p class="ltr">© 2018 BackStage</p>
