@@ -14,7 +14,8 @@
     	width: 600px !important;
 	}
 	.carousel-container {
-		margin-top: 100px;
+		position: absolute;
+		z-index: -1;
 	}
 
 	.bgtext:after {
@@ -33,20 +34,28 @@
 	.email-input {
 		padding-bottom: 50px;
 	}
+	.avatar {
+		position: relative;
+		margin-top: -10%;
+		margin-right: 5%;
+	}
+	.rtl {
+    	direction:rtl;
+	}
 </style>
 {{> startfile}}
     {{> header}}
 		<div>
 		    <div class="section row intro-section">
-		    	<div class="col s6 left carousel-container">
+		    	<div class="col s6 carousel-container">
 					<div class="carousel carousel-slider">
-					    <a class="carousel-item"><img src="https://lorempixel.com/800/400/food/1"></a>
-					    <a class="carousel-item"><img src="https://lorempixel.com/800/400/food/2"></a>
-					    <a class="carousel-item"><img src="https://lorempixel.com/800/400/food/3"></a>
-					    <a class="carousel-item"><img src="https://lorempixel.com/800/400/food/4"></a>
+					    <a class="carousel-item"><img src="https://lorempixel.com/400/200/food/1"></a>
+					    <a class="carousel-item"><img src="https://lorempixel.com/400/200/food/2"></a>
+					    <a class="carousel-item"><img src="https://lorempixel.com/400/200/food/3"></a>
+					    <a class="carousel-item"><img src="https://lorempixel.com/400/200/food/4"></a>
 					</div>
 		    	</div>
-		    	<div class="col">
+		    	<div class="col offset-s6">
 		    		<h2 class="text-style rtl header">We Help Artists Like You</h1>
 		    		<h2 class="text-style rtl">Get Paid For Their Work</h2>
 		    		<br>
@@ -103,8 +112,8 @@
 		    		<p class="rtl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 		    		<p class="rtl">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		    		<div class="right">
-		    			<button class="btn-large red lighten-1 waves-effect waves-light">Explore Artists</button>
-		    			<button class="btn-large red lighten-1 waves-effect waves-light">Sign up</button>
+		    			<a class="btn-large waves-effect waves-light">Explore Artists</a>
+		    			<a class="btn-large white waves-effect blue-grey-text text-darken-4" href="/login">Sign up</a>
 		    		</div>
 		    	</div>
 		    	<div class="center col s6">
@@ -112,43 +121,36 @@
 		    </div>
 		</div>
 		<div class="section row rec-section grey lighten-2">
+			<br>
+			<br>
 			<h4 class="center">Recommended Artists</h4>
 			<p class="center col s6 offset-s3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
-			<div class="center col s6 offset-s3">
-				<div class="carousel carousel-slider">
-					<div class="carousel-fixed-item center">
-				      	<a class="btn waves-effect white grey-text darken-text-2">button</a>
-				    </div>
-				    <div class="carousel-item white black-text" href="#one!">
-				    	<div class="card">
-					        <div class="card-image">
-					          <img src="https://lorempixel.com/800/200/people/1">
-					          <span class="card-title">Card Title</span>
+			<br>
+			<div class="col s3">
+				<div class="card">
+			        <div class="card-image">
+			        	<img src="https://lorempixel.com/400/200/people/1">
+			        </div>
+
+			        	<a><img class="circle avatar right" src="https://lorempixel.com/50/50/people/9"></a>
+			        <div class="card-content">
+			        	<div class="section">
+				        	<br>
+				        	<h6 class="rtl"><span class="text-style">Kevin Stewart</span> is creating internet videos and podcasts</h6>
+				        	<br>
+				        	<p class="rtl">I am a very simple card. I am good at containing small bits of information.
+				          	I am convenient because I require little markup to use effectively.</p>
+				        </div>
+				        <div class="divider"></div>
+				        <div class="section">
+				        	<a class="col s3 rtl">1,098 Supporters
+			        			<i class="material-icons right">group</i>
+				        	</a>
+				        	<a class="col s3 rtl">Monthly Target
+				        		<i class="material-icons right">data_usage</i>
+				        	</a>
 					        </div>
-					        <div class="card-content">
-					          <p>I am a very simple card. I am good at containing small bits of information.
-					          I am convenient because I require little markup to use effectively.</p>
-					        </div>
-					        <div class="card-action">
-					          <a href="#">This is a link</a>
-					        </div>
-					      </div>
-				    </div>
-				    <div class="carousel-item white black-text" href="#one!">
-				    	<div class="card">
-					        <div class="card-image">
-					          <img src="https://lorempixel.com/800/200/people/1">
-					          <span class="card-title">Card Title</span>
-					        </div>
-					        <div class="card-content">
-					          <p>I am a very simple card. I am good at containing small bits of information.
-					          I am convenient because I require little markup to use effectively.</p>
-					        </div>
-					        <div class="card-action">
-					          <a href="#">This is a link</a>
-					        </div>
-					      </div>
-				    </div>
+			        </div>
 			    </div>
 			</div>
 		</div>

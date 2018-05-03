@@ -1,11 +1,27 @@
+<style>
+	.text-style {
+		color: #ef5350;
+	}
+	.rtl {
+		direction: right;
+	}
+</style>
 {{> startfile}}
-        {{> header}}
-        <br>
-        <br><br><br><br>
-        <p>{{data.name}}</p>
-        <p>{{data.description}}</p>
+    {{> header}}
+	    <div class="section row">
+	    	<div class="col s5 rtl offset-s6">
+		    	<h4 class="right">
+		    		<span class="text-style">
+		    			{{data.name}}
+		    		</span>
+		    		{{data.description}}
+		    	</h4>
+		    </div>
+	    </div>
+    {{!--
         {{data.profile_picture}}
         {{data.cover_picture}}
         {{data.intro_video}}
-        {{> footer}}
+    --}}
+    {{> footer}}
 {{> endfile}}

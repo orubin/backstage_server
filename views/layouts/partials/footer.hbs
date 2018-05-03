@@ -146,17 +146,27 @@
         appearance: none;
         background-color: transparent;
         height: 45px;
-        border: 0px;
+        border: none;
+        outline: none;
+
+        padding: 10px;
+        margin: 8px 0;
     }
     .footer-language-selector:after {
         content: '\f0dd';
         font: normal normal normal 15px/1 FontAwesome;
         float:left;
-        margin-top: -25%;
+        margin-top: -26%;
         margin-left: 5%;
     }
     .footer-language-selector {
         border-radius: 4px;
+    }
+    .footer-language-selector:focus {
+        outline-style:none;
+    }
+    .rtl {
+        direction:rtl;
     }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

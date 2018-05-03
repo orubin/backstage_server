@@ -63,7 +63,7 @@ module.exports = {
         // client.execute(query, function (err, result) {
 		// 	return (result.rows[0]);
 		// });
-		return '{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}';
+		return '{"name":"Kevin Stewart", "description":"creating internet videos and podcasts", "profile_picture":"https://lorempixel.com/400/200/people", "cover_picture":"https://lorempixel.com/400/200/people", "intro_video":"https://lorempixel.com/400/200/people"}';
 	},
 	LoadCreators : function (client, ids){
 		const query = 'SELECT * FROM creators WHERE category_id in (?)';

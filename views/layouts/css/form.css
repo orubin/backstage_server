@@ -4,10 +4,6 @@ body {
     background: white;
 }
 
-.rtl {
-    direction:rtl;
-}
-
 .form-body {
     background: #fff;
     padding: 20px;
@@ -101,12 +97,7 @@ input[type=file],
 textarea,
 select,
 email {
-    font-size: 13px;
-    padding: 10px;
-    border: 1px solid#ccc;
-    outline: none;
-    width: 100%;
-    margin: 8px 0;
+
 
 }
 
