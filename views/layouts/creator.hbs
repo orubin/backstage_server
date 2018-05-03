@@ -2,26 +2,108 @@
 	.text-style {
 		color: #ef5350;
 	}
-	.rtl {
-		direction: right;
+	.raised-progress {
+		background-color: #ef5350;
 	}
+	.cover-image {
+		width: 100%;
+		height: 40%;
+		z-index: -1;
+		position: absolute;
+	}
+	.container {
+		width: 80%;
+	}
+
 </style>
 {{> startfile}}
     {{> header}}
-	    <div class="section row">
-	    	<div class="col s5 rtl offset-s6">
-		    	<h4 class="right">
+    <div>
+    	<img class="cover-image" src= {{data.cover_picture}}>
+	    <div id="" class="section row">
+	    	<div class="page-title col s5 rtl offset-s6">
+		    	<h4 class="right white-text">
 		    		<span class="text-style">
 		    			{{data.name}}
 		    		</span>
+		    		is creating
 		    		{{data.description}}
 		    	</h4>
 		    </div>
 	    </div>
-    {{!--
-        {{data.profile_picture}}
-        {{data.cover_picture}}
-        {{data.intro_video}}
-    --}}
+	    
+	    <div class="row container">
+			<div class="col s3 left">
+				<div class="card">
+			        <div class="card-content">
+			        	<div class="section">
+				        	<div class="progress raised-progress">
+						      	<div class="determinate" style="width: 70%"></div>
+						  	</div>
+				        </div>
+				        <div class="divider"></div>
+				        <div class="section">
+				        	<h6>Category:</h6>
+				        </div>
+				        <div class="divider"></div>
+				        <div class="section">
+				        	<h6>Contributors:</h6>
+				        </div>
+				        <div class="divider"></div>
+				        <div class="section">
+				        	<h6>Creator:</h6>
+				        </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="col video-intro right">
+				<video controls>
+					<source src={{data.intro_video}} type="video/mp4" />
+				</video>
+			</div>
+		</div>
+		<div class="row container">
+			<div class="col s7 offset-s5">
+				<h6 class ="right">Overview</h6>
+				<br>
+				<p class="rtl">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</p>
+				<p class="rtl">
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+		</div>
+		<div class="row container">
+		    <div class="right">
+		      	<ul class="tabs">
+			        <li class="tab"><a href="#test1">FAQs</a></li>
+			        <li class="tab"><a href="#test2">Updates</a></li>
+			        <li class="tab"><a class="active" href="#test3">The Campaign</a></li>
+		      	</ul>
+		    </div>
+		</div>
+		<div class="grey lighten-2">
+			<div class="container row">
+				<div class="right">
+					<div id="test1" class="col s12">
+				    	<br>
+				    	<h4>FAQs</h4>
+				    	<br>
+					</div>
+				    <div id="test2" class="col s12">
+				    	<br>
+				    	<h4>Updates</h4>
+				    	<br>
+				    </div>
+				    <div id="test3" class="col s12">
+				    	<br>
+				    	<h4>About the Campaign</h4>
+				    	<br>
+				    </div>
+				</div>
+			</div>
+    	</div>
+    </div>
     {{> footer}}
 {{> endfile}}

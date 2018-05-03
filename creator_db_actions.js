@@ -63,7 +63,7 @@ module.exports = {
         // client.execute(query, function (err, result) {
 		// 	return (result.rows[0]);
 		// });
-		return '{"name":"Kevin Stewart", "description":"creating internet videos and podcasts", "profile_picture":"https://lorempixel.com/400/200/people", "cover_picture":"https://lorempixel.com/400/200/people", "intro_video":"https://lorempixel.com/400/200/people"}';
+		return '{"name":"Kevin Stewart", "description":"internet videos and podcasts", "profile_picture":"https://lorempixel.com/400/200/people", "cover_picture":"https://lorempixel.com/400/200/people", "intro_video":"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"}';
 	},
 	LoadCreators : function (client, ids){
 		const query = 'SELECT * FROM creators WHERE category_id in (?)';
