@@ -85,6 +85,75 @@
 	.payment-slider input[type=range] + .thumb.active .value {
 		color: #ef5350;
 	}
+
+
+.box {
+    margin:0 10%;
+    padding: 10px 0 40px 60px
+}
+
+.box ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top:0
+}
+
+.box ul:last-of-type{top:80px}
+
+.box ul:before{
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+    border:1px solid black;
+    position: absolute;
+    top:0;
+    right:-30px
+}
+
+.box ul li{
+    position: relative;
+    line-height: 20px;
+}
+
+
+.box ul li > span{
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top:0;
+    right:-30px
+}
+
+.box ul li > span:before,.box ul li > span:after{
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background:#e0e0e0;
+    border:1px solid black;
+    position: absolute;
+    right:-5px
+}
+
+.box ul li > span:before{top:-10px}
+.box ul li > span:after{top:95%}
+
+
+.box .time span{
+    position: absolute;
+    right: -100px;
+    font-size:80%;
+    font-weight: bold;
+}
+.box .time span:first-child{top:-16px}
+.box .time span:last-child{top:94%}
+
 </style>
 {{> startfile}}
     {{> header}}
@@ -96,8 +165,7 @@
 		    		<span class="text-style">
 		    			{{data.name}}
 		    		</span>
-		    		is creating
-		    		{{data.description}}
+		    		{{data.tagline}}
 		    	</h4>
 		    </div>
 	    </div>
@@ -108,28 +176,38 @@
 			        <div class="card-content">
 			        	<div class="section">
 				        	<div class="progress raised-progress">
-						      	<div class="determinate" style="width: 70%"></div>
+						      	<div class="determinate" style="width: 30%"></div>
 						  	</div>
 				        </div>
 				        <div class="divider"></div>
 				        <div class="section">
 				        	<h6>Category:</h6>
+				        	<a>{{data.category.type}}</a>
+				        	<i class="material-icons text-style">add_circle_outline</i>
 				        </div>
 				        <div class="divider"></div>
 				        <div class="section">
 				        	<h6>Contributors:</h6>
+				        	<a>{{data.sponsors}}</a>
+				        	<i class="material-icons text-style">group</i>
 				        </div>
 				        <div class="divider"></div>
 				        <div class="section">
 				        	<h6>Creator:</h6>
+				        	<a>{{data.name}}</a>
+				        	<a><img width="50" height="50" class="circle right" src={{data.profile}}></a>
 				        </div>
 			        </div>
 			    </div>
 			</div>
 			<div class="col video-intro right">
-				<video controls>
-					<source src={{data.intro_video}} type="video/mp4" />
-				</video>
+				{{#if data.video}}
+					<video width="640" height="360">
+						<source src={{data.video}} type="video/mp4" />
+					</video>
+				{{else}}
+					<img width="640" height="360" src={{data.profile}}>
+				{{/if}}
 			</div>
 		</div>
 		<div class="row container">
@@ -137,10 +215,7 @@
 				<h6 class ="right">Overview</h6>
 				<br><br>
 				<p class="rtl">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				</p>
-				<p class="rtl">
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					{{data.overview}}
 				</p>
 			</div>
 		</div>
@@ -189,26 +264,26 @@
 				        </div>
 			        </div>
 			    </div>
-			    <div class="card package-info">
-			        <div class="card-content">
-			        	<div class="section">
-				        	<h6 class="left">$50.00</h6>
-				        	<h6 class="right">Package Name</h6>
-				        </div>
-				        <div class="section">
-				        	<div class="card-image">
-					        	<img src="https://lorempixel.com/400/200/city">
+			    {{#each data.rewards}}
+				    <div class="card package-info">
+				        <div class="card-content">
+				        	<div class="section">
+					        	<h6 class="left">{{this.price}}</h6>
+					        	<h6 class="right">{{this.title}}</h6>
 					        </div>
-					        <br>
-					        <p class="rtl">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p>
-							<br>
-					        <p class="rtl"> deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt</p>
+					        <div class="section">
+					        	<div class="card-image">
+						        	<img src={{this.img}}>
+						        </div>
+						        <br>
+						        <p class="rtl">{{this.description}}</p>
+					        </div>
+					        <div class="section">
+					        	<button class="btn-flat right red-text waves-effect text-lighten-1">Sponser</button>
+					        </div>
 				        </div>
-				        <div class="section">
-				        	<button class="btn-flat right red-text waves-effect text-lighten-1">Sponser</button>
-				        </div>
-			        </div>
-			    </div>
+				    </div>
+				{{/each}}
 			</div>
 			<div class="tab-content">
 				<div id="faqs">
@@ -217,7 +292,7 @@
 			    		<h5>FAQs</h5>
 			    	</div>
 			    	<div class="collapse-section">
-				    	<ul class="collapsible">
+				    	<ul class="collapsible popout">
 						    <li>
 						      	<div class="collapsible-header">
 						      		<i class="material-icons text-style">add_circle_outline</i>
@@ -254,6 +329,26 @@
 			    		<h5>Updates</h5>
 			    	</div>
 			    	<br>
+			    		<div class="box">
+							<ul>
+							{{#each data.posts}}
+								<li>
+									<span></span>
+									<div class="card package-info">
+								        <div class="card-content">
+								        	<div class="section">
+									        	<h6>Package Name</h6>
+									        </div>
+								        </div>
+								    </div>
+									<div class="time">
+										<span>JUN, 17<sup>th</sup></span>
+										<span>12:00 AM</span>
+									</div>
+								</li>
+							{{/each}}
+							</ul>
+						</div>
 			    </div>
 			    <div id="campaign">
 			    	<br>
