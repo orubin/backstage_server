@@ -26,7 +26,7 @@
     .tab-header {
     	font-size: 120%;
     }
-    .collapse-section {
+    .collapse-section, .package-info {
     	margin-top: 15%;
     }
     .left-section {
@@ -34,6 +34,51 @@
     	width: 30%;
     	margin-left: -5%;
     }
+    .payment-selector select {
+        font-size: 16px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        height: 45px;
+        border: 0px;
+
+        padding: 10px;
+        margin: 8px 0;
+        border-bottom: 1px solid black !important;
+    }
+    .payment-selector:after {
+        content: '\f0dd';
+        font: normal normal normal 15px/1 FontAwesome;
+        float:left;
+        margin-top: -14%;
+        margin-left: 8%;
+    }
+    .currency-selector {
+    	width: 30%;
+    	float: left;
+    }
+    .pay-total {
+    	float: right;
+    }
+
+	.payment-slider input[type=range]::-webkit-slider-thumb {
+		background-color: #ef5350;
+	}
+	.payment-slider input[type=range]::-moz-range-thumb {
+		background-color: #ef5350;
+	}
+	.payment-slider input[type=range]::-ms-thumb {
+		background-color: #ef5350;
+	}
+
+	/***** These are to edit the thumb and the text inside the thumb *****/
+	.payment-slider input[type=range] + .thumb {
+		background-color: #dedede;
+	}
+	.payment-slider input[type=range] + .thumb.active .value {
+		color: #ef5350;
+	}
 </style>
 {{> startfile}}
     {{> header}}
@@ -108,26 +153,34 @@
 			<div class="left-section">
 				<br>
 		    	<div>
-		    		<h4>Sponsership Packages</h4>
+		    		<h5>Sponsership Packages</h5>
 		    	</div>
 				<div class="card package-info">
 			        <div class="card-content">
 			        	<div class="section">
-				        	<div class="progress raised-progress">
-						      	<div class="determinate" style="width: 70%"></div>
-						  	</div>
+				        	<div class="rtl payment-selector">
+		                        <select class="browser-default">
+		                            <option>Monthly Payment</option>
+		                            <option>Yearly Payment</option>
+		                        </select>
+		                    </div>
 				        </div>
-				        <div class="divider"></div>
 				        <div class="section">
-				        	<h6>Category:</h6>
-				        </div>
-				        <div class="divider"></div>
-				        <div class="section">
-				        	<h6>Contributors:</h6>
-				        </div>
-				        <div class="divider"></div>
-				        <div class="section">
-				        	<h6>Creator:</h6>
+				        	<h6> Select/dropdown here and Number to right</h6>
+							<div class="currency-selector">
+		                        <select>
+		                            <option>$ US</option>
+		                        </select>
+		                    </div>
+		                    <div class="pay-total">
+		                    	<h6 id="pay">0.0</h6>
+		                    </div>
+							<form action="#">
+								<p class="range-field payment-slider">
+							  		<input type="range" id="pay-slider" onchange="document.getElementById('pay').textContent= document.getElementById('pay-slider').value;" min="1" max="100" />
+								</p>
+							</form>
+				        	<button class="btn-flat right red-text waves-effect text-lighten-1">Sponser</button>
 				        </div>
 			        </div>
 			    </div>
@@ -136,7 +189,7 @@
 				<div id="faqs">
 			    	<br>
 			    	<div class="right">
-			    		<h4>FAQs</h4>
+			    		<h5>FAQs</h5>
 			    	</div>
 			    	<div class="collapse-section">
 				    	<ul class="collapsible">
@@ -146,16 +199,26 @@
 						      		First
 						      	</div>
 						      	<div class="collapsible-body">
-						      		<span>Lorem ipsum dolor sit amet.</span>
+						      		<span class="right">Lorem ipsum dolor sit amet.</span>
 						      	</div>
 						    </li>
 						    <li>
-						      	<div class="collapsible-header"><i class="material-icons text-style">add_circle_outline</i>Second</div>
-						      	<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+						      	<div class="collapsible-header">
+						      		<i class="material-icons text-style">add_circle_outline</i>
+						      		Second
+						      	</div>
+						      	<div class="collapsible-body">
+						      		<span class="right">Lorem ipsum dolor sit amet.</span>
+						      	</div>
 						    </li>
 						    <li>
-						      	<div class="collapsible-header"><i class="material-icons text-style">add_circle_outline</i>Third</div>
-						      	<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+						      	<div class="collapsible-header">
+						      		<i class="material-icons text-style">add_circle_outline</i>
+						      		Third
+						      	</div>
+						      	<div class="collapsible-body">
+						      		<span class="right">Lorem ipsum dolor sit amet.</span>
+						      	</div>
 						    </li>
 						</ul>
 					</div>
@@ -163,14 +226,14 @@
 			    <div id="updates">
 			    	<br>
 			    	<div class="right">
-			    		<h4>Updates</h4>
+			    		<h5>Updates</h5>
 			    	</div>
 			    	<br>
 			    </div>
 			    <div id="campaign">
 			    	<br>
 			    	<div class="right">
-			    		<h4>About the Campaign</h4>
+			    		<h5>About the Campaign</h5>
 			    	</div>
 			    	<br>
 			    </div>
