@@ -14,7 +14,26 @@
 	.container {
 		width: 80%;
 	}
-
+	.tabs .tab a.active {
+        color: #ef5350;
+    }
+    .tabs .tab a {
+        color: #424242;
+    }
+    .tab-content {
+    	margin-left: 30%;
+    }
+    .tab-header {
+    	font-size: 120%;
+    }
+    .collapse-section {
+    	margin-top: 15%;
+    }
+    .left-section {
+    	float:left;
+    	width: 30%;
+    	margin-left: -5%;
+    }
 </style>
 {{> startfile}}
     {{> header}}
@@ -65,7 +84,7 @@
 		<div class="row container">
 			<div class="col s7 offset-s5">
 				<h6 class ="right">Overview</h6>
-				<br>
+				<br><br>
 				<p class="rtl">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 				</p>
@@ -74,36 +93,89 @@
 				</p>
 			</div>
 		</div>
-		<div class="row container">
-		    <div class="right">
-		      	<ul class="tabs">
-			        <li class="tab"><a href="#test1">FAQs</a></li>
-			        <li class="tab"><a href="#test2">Updates</a></li>
-			        <li class="tab"><a class="active" href="#test3">The Campaign</a></li>
-		      	</ul>
-		    </div>
-		</div>
-		<div class="grey lighten-2">
-			<div class="container row">
-				<div class="right">
-					<div id="test1" class="col s12">
-				    	<br>
-				    	<h4>FAQs</h4>
-				    	<br>
-					</div>
-				    <div id="test2" class="col s12">
-				    	<br>
-				    	<h4>Updates</h4>
-				    	<br>
-				    </div>
-				    <div id="test3" class="col s12">
-				    	<br>
-				    	<h4>About the Campaign</h4>
-				    	<br>
-				    </div>
-				</div>
-			</div>
-    	</div>
     </div>
+    <div class="row container">
+	    <div class="right">
+	      	<ul class="tabs">
+		        <li class="tab"><a href="#faqs">FAQs</a></li>
+		        <li class="tab"><a href="#updates">Updates</a></li>
+		        <li class="tab"><a class="active" href="#campaign">The Campaign</a></li>
+	      	</ul>
+	    </div>
+	</div>
+	<div class="grey lighten-2">
+		<div class="container row">
+			<div class="left-section">
+				<br>
+		    	<div>
+		    		<h4>Sponsership Packages</h4>
+		    	</div>
+				<div class="card package-info">
+			        <div class="card-content">
+			        	<div class="section">
+				        	<div class="progress raised-progress">
+						      	<div class="determinate" style="width: 70%"></div>
+						  	</div>
+				        </div>
+				        <div class="divider"></div>
+				        <div class="section">
+				        	<h6>Category:</h6>
+				        </div>
+				        <div class="divider"></div>
+				        <div class="section">
+				        	<h6>Contributors:</h6>
+				        </div>
+				        <div class="divider"></div>
+				        <div class="section">
+				        	<h6>Creator:</h6>
+				        </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="tab-content">
+				<div id="faqs">
+			    	<br>
+			    	<div class="right">
+			    		<h4>FAQs</h4>
+			    	</div>
+			    	<div class="collapse-section">
+				    	<ul class="collapsible">
+						    <li>
+						      	<div class="collapsible-header">
+						      		<i class="material-icons text-style">add_circle_outline</i>
+						      		First
+						      	</div>
+						      	<div class="collapsible-body">
+						      		<span>Lorem ipsum dolor sit amet.</span>
+						      	</div>
+						    </li>
+						    <li>
+						      	<div class="collapsible-header"><i class="material-icons text-style">add_circle_outline</i>Second</div>
+						      	<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+						    </li>
+						    <li>
+						      	<div class="collapsible-header"><i class="material-icons text-style">add_circle_outline</i>Third</div>
+						      	<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+						    </li>
+						</ul>
+					</div>
+				</div>
+			    <div id="updates">
+			    	<br>
+			    	<div class="right">
+			    		<h4>Updates</h4>
+			    	</div>
+			    	<br>
+			    </div>
+			    <div id="campaign">
+			    	<br>
+			    	<div class="right">
+			    		<h4>About the Campaign</h4>
+			    	</div>
+			    	<br>
+			    </div>
+			</div>
+		</div>
+	</div>
     {{> footer}}
 {{> endfile}}
