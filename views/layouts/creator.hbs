@@ -168,6 +168,33 @@
 		padding-bottom: 10%;
 	}
 
+	.overview-section {
+		position: absolute;
+	}
+
+	.share-btn {
+		margin-top: -8%;
+	}
+	.share-btn button {
+		width: 100%;
+	}
+
+	.progress .determinate {
+		background-color: #e0e0e0;
+	}
+    .facebook {
+        color: #01579b;
+    }
+
+    .twitter {
+        color: #00aced;
+    }
+    .shift-left {
+    	margin-right: 20%;
+    }
+    .shift-up {
+    	margin-top: -15%;
+    }
 </style>
 {{> startfile}}
     {{> header}}
@@ -185,7 +212,7 @@
 	    </div>
 	    
 	    <div class="row container">
-			<div class="col s3 left">
+			<div class="col s3 left overview-section">
 				<div class="card">
 			        <div class="card-content">
 			        	<div class="section">
@@ -195,21 +222,57 @@
 				        </div>
 				        <div class="divider"></div>
 				        <div class="section rtl">
-				        	<h6>Category<span>:&lrm;</span></h6>
-				        	<a>{{data.category.type}}</a>
-				        	<i class="material-icons text-style right">edit</i>
+				        	<div class="shift-left">
+				        		<h6>Category<span>:&lrm;</span></h6>
+				        		<a>{{data.category.type}}</a>
+				        	</div>
+				        	<i class="material-icons text-style shift-up">edit</i>
 				        </div>
 				        <div class="divider"></div>
 				        <div class="section rtl">
-				        	<h6>Contributors<span>:&lrm;</span></h6>
-				        	<a>{{data.sponsors}}</a>
-				        	<i class="material-icons text-style right">group</i>
+				        	<div class="shift-left">
+					        	<h6>Contributors<span>:&lrm;</span></h6>
+					        	<a>{{data.sponsors}}</a>
+					        </div>
+				        	<i class="material-icons text-style shift-up">group</i>
 				        </div>
 				        <div class="divider"></div>
 				        <div class="section rtl">
-				        	<h6>Creator<span>:&lrm;</span></h6>
-				        	<a>{{data.name}}</a>
-				        	<a><img width="25" height="25" class="circle right" src={{data.profile}}></a>
+				        	<div class="shift-left">
+				        		<h6>Creator<span>:&lrm;</span></h6>
+				        		<a>{{data.name}}</a>
+				        	</div>
+				        	<a><img width="30" height="30" class="circle shift-up" src={{data.profile}}></a>
+				        </div>
+				        <div class="section center">
+				        	<button class="btn-large red lighten-1 waves-effect waves-light">Sponser This Creator</button>
+				        </div>
+			        </div>
+			    </div>
+			    <div class="card">
+			        <div class="card-content">
+			        	<div class="section">
+			        		<div class="share-btn center">
+			        			<button class="btn-flat waves-effect">
+			        				<i class="material-icons left">share</i>
+			        				<span class="right">Share This Page</span>
+			        			</button>
+			        		</div>
+				        </div>
+				        <div class="divider"></div>
+				        <div class="section center">
+				        	<button class="col s3 btn-flat waves-effect">
+			        			<i class="fa fa-facebook-square facebook"></i>
+				        	</button>
+			        		<button class="col s3 btn-flat waves-effect">
+			        			<i class="fa fa-twitter-square twitter"></i>
+			        		</button>
+			        		<button class="col s3 btn-flat waves-effect">
+			        			<i class="fa fa-comment facebook"></i>
+			        		</button>
+			        		<button class="col s3 btn-flat waves-effect">
+			        			<i class="material-icons text-style grey-text text-darken-1">link</i>
+			        		</button>
 				        </div>
 			        </div>
 			    </div>
@@ -226,7 +289,7 @@
 		</div>
 		<div class="row container">
 			<div class="col s7 offset-s5">
-				<h6 class ="right">Overview</h6>
+				<h5 class ="right">Overview</h5>
 				<br><br>
 				<p class="rtl">
 					{{data.overview}}
@@ -344,26 +407,26 @@
 			    		<h5>Updates</h5>
 			    	</div>
 			    	<br>
-			    		<div class="all-posts">
-							<ul>
-							{{#each data.posts}}
-								<li class ="post-section">
-									<span></span>
-									<div class="date">
-										<span>JUN, 17<sup>th</sup></span>
-									</div>
-									<div class="section">
-										<div class="right rtl">
-											<br>
-							        		<h5>{{this.title}}</h5>
-							        		<br>
-							        		<p>{{this.body}}</p>
-							        	</div>
-								    </div>
-								</li>
-							{{/each}}
-							</ul>
-						</div>
+		    		<div class="all-posts">
+						<ul>
+						{{#each data.posts}}
+							<li class ="post-section">
+								<span></span>
+								<div class="date">
+									<span>JUN, 17<sup>th</sup></span>
+								</div>
+								<div class="section">
+									<div class="right rtl">
+										<br>
+						        		<h5>{{this.title}}</h5>
+						        		<br>
+						        		<p>{{this.body}}</p>
+						        	</div>
+							    </div>
+							</li>
+						{{/each}}
+						</ul>
+					</div>
 			    </div>
 			    <div id="campaign">
 			    	<br>
