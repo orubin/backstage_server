@@ -1,0 +1,92 @@
+<style>
+    .text-style {
+        color: #ef5350;
+    }
+</style>
+    {{#if registrationType}}
+        <div>
+            <a class="modal-close btn-flat right"><i class="material-icons">close</i></a>
+            <br>
+            <div class="container row">
+                <div class="right col s4">
+                    <h2 class="center"><span class="text-style">Back</span>Stage</h2>
+                    <h6 class="center">Create a Free BackStage Account</h6>
+                    <p class="center">Create Your Own Gig or Sponsors Others</p>
+                    <form>
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="first-name" type="text" required>
+                            <label for="first-name">First Name</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">email</i>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                onchange="this.setCustomValidity(if(this.checkValidity()) form.email-confirm.pattern = this.value;"
+                                required
+                            >
+                            <label for="icon_prefix">Your Email Address</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">email</i>
+                            <input
+                                id="email-confirm"
+                                name="email-confirm"
+                                type="email"
+                                onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Email as above' : '');"
+                                required
+                            >
+                            <label for="email-confirm">Re-enter Your Email Address</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="password" name="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(if(this.checkValidity()) form.password-confirm.pattern = this.value;" required>
+                            <label for="password">Password (Min 6 Characters)</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="password-confirm" name="password-confirm" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
+                            <label for="password-confirm">Re-enter Password</label>
+                        </div>
+
+                        <button class="btn-large red lighten-1 waves-effect col s12" type="submit" name="action">Sign up</button>
+                        <p class="center">Already Have An Account? <a href="/login">Log In</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div>
+            <a href="#!" class="modal-close btn-flat right"><i class="material-icons">close</i></a>
+            <br>
+            <div class="container row">
+                <div class="right col s4">
+                    <h2 class="center"><span class="text-style">Back</span>Stage</h2>
+                    <h6 class="center">Welcome Back</h6>
+                    <p class="center">Log into Your Account Here</p>
+                    <form>
+                        <div class="input-field">
+                            <i class="material-icons prefix">email</i>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                required
+                            >
+                            <label for="icon_prefix">Your Email Address</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="password" name="password" type="password" required>
+                            <label for="password">Password (Min 6 Characters)</label>
+                        </div>
+
+                        <button class="btn-large red lighten-1 waves-effect col s12" type="submit" name="action">Log In</button>
+                        <p class="center">Don't Have An Account? <a onclick="test({{registrationType}})";>Sign Up</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{/if}}
