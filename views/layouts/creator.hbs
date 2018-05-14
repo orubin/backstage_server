@@ -172,6 +172,10 @@
 		position: absolute;
 	}
 
+	.overview {
+		min-height: 300px;
+	}
+
 	.share-btn {
 		margin-top: -8%;
 	}
@@ -182,13 +186,6 @@
 	.progress .determinate {
 		background-color: #e0e0e0;
 	}
-    .facebook {
-        color: #01579b;
-    }
-
-    .twitter {
-        color: #00aced;
-    }
     .shift-left {
     	margin-right: 20%;
     }
@@ -201,116 +198,157 @@
         height: 100%;
         top: 0 !important;
     }
+    .facebook {
+        color: #01579b;
+    }
+
+    .twitter {
+        color: #00aced;
+    }
+    .btn-font {
+    	font-size: 75%;
+    }
 </style>
 {{> startfile}}
     {{> header}}
     <div>
-    	<img class="cover-image" src= {{data.cover_picture}}>
-	    <div id="" class="section row">
-	    	<div class="page-title col s5 rtl offset-s6">
-		    	<h4 class="right white-text">
-		    		<span class="text-style">
-		    			{{data.name}}
-		    		</span>
-		    		{{data.tagline}}
-		    	</h4>
+    	<div>
+	    	<img class="cover-image" src= {{data.cover_picture}}>
+		    <div id="" class="section row">
+		    	<div class="page-title col s5 rtl offset-s6">
+			    	<h4 class="right white-text">
+			    		<span class="text-style">
+			    			{{data.name}}
+			    		</span>
+			    		{{data.tagline}}
+			    	</h4>
+			    </div>
 		    </div>
-	    </div>
-	    
-	    <div class="row container">
-			<div class="col s3 left overview-section">
-				<div class="card">
-			        <div class="card-content">
-			        	<div class="section">
-				        	<div class="progress raised-progress">
-						      	<div class="determinate" style="width: 30%"></div>
-						  	</div>
-				        </div>
-				        <div class="divider"></div>
-				        <div class="section rtl">
-				        	<div class="shift-left">
-				        		<h6>Category<span>:&lrm;</span></h6>
-				        		<a>{{data.category.type}}</a>
-				        	</div>
-				        	<i class="material-icons text-style shift-up">edit</i>
-				        </div>
-				        <div class="divider"></div>
-				        <div class="section rtl">
-				        	<div class="shift-left">
-					        	<h6>Contributors<span>:&lrm;</span></h6>
-					        	<a>{{data.sponsors}}</a>
+		    
+		    <div class="row container">
+				<div class="col s3 left overview-section">
+					<div class="card">
+				        <div class="card-content">
+				        	<div class="section">
+					        	<div class="progress raised-progress">
+							      	<div class="determinate" style="width: 30%"></div>
+							  	</div>
 					        </div>
-				        	<i class="material-icons text-style shift-up">group</i>
+					        <div class="divider"></div>
+					        <div class="section rtl">
+					        	<div class="shift-left">
+					        		<h6>Category<span>:&lrm;</span></h6>
+					        		<spam>{{data.category.type}}</spam>
+					        	</div>
+					        	<i class="material-icons text-style shift-up">edit</i>
+					        </div>
+					        <div class="divider"></div>
+					        <div class="section rtl">
+					        	<div class="shift-left">
+						        	<h6>Contributors<span>:&lrm;</span></h6>
+						        	<spam>{{data.sponsors}}</spam>
+						        </div>
+					        	<i class="material-icons text-style shift-up">group</i>
+					        </div>
+					        <div class="divider"></div>
+					        <div class="section rtl">
+					        	<div class="shift-left">
+					        		<h6>Creator<span>:&lrm;</span></h6>
+					        		<spam>{{data.name}}</spam>
+					        	</div>
+					        	<a><img width="30" height="30" class="circle shift-up" src={{data.profile}}></a>
+					        </div>
+					        <div class="divider"></div>
+					        <div class="section rtl">
+					        	<div class="shift-left">
+					        		<h6>Else Where</h6>
+					        	</div>
+					        	<div>
+					        		<button class="btn-flat waves-effect">
+					        			<spam>Facebook</spam>
+					        			<i class="fa fa-facebook-square right text-style"></i>
+						        	</button>
+						        </div>
+					        	<div>
+					        		<button class="btn-flat waves-effect">
+					        			<spam>Twitter</spam>
+					        			<i class="fa fa-twitter-square right text-style"></i>
+					        		</button>
+					        	</div>
+					        	<div>
+					        		<button class="btn-flat waves-effect">
+					        			<spam>Instagram</spam>
+					        			<i class="fa fa-instagram right text-style"></i>
+					        		</button>
+					        	</div>
+					        	<div>
+					        		<button class="btn-flat waves-effect">
+					        			<spam>Youtube</spam>
+					        			<i class="fa fa-youtube-play right text-style"></i>
+					        		</button>
+					        	</div>
+					        </div>
 				        </div>
-				        <div class="divider"></div>
-				        <div class="section rtl">
-				        	<div class="shift-left">
-				        		<h6>Creator<span>:&lrm;</span></h6>
-				        		<a>{{data.name}}</a>
-				        	</div>
-				        	<a><img width="30" height="30" class="circle shift-up" src={{data.profile}}></a>
+				    </div>
+				    <div class="card">
+				        <div class="card-content">
+					        <div class="section center">
+					        	<button class="btn-large red lighten-1 waves-effect waves-light modal-trigger" href="#modalCheckout">Sponser This Creator</button>
+					        </div>
 				        </div>
-				        <div class="section center">
-				        	<button class="btn-large red lighten-1 waves-effect waves-light modal-trigger" href="#modalCheckout">Sponser This Creator</button>
-				        </div>
+				    </div>
+				</div>
+				<div class="col video-intro right">
+					{{#if data.video}}
+						<video width="640" height="360" controls>
+							<source src={{data.video}} type="video/mp4" />
+						</video>
+					{{else}}
+						<img width="640" height="360" src={{data.profile}}>
+					{{/if}}
+				</div>
+			</div>
+			<div class="row container">
+				<div class="col s7 offset-s5">
+					<div class="section overview">
+						<h5 class ="right">Overview</h5>
+						<br><br>
+						<p class="rtl">
+							{{data.overview}}
+						</p>
+					</div>
+					<div class="divider"></div>
+					<div class="section">
+		        		<button class="col btn-flat waves-effect btn-font">
+		        			<i class="material-icons text-style grey-text text-darken-1 left">link</i>
+		        			<spam>Copy Link</spam>
+		        		</button>
+		        		<button class="col btn-flat waves-effect btn-font">
+		        			<i class="fa fa-twitter-square twitter left"></i>
+		        			<spam>Twitter</spam>
+		        		</button>
+		        		<button class="col btn-flat waves-effect btn-font">
+		        			<i class="fa fa-comment facebook left"></i>
+		        			<spam>Messenger</spam>
+		        		</button>
+			        	<button class="col btn-flat waves-effect btn-font">
+		        			<i class="fa fa-facebook-square facebook left"></i>
+		        			<spam>Facebook</spam>
+			        	</button>
+		        		<spam class='col rtl right'>Share This Page</spam>
 			        </div>
-			    </div>
-			    <div class="card">
-			        <div class="card-content">
-			        	<div class="section">
-			        		<div class="share-btn center">
-			        			<button class="btn-flat waves-effect">
-			        				<i class="material-icons left">share</i>
-			        				<span class="right">Share This Page</span>
-			        			</button>
-			        		</div>
-				        </div>
-				        <div class="divider"></div>
-				        <div class="section center">
-				        	<button class="col s3 btn-flat waves-effect">
-			        			<i class="fa fa-facebook-square facebook"></i>
-				        	</button>
-			        		<button class="col s3 btn-flat waves-effect">
-			        			<i class="fa fa-twitter-square twitter"></i>
-			        		</button>
-			        		<button class="col s3 btn-flat waves-effect">
-			        			<i class="fa fa-comment facebook"></i>
-			        		</button>
-			        		<button class="col s3 btn-flat waves-effect">
-			        			<i class="material-icons text-style grey-text text-darken-1">link</i>
-			        		</button>
-				        </div>
-			        </div>
-			    </div>
+				</div>
 			</div>
-			<div class="col video-intro right">
-				{{#if data.video}}
-					<video width="640" height="360" controls>
-						<source src={{data.video}} type="video/mp4" />
-					</video>
-				{{else}}
-					<img width="640" height="360" src={{data.profile}}>
-				{{/if}}
-			</div>
-		</div>
-		<div class="row container">
-			<div class="col s7 offset-s5">
-				<h5 class ="right">Overview</h5>
-				<br><br>
-				<p class="rtl">
-					{{data.overview}}
-				</p>
-			</div>
-		</div>
-    </div>
-    <div class="row container">
-	    <div class="right">
-	      	<ul class="tabs">
-		        <li class="tab"><a href="#faqs">FAQs</a></li>
-		        <li class="tab"><a href="#updates">Updates</a></li>
-		        <li class="tab"><a class="active" href="#campaign">The Campaign</a></li>
-	      	</ul>
 	    </div>
+	    <div class="row container">
+		    <div class="right">
+		      	<ul class="tabs">
+			        <li class="tab"><a href="#faqs">FAQs</a></li>
+			        <li class="tab"><a href="#comments">Supporters Feedback</a></li>
+			        <li class="tab"><a class="active" href="#updates">Updates</a></li>
+		      	</ul>
+		    </div>
+		</div>
 	</div>
 	<div class="grey lighten-2">
 		<div class="container row">
@@ -434,10 +472,10 @@
 						</ul>
 					</div>
 			    </div>
-			    <div id="campaign">
+			    <div id="comments">
 			    	<br>
 			    	<div class="right">
-			    		<h5>About the Campaign</h5>
+			    		<h5>Comments</h5>
 			    	</div>
 			    	<br>
 			    </div>
