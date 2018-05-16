@@ -5,6 +5,11 @@
     .selected {
     	border: 2px solid #ef5350;
     }
+	input {
+	    border: .5px solid grey !important;
+	    border-radius: 2px !important;
+		margin-top: 10px !important;
+	}
 </style>
 <div class="container">
 	<div class="section row">
@@ -21,10 +26,21 @@
     <div class="section row">
     	<div class="col s4">
     		<div>
-    			<h6>Artist Name</h6>
+    			<div class="row">
+    				<h6 class="right">Artist Name</h6>
+    			</div>
+    			<div>
+    				<img src={{data.profile}}>
+    			</div>
+    			<div class="row">
+    				<h6 class="right">Page Name Goes In This Space</h6>
+    			</div>
     		</div>
     		<div class="divider"></div>
-    		<div class="card card-size selected">
+    		<div class="row">
+    			<h6 class="right">Your Choosen Sponsorship Package</h6>
+    		</div>
+    		<div class="card selected">
     			<i class="material-icons text-style right">check_circle</i>
 		        <div class="card-content">
 		        	<div class="section">
@@ -41,8 +57,11 @@
 		        </div>
 		    </div>
 			<div class="divider"></div>
+			<div class="row">
+    			<h6 class="right">Other Sponsorship Packages</h6>
+    		</div>
 			{{#each data.rewards}}
-				<div class="card card-size">
+				<div class="card">
 			        <div class="card-content">
 			        	<div class="section">
 				        	<h6 class="left">{{this.price}}</h6>
@@ -62,22 +81,22 @@
 		<div class="col s6 right">
 			<div class="section">
 				<div class="row">
-					<h6>Payment Details</h6>
+					<h6 class="right">Payment Details</h6>
 				</div>
 				<div class="row">
 					<div class="input-field">
-		                <input id="card-number" type="text" required>
+		                <input id="card-number" placeholder="Card Number" type="text" required>
 		                <label for="card-number">Card Number</label>
 		            </div>
 		        </div>
 	            <div class="row">
 		            <div class="input-field col s6">
-		                <input id="card-number" type="text" required>
-		                <label for="card-number">Card Number</label>
+		                <input id="card-number" placeholder="XXX" type="text" required>
+		                <label for="card-number">CVV Code</label>
 		            </div>
 		            <div class="input-field col s6">
-		                <input id="card-number" type="text" required>
-		                <label for="card-number">Card Number</label>
+		                <input id="card-number" placeholder="MM/YY" type="text" required>
+		                <label for="card-number">Expiry Date</label>
 		            </div>
 		        </div>
 		    </div>
@@ -89,6 +108,9 @@
 			    </label>
 		    </div>
 		    <div class="divider"></div>
+		    <div class="section right">
+	        	<button class="btn-large red lighten-1 waves-effect waves-light modal-trigger" href="#modalCheckout">Confirm and Sponsor</button>
+	        </div>
 		</div>
     </div>
 </div>
