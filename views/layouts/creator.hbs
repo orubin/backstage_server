@@ -401,7 +401,18 @@
 						        <p class="rtl">{{this.description}}</p>
 					        </div>
 					        <div class="section">
-					        	<button class="btn-flat right red-text waves-effect text-lighten-1 modal-trigger" value='{{@index}}' href="#modalCheckout" onClick="$('#modalCheckout').val(this.value);">Sponser</button>
+					        	<button
+					        		class="btn-flat right red-text waves-effect text-lighten-1 modal-trigger" 
+					        		value='{{@index}}'
+					        		href="#modalCheckout"
+					        		onClick="document.getElementById('selectedCard').appendChild(
+								    			document.getElementById('card'+this.value)
+								  			);
+								  			document.getElementById('card'+this.value).className += ' selected';
+								  			selectedValue=this.value;"
+					        	>
+					        		Sponser
+					        	</button>
 					        </div>
 				        </div>
 				    </div>

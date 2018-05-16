@@ -13,7 +13,10 @@
 </style>
 <div class="container">
 	<div class="section row">
-		<div class="modal-close btn-flat left">
+		<div class="modal-close btn-flat left" onClick="document.getElementById('notSelectedCard').appendChild(
+								    			document.getElementById('card'+selectedValue)
+								  			);
+								  			document.getElementById('card'+selectedValue).classList.remove('selected');">
 			<i class="fa fa-times-circle"></i>
 			<span>Close</span>
 		</div>
@@ -40,43 +43,32 @@
     		<div class="row">
     			<h6 class="right">Your Choosen Sponsorship Package</h6>
     		</div>
-    		<div class="card selected">
-    			<i class="material-icons text-style right">check_circle</i>
-		        <div class="card-content">
-		        	<div class="section">
-			        	<h6 class="left">{{this.price}}</h6>
-			        	<h6 class="right">{{this.title}}</h6>
-			        </div>
-			        <div class="section">
-			        	<div class="card-image">
-				        	<img src={{this.img}}>
-				        </div>
-				        <br>
-				        <p class="rtl">{{this.description}}</p>
-			        </div>
-		        </div>
+    		<div id="selectedCard">
+    			<i class="material-icons text-style" id="checkmark">check_circle</i>
 		    </div>
 			<div class="divider"></div>
 			<div class="row">
     			<h6 class="right">Other Sponsorship Packages</h6>
     		</div>
-			{{#each data.rewards}}
-				<div class="card">
-			        <div class="card-content">
-			        	<div class="section">
-				        	<h6 class="left">{{this.price}}</h6>
-				        	<h6 class="right">{{this.title}}</h6>
-				        </div>
-				        <div class="section">
-				        	<div class="card-image">
-					        	<img src={{this.img}}>
+    		<div id="notSelectedCard">
+				{{#each data.rewards}}
+					<div class="card" id='card{{@index}}'>
+				        <div class="card-content">
+				        	<div class="section">
+					        	<h6 class="left">{{this.price}}</h6>
+					        	<h6 class="right">{{this.title}}</h6>
 					        </div>
-					        <br>
-					        <p class="rtl">{{this.description}}</p>
+					        <div class="section">
+					        	<div class="card-image">
+						        	<img src={{this.img}}>
+						        </div>
+						        <br>
+						        <p class="rtl">{{this.description}}</p>
+					        </div>
 				        </div>
-			        </div>
-			    </div>
-			{{/each}}
+				    </div>
+				{{/each}}
+			</div>
 		</div>
 		<div class="col s6 right">
 			<div class="section">
