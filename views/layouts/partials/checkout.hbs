@@ -2,42 +2,93 @@
     .text-style {
         color: #ef5350;
     }
-    .card-size {
-    	width: 30%;
+    .selected {
+    	border: 2px solid #ef5350;
     }
 </style>
-<div>
-	<a class="modal-close btn-flat right"><i class="material-icons">close</i></a>
-    <br>
-    <div class="container row">
-
-{{#each data.rewards}}
-    <div class="card card-size collapsible" id="card{{@index}}">
-        <div class="card-content">
-        	<span class="card-title">
-				<label>
-					<input type="checkbox" class="filled-in" />
-					<span><h6 class="right">{{this.title}}</h6></span>
-				</label>
-				<i class="material-icons right activator" onClick="document.getElementById('card{{@index}}').style.height = '75%';">more_vert</i>
-			</span>
-	    </div>
-	    <div class="card-reveal">
-	    	<span class="card-title"><i class="material-icons right" onClick="document.getElementById('card{{@index}}').style.height = 'auto'">close</i></span>
-        	<div class="section">
-	        	<h6 class="left">{{this.price}}</h6>
-	        	<h6 class="right">{{this.title}}</h6>
-	        </div>
-	        <div class="section">
-	        	<div class="card-image">
-		        	<img src={{this.img}}>
+<div class="container">
+	<div class="section row">
+		<div class="modal-close btn-flat left">
+			<i class="fa fa-times-circle"></i>
+			<span>Close</span>
+		</div>
+		<div class="right rtl">
+			<h4>Sponser "Page Name"</h4>
+			<h6 class="right rtl">Message goes here</h6>
+		</div>
+	</div>
+    <div class="divider"></div>
+    <div class="section row">
+    	<div class="col s4">
+    		<div>
+    			<h6>Artist Name</h6>
+    		</div>
+    		<div class="divider"></div>
+    		<div class="card card-size selected">
+    			<i class="material-icons text-style right">check_circle</i>
+		        <div class="card-content">
+		        	<div class="section">
+			        	<h6 class="left">{{this.price}}</h6>
+			        	<h6 class="right">{{this.title}}</h6>
+			        </div>
+			        <div class="section">
+			        	<div class="card-image">
+				        	<img src={{this.img}}>
+				        </div>
+				        <br>
+				        <p class="rtl">{{this.description}}</p>
+			        </div>
 		        </div>
-		        <br>
-		        <p class="rtl">{{this.description}}</p>
-	        </div>
-        </div>
-    </div>
-{{/each}}
-
+		    </div>
+			<div class="divider"></div>
+			{{#each data.rewards}}
+				<div class="card card-size">
+			        <div class="card-content">
+			        	<div class="section">
+				        	<h6 class="left">{{this.price}}</h6>
+				        	<h6 class="right">{{this.title}}</h6>
+				        </div>
+				        <div class="section">
+				        	<div class="card-image">
+					        	<img src={{this.img}}>
+					        </div>
+					        <br>
+					        <p class="rtl">{{this.description}}</p>
+				        </div>
+			        </div>
+			    </div>
+			{{/each}}
+		</div>
+		<div class="col s6 right">
+			<div class="section">
+				<div class="row">
+					<h6>Payment Details</h6>
+				</div>
+				<div class="row">
+					<div class="input-field">
+		                <input id="card-number" type="text" required>
+		                <label for="card-number">Card Number</label>
+		            </div>
+		        </div>
+	            <div class="row">
+		            <div class="input-field col s6">
+		                <input id="card-number" type="text" required>
+		                <label for="card-number">Card Number</label>
+		            </div>
+		            <div class="input-field col s6">
+		                <input id="card-number" type="text" required>
+		                <label for="card-number">Card Number</label>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="divider"></div>
+		    <div class="section">
+		    	<label>
+			        <input type="checkbox" class="filled-in" />
+			        <span>I want the amount I donated to remain anonymous</span>
+			    </label>
+		    </div>
+		    <div class="divider"></div>
+		</div>
     </div>
 </div>
