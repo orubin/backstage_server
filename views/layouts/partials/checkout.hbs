@@ -5,7 +5,7 @@
     .selected {
     	border: 2px solid #ef5350;
     }
-	.checkout-input input {
+	.checkout-input {
 	    border: .5px solid grey !important;
 	    border-radius: 2px !important;
 		margin-top: 10px !important;
@@ -80,20 +80,27 @@
 					<h6 class="right">Payment Details</h6>
 				</div>
 				<div class="row">
-					<div class="input-field">
-		                <input class="checkout-input" id="card-number" placeholder="Card Number" type="text" required>
-		                <label for="card-number">Card Number</label>
+					<div class="col s12">
+						<span class="right">Card Number</span>
+						<div class="input-field">
+			                <input class="checkout-input" id="card-number" placeholder="Card Number" type="text" required>
+			            </div>
 		            </div>
 		        </div>
 	            <div class="row">
-		            <div class="input-field col s6">
-		                <input class="checkout-input" id="card-number" placeholder="XXX" type="text" required>
-		                <label for="card-number"><i class="material-icons">info_outline</i>CVV Code</label>
-		            </div>
-		            <div class="input-field col s6">
-		                <input class="checkout-input" id="card-number" placeholder="MM/YY" type="text" required>
-		                <label for="card-number">Expiry Date</label>
-		            </div>
+	            	<div class="col s6">
+		            	<i class="material-icons left">info_outline</i>
+		            	<span class="right">CVV Code</span>
+			            <div class="input-field">
+			                <input class="checkout-input" id="card-number" placeholder="XXX" type="text" required>
+			            </div>
+			        </div>
+			        <div class="col s6">
+			            <span class="right">Expiry Date</span>
+			            <div class="input-field">
+			                <input class="checkout-input" id="card-number" placeholder="MM/YY" type="text" required>
+			            </div>
+			        </div>
 		        </div>
 		    </div>
 		    <div class="divider"></div>
