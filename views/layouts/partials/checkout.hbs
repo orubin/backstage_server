@@ -5,10 +5,14 @@
     .selected {
     	border: 2px solid #ef5350;
     }
-	input {
+	.checkout-input input {
 	    border: .5px solid grey !important;
 	    border-radius: 2px !important;
 		margin-top: 10px !important;
+	}
+	.input-field {
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 </style>
 <div class="container">
@@ -77,17 +81,17 @@
 				</div>
 				<div class="row">
 					<div class="input-field">
-		                <input id="card-number" placeholder="Card Number" type="text" required>
+		                <input class="checkout-input" id="card-number" placeholder="Card Number" type="text" required>
 		                <label for="card-number">Card Number</label>
 		            </div>
 		        </div>
 	            <div class="row">
 		            <div class="input-field col s6">
-		                <input id="card-number" placeholder="XXX" type="text" required>
-		                <label for="card-number">CVV Code</label>
+		                <input class="checkout-input" id="card-number" placeholder="XXX" type="text" required>
+		                <label for="card-number"><i class="material-icons">info_outline</i>CVV Code</label>
 		            </div>
 		            <div class="input-field col s6">
-		                <input id="card-number" placeholder="MM/YY" type="text" required>
+		                <input class="checkout-input" id="card-number" placeholder="MM/YY" type="text" required>
 		                <label for="card-number">Expiry Date</label>
 		            </div>
 		        </div>
