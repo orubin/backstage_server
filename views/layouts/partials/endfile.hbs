@@ -7,6 +7,41 @@
         $(document).ready(function () {
             $('.sidenav').sidenav();
         });
+        $(document).ready(function(){
+            $('.parallax').parallax();
+        });
+        $(document).ready(function(){
+            $('.materialboxed').materialbox();
+        });
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+        $(document).ready(function(){
+              $('select').formSelect();
+          });
+        $('.dropdown-trigger').dropdown();
+
+        $('.carousel.carousel-slider').carousel({
+            fullWidth: true,
+            indicators: true
+        });
+        autoplay()   
+        function autoplay() {
+            $('.carousel').carousel('next');
+            setTimeout(autoplay, 4500);
+        }
+        $(document).ready(function(){
+            $('.materialboxed').materialbox();
+        });
+        $(document).ready(function(){
+            $('.tabs').tabs();
+        });
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
+        });
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
     </script> 
 </body>
 

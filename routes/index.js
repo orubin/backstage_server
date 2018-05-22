@@ -19,13 +19,13 @@ routes.get('/', (request, response) => {
 })
 
 // Users
-routes.get('/login', function (req, res) {
-  res.render('layouts/signup', { message: req.flash('signupMessage'), user : req.user, title: 'Sign Up / In' });
-});
+/*routes.get('/checkout', function (req, res) {
+  res.render('layouts/thankyou', { message: req.flash('thankYouMessage'), user : req.user, title: 'Thank You' });
+});*/
 
 routes.post('/signup', passport.authenticate('local-signup', {
   successRedirect : '/profile', // redirect to the secure profile section
-  failureRedirect : '/login#sectionB', // redirect back to the signup page if there is an error
+  failureRedirect : '/login', // redirect back to the signup page if there is an error
   failureFlash : true // allow flash messages
 }));
 // routes.post('/signin', function (req, res) {
