@@ -1,88 +1,8 @@
-{{!--
-<style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #404268;
-    }
-
-    .column {
-        margin-left: 100px;
-        width: 140px;
-        height: 100%;
-        border: white;
-        float: left;
-        align: center;
-    }
-
-    .head {
-        font-size: 18px;
-        color: white;
-        margin-bottom: 10px;
-        top: 0;
-    }
-
-    p {
-        color: #c5c6d8;
-    }
-</style>
-
-<div class="footer">
-    <div class="column" style="margin-left:170px;">
-        <p class="head">Let's get social</p>
-        <p>Facebook</p>
-        <p>Twitter</p>
-        <p>Youtube</p>
-        <p>Linkedin</p>
-    </div>
-    <div class="column">
-        <p class="head">Bobs</p>
-        <p>Contact Us</p>
-        <p>Our Blog</p>
-        <p>Terms Of Use</p>
-        <p>Sign Up</p>
-        <p>Privacy Policy</p>
-    </div>
-    <div class="column">
-        <p class="head">Bits</p>
-        <p>Home</p>
-        <p>About Us</p>
-        <p>How It Works</p>
-        <p>FAQs</p>
-        <p>Our Team</p>
-    </div>
-    <div class="column">
-        <p class="head">Categories</p>
-        <p>View All</p>
-        <p>Category 1</p>
-        <p>Category 2</p>
-        <p>Category 3</p>
-        <p>Category 4</p>
-    </div>
-    <div class="column">
-        <p class="head">BackStage</p>
-        <select name="Language">
-            <option value="english">English</option>
-            <option value="hebrew">Hebrew</option>
-        </select>
-        <p class="head">&copy; 2018 BackStage</p>
-
-    </div>
-</div> --}}
 <style>
     #myFooter {
-        background-color: #3c3d41;
+        background-color: #37474f;
         color: white;
         padding-top: 30px;
-    }
-
-    #myFooter .footer-copyright {
-        background-color: #333333;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        text-align: center;
     }
 
     #myFooter .row {
@@ -110,6 +30,7 @@
         color: white;
         font-weight: bold;
         margin-top: 30px;
+        margin-bottom: 15%;
     }
 
     #myFooter h2 a {
@@ -129,29 +50,15 @@
         color: white;
     }
 
-    #myFooter .social-networks {
-        text-align: center;
-        padding-top: 30px;
-        padding-bottom: 16px;
-    }
-
-    #myFooter .social-networks a {
-        font-size: 32px;
-        color: #f9f9f9;
-        padding: 10px;
-        transition: 0.2s;
-    }
-
-    #myFooter .social-networks a:hover {
-        text-decoration: none;
-    }
-
     #myFooter .facebook:hover {
-        color: #0077e2;
+        color: #01579b;
     }
 
-    #myFooter .google:hover {
+    #myFooter .youtube:hover {
         color: #ef1a1a;
+    }
+    #myFooter .linkedin:hover {
+        color: #0077b5;
     }
 
     #myFooter .twitter:hover {
@@ -203,76 +110,159 @@
         flex: 0 0 auto;
         -webkit-flex: 0 0 auto;
     }
+    #myFooter .container {
+        width: 90%;
+    }
+    #myFooter .ltr {
+        direction: ltr;
+    }
+    #myFooter .icon-size {
+        font-size: 25px;
+    }
+    #myFooter li {
+        margin:0 0 5px 0;
+    }
+    select {
+        font-size: 16px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        height: 45px;
+        border: none;
+        outline: none;
+
+        padding: 10px;
+        margin: 8px 0;
+    }
+    .footer-language-selector:after {
+        content: '\f0dd';
+        font: normal normal normal 15px/1 FontAwesome;
+        float:left;
+        margin-top: -26%;
+        margin-left: 5%;
+    }
+    .rtl {
+        direction:rtl;
+    }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <footer id="myFooter">
     <div class="container">
         <div class="row">
-            <div class="col l3 s12">
-                <h2 class="logo">
-                    <a href="/">BackStage</a>
-                </h2>
-
-            </div>
-            <div class="col l2 offset-4 s12">
-                <h5>Bobs</h5>
+            <div class="col rtl l3 offset-4 s12">
                 <ul>
+                    <li>
+                        <h5>Lets Get Social</h5>
+                    </li>
+                    <li>
+                        <a class="facebook" href="/">Facebook
+                            <i class="fa fa-facebook-square right icon-size"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="twitter" href="/">Twitter
+                            <i class="fa fa-twitter right icon-size"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="youtube" href="/">Youtube
+                            <i class="fa fa-youtube-play right icon-size"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="linkedin" href="/login">Linked In
+                            <i class="fa fa-linkedin-square right icon-size"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col rtl l2 offset-4 s12">
+                <ul>
+                    <li>
+                        <h5>Bobs</h5>
+                    </li>
+                    <li>
+                        <a href="/">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="/">Our Blog</a>
+                    </li>
+                    <li>
+                        <a href="/">Terms of Use</a>
+                    </li>
+                    <li>
+                        <a href="/login">Sign Up/Login In</a>
+                    </li>
+                    <li>
+                        <a href="/">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col rtl l2 offset-4 s12">
+                <ul>
+                    <li>
+                        <h5>Bits</h5>
+                    </li>
                     <li>
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="/login">Sign up</a>
+                        <a href="/">About Us</a>
                     </li>
                     <li>
-                        <a href="/creators">Creators</a>
+                        <a href="/">How It Works</a>
+                    </li>
+                    <li>
+                        <a href="/">FAQs</a>
+                    </li>
+                    <li>
+                        <a href="/">Our Team</a>
                     </li>
                 </ul>
             </div>
-            <div class="col l3 offset-4 s12">
-                <h5>Bits</h5>
+            <div class="col rtl l2 offset-4 s12">
                 <ul>
                     <li>
-                        <a href="/about_us">Company Information</a>
+                        <h5>Categories</h5>
                     </li>
                     <li>
-                        <a href="/contact_us">Contact us</a>
+                        <a href="/categories">View All</a>
                     </li>
                     <li>
-                        <a href="#">Reviews</a>
+                        <a href="/categories/1">Category one</a>
+                    </li>
+                    <li>
+                        <a href="/categories/2">Category one</a>
+                    </li>
+                    <li>
+                        <a href="/categories/3">Category one</a>
+                    </li>
+                    <li>
+                        <a href="/categories/3">Category one</a>
                     </li>
                 </ul>
             </div>
-            <div class="col l2 offset-4 s12">
-                <h5>Categories</h5>
+
+            <div class="col rtl l2 offset-4 s12">
                 <ul>
                     <li>
-                        <a href="/categories/1">Category 1</a>
+                        <h5>BackStage</h5>
+                    </li>
+                    <li class="ltr">
+                        <div class="footer-language-selector rtl blue-grey darken-4">
+                            <select class="browser-default">
+                                <option>English</option>
+                                <option>Hebrew</option>
+                            </select>
+                        </div>
                     </li>
                     <li>
-                        <a href="/categories/2">Category 2</a>
-                    </li>
-                    <li>
-                        <a href="/categories/3">Category 3</a>
+                        <p class="ltr">© 2018 BackStage</p>
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-3">
-                <div class="social-networks">
-                    <a href="#" class="twitter">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="#" class="facebook">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a href="#" class="google">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </div>
-                <button type="button" class="btn btn-default" href="/contact_us">Contact us</button>
-            </div>
+
         </div>
-    </div>
-    <div class="footer-copyright">
-        <p>© 2018 BackStage</p>
     </div>
 </footer>

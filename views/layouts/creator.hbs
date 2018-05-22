@@ -1,11 +1,523 @@
+<style>
+	.text-style {
+		color: #ef5350;
+	}
+	.raised-progress {
+		background-color: #ef5350;
+	}
+	.cover-image {
+		width: 100%;
+		height: 40%;
+		z-index: -1;
+		position: absolute;
+	}
+	.container {
+		width: 80%;
+	}
+	.tabs .tab a.active {
+        color: #ef5350;
+    }
+    .tabs .tab a {
+        color: #424242;
+    }
+    .tab-content {
+    	margin-left: 30%;
+    }
+    .tab-header {
+    	font-size: 120%;
+    }
+    .collapse-section {
+    	margin-top: 11%;
+    }
+	.package-info {
+    	margin-top: 25%;
+    }
+    .package-header {
+    	float: right;
+    }
+    .left-section {
+    	float:left;
+    	width: 30%;
+    	margin-left: -5%;
+    }
+    .payment-selector select {
+        font-size: 16px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        height: 45px;
+        border: 0px;
+
+        padding: 10px;
+        margin: 8px 0;
+        border-bottom: 1px solid black !important;
+    }
+    .payment-selector:after {
+        content: '\f0dd';
+        font: normal normal normal 15px/1 FontAwesome;
+        float:left;
+        margin-top: -14%;
+        margin-left: 8%;
+    }
+    .currency-selector {
+    	width: 30%;
+    	float: left;
+    }
+    .pay-total {
+    	float: right;
+    }
+
+	.payment-slider input[type=range]::-webkit-slider-thumb {
+		background-color: #ef5350;
+	}
+	.payment-slider input[type=range]::-moz-range-thumb {
+		background-color: #ef5350;
+	}
+	.payment-slider input[type=range]::-ms-thumb {
+		background-color: #ef5350;
+	}
+
+	.payment-slider input[type=range] + .thumb {
+		background-color: #dedede;
+	}
+	.payment-slider input[type=range] + .thumb.active .value {
+		color: #ef5350;
+	}
+
+	.all-posts ul{
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	    position: relative;
+	    top:0
+	}
+
+	.all-posts ul:last-of-type {
+		top:60px;
+	}
+
+	.all-posts ul:before{
+	    content: "";
+	    display: block;
+	    width: 0;
+	    height: 120%;
+	    border:1px solid #bdbdbd;
+	    position: absolute;
+	    top:-10%;
+	    right:-30px
+	}
+
+	.all-posts ul li{
+	    position: relative;
+	    margin-top: 20%;
+	    line-height: 20px;
+	}
+
+
+	.all-posts ul li > span{
+	    content: "";
+	    display: block;
+	    width: 0;
+	    height: 100%;
+	    position: absolute;
+	    top:-25%;
+	    right:-30px
+	}
+
+	.all-posts ul li > span:before {
+		top:-10px;
+	}
+
+	.all-posts ul li > span:after {
+		top:95%;
+	}
+
+	.all-posts .date span{
+	    position: absolute;
+	    right: 20px;
+	    font-size:80%;
+	    font-weight: bold;
+	    color: #424242;
+	}
+
+	.date span:after {
+	    content: "";
+	    display: block;
+	    width: 10px;
+	    height: 10px;
+	    border-radius: 50%;
+	    background:#e0e0e0;
+	    border:1px solid #9e9e9e;
+	    position: absolute;
+	    right:50px
+	}
+
+	.date span:before {
+	    content: "";
+	    display: block;
+	    width: 100px;
+	    height: 0px;
+	    border-bottom:1px solid #9e9e9e;
+	    position: absolute;
+	    right:-50px;
+	    top: 25px;
+	}
+
+	.post-section {
+		padding-bottom: 10%;
+	}
+
+	.overview-section {
+		position: absolute;
+	}
+
+	.overview {
+		min-height: 350px;
+	}
+
+	.share-btn {
+		margin-top: -8%;
+	}
+	.share-btn button {
+		width: 100%;
+	}
+
+	.progress .determinate {
+		background-color: #e0e0e0;
+	}
+    .shift-left {
+    	margin-right: 20%;
+    }
+    .shift-up {
+    	margin-top: -15%;
+    }
+    .fullscreen-modal {
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        top: 0 !important;
+    }
+    .facebook {
+        color: #01579b;
+    }
+
+    .twitter {
+        color: #00aced;
+    }
+    .btn-font {
+    	font-size: 75%;
+    }
+    .progress {
+  		height: 1.5em;
+  		border-radius: 10px;
+	}
+</style>
 {{> startfile}}
-        {{> header}}
-        <br>
-        <br><br><br><br>
-        <p>{{data.name}}</p>
-        <p>{{data.description}}</p>
-        {{data.profile_picture}}
-        {{data.cover_picture}}
-        {{data.intro_video}}
-        {{> footer}}
+    {{> header}}
+    <div>
+    	<div>
+	    	<img class="cover-image" src= {{data.cover_picture}}>
+		    <div id="" class="section row">
+		    	<div class="page-title col s5 rtl offset-s6">
+			    	<h4 class="right white-text">
+			    		<span class="text-style">
+			    			{{data.name}}
+			    		</span>
+			    		{{data.tagline}}
+			    	</h4>
+			    </div>
+		    </div>
+		    
+		    <div class="row container">
+				<div class="col s3 left overview-section">
+					<div class="card">
+				        <div class="card-content">
+				        	<div class="section">
+					        	<div class="progress raised-progress">
+							      	<div class="determinate" style="width: 30%"></div>
+							  	</div>
+							  	<div class="row">
+							  		<span><span class="text-style">$1,000</span> of $3,000</span>
+							  		<span class="right">Amount Raised</span>
+							  	</div>
+					        </div>
+					        <div class="divider"></div>
+					        <div class="section rtl">
+					        	<div class="shift-left">
+					        		<h6>Category<span>:&lrm;</span></h6>
+					        		<spam>{{data.category.type}}</spam>
+					        	</div>
+					        	<i class="material-icons text-style shift-up">edit</i>
+					        </div>
+					        <div class="divider"></div>
+					        <div class="section rtl">
+					        	<div class="shift-left">
+						        	<h6>Contributors<span>:&lrm;</span></h6>
+						        	<spam>{{data.sponsors}}</spam>
+						        </div>
+					        	<i class="material-icons text-style shift-up">group</i>
+					        </div>
+					        <div class="divider"></div>
+					        <div class="section rtl">
+					        	<div class="shift-left">
+					        		<h6>Creator<span>:&lrm;</span></h6>
+					        		<spam>{{data.name}}</spam>
+					        	</div>
+					        	<a><img width="30" height="30" class="circle shift-up" src={{data.profile}}></a>
+					        </div>
+					        <div class="divider"></div>
+					        <div class="section rtl">
+					        	<div class="shift-left">
+					        		<h6>Else Where</h6>
+					        	</div>
+					        	<div>
+					        		<button class="btn-flat waves-effect">
+					        			<spam>Facebook</spam>
+					        			<i class="fa fa-facebook-square right text-style"></i>
+						        	</button>
+						        </div>
+					        	<div>
+					        		<button class="btn-flat waves-effect">
+					        			<spam>Twitter</spam>
+					        			<i class="fa fa-twitter-square right text-style"></i>
+					        		</button>
+					        	</div>
+					        	<div>
+					        		<button class="btn-flat waves-effect">
+					        			<spam>Instagram</spam>
+					        			<i class="fa fa-instagram right text-style"></i>
+					        		</button>
+					        	</div>
+					        	<div>
+					        		<button class="btn-flat waves-effect">
+					        			<spam>Youtube</spam>
+					        			<i class="fa fa-youtube-play right text-style"></i>
+					        		</button>
+					        	</div>
+					        </div>
+				        </div>
+				    </div>
+				    <div class="card">
+				        <div class="card-content">
+					        <div class="section center">
+					        	<button class="btn-large red lighten-1 waves-effect waves-light modal-trigger" href="#modalCheckout">Sponser This Creator</button>
+					        </div>
+				        </div>
+				    </div>
+				</div>
+				<div class="col video-intro right">
+					{{#if data.video}}
+						<video width="640" height="360" controls>
+							<source src={{data.video}} type="video/mp4" />
+						</video>
+					{{else}}
+						<img width="640" height="360" src={{data.profile}}>
+					{{/if}}
+				</div>
+			</div>
+			<div class="row container">
+				<div class="col s7 offset-s5">
+					<div class="section overview">
+						<h5 class ="right">Overview</h5>
+						<br><br>
+						<p class="rtl">
+							{{data.overview}}
+						</p>
+					</div>
+					<div class="divider"></div>
+					<div class="section">
+		        		<a class="col btn-flat waves-effect btn-font modal-trigger" href="#copyLink-modal" onClick="document.getElementById('copy-link').value=window.location.href;">
+		        			<i class="material-icons text-style grey-text text-darken-1 left">link</i>
+		        			<spam>Copy Link</spam>
+		        		</a>
+		        		<a class="col btn-flat waves-effect btn-font" href="" onClick="this.href='https://twitter.com/share?url='+window.location.href; return true;">
+		        			<i class="fa fa-twitter-square twitter left"></i>
+		        			<spam>Twitter</spam>
+		        		</a>
+		        		<button class="col btn-flat waves-effect btn-font">
+		        			<i class="fa fa-comment facebook left"></i>
+		        			<spam>Messenger</spam>
+		        		</button>
+			        	<a class="col btn-flat waves-effect btn-font" href="" onClick="this.href='https://www.facebook.com/sharer.php?u='+window.location.href; return true;">
+		        			<i class="fa fa-facebook-square facebook left"></i>
+		        			<spam>Facebook</spam>
+			        	</a>
+		        		<spam class='col rtl right'>Share This Page</spam>
+			        </div>
+				</div>
+			</div>
+	    </div>
+	    <div class="row container">
+		    <div class="right">
+		      	<ul class="tabs">
+			        <li class="tab"><a href="#faqs">FAQs</a></li>
+			        <li class="tab"><a href="#comments">Supporters Feedback</a></li>
+			        <li class="tab"><a class="active" href="#updates">Updates</a></li>
+		      	</ul>
+		    </div>
+		</div>
+	</div>
+	<div class="grey lighten-2">
+		<div class="container row">
+			<div class="left-section">
+				<br>
+		    	<div class="package-header">
+		    		<h5>Sponsership Packages</h5>
+		    	</div>
+				<div class="card package-info">
+			        <div class="card-content">
+			        	<div class="section">
+				        	<div class="rtl payment-selector">
+		                        <select class="browser-default">
+		                            <option>Monthly Payment</option>
+		                            <option>Yearly Payment</option>
+		                        </select>
+		                    </div>
+				        </div>
+				        <div class="section">
+							<div class="currency-selector">
+		                        <select>
+		                        	<option>₪ ILS</option>
+		                            <option>$ US</option>
+		                        </select>
+		                    </div>
+		                    <div class="pay-total">
+		                    	<h6 id="pay">50</h6>
+		                    </div>
+							<form>
+								<p class="range-field payment-slider">
+							  		<input type="range" id="pay-slider" onchange="document.getElementById('pay').textContent= document.getElementById('pay-slider').value;" min="1" max="100" />
+								</p>
+							</form>
+				        	<button class="btn-flat right red-text waves-effect text-lighten-1 modal-trigger" href="#modalCheckout">Sponser</button>
+				        </div>
+			        </div>
+			    </div>
+			    {{#each data.rewards}}
+				    <div class="card package-info">
+				        <div class="card-content">
+				        	<div class="section">
+					        	<h6 class="left">{{this.price}}</h6>
+					        	<h6 class="right">{{this.title}}</h6>
+					        </div>
+					        <div class="section">
+					        	<div class="card-image">
+						        	<img src={{this.img}}>
+						        </div>
+						        <br>
+						        <p class="rtl">{{this.description}}</p>
+					        </div>
+					        <div class="section">
+					        	<button
+					        		class="btn-flat right red-text waves-effect text-lighten-1 modal-trigger" 
+					        		value='{{@index}}'
+					        		href="#modalCheckout"
+					        		onClick="document.getElementById('selectedCard').appendChild(
+								    			document.getElementById('card'+this.value)
+								  			);
+								  			document.getElementById('card'+this.value).className += ' selected';
+								  			selectedValue=this.value;"
+					        	>
+					        		Sponser
+					        	</button>
+					        </div>
+				        </div>
+				    </div>
+				{{/each}}
+			</div>
+			<div class="tab-content">
+				<div id="faqs">
+			    	<br>
+			    	<div class="right">
+			    		<h5>FAQs</h5>
+			    	</div>
+			    	<div class="collapse-section">
+				    	<ul class="collapsible popout">
+						    <li>
+						      	<div class="collapsible-header">
+						      		<i class="material-icons text-style">add_circle_outline</i>
+						      		First
+						      	</div>
+						      	<div class="collapsible-body">
+						      		<span class="right">Lorem ipsum dolor sit amet.</span>
+						      	</div>
+						    </li>
+						    <li>
+						      	<div class="collapsible-header">
+						      		<i class="material-icons text-style">add_circle_outline</i>
+						      		Second
+						      	</div>
+						      	<div class="collapsible-body">
+						      		<span class="right">Lorem ipsum dolor sit amet.</span>
+						      	</div>
+						    </li>
+						    <li>
+						      	<div class="collapsible-header">
+						      		<i class="material-icons text-style">add_circle_outline</i>
+						      		Third
+						      	</div>
+						      	<div class="collapsible-body">
+						      		<span class="right">Lorem ipsum dolor sit amet.</span>
+						      	</div>
+						    </li>
+						</ul>
+					</div>
+				</div>
+			    <div id="updates">
+			    	<br>
+			    	<div class="right">
+			    		<h5>Updates</h5>
+			    	</div>
+			    	<br>
+		    		<div class="all-posts">
+						<ul>
+						{{#each data.posts}}
+							<li class ="post-section">
+								<span></span>
+								<div class="date">
+									<span>JUN, 17<sup>th</sup></span>
+								</div>
+								<div class="section">
+									<div class="right rtl">
+										<br>
+						        		<h5>{{this.title}}</h5>
+						        		<br>
+						        		<p>{{this.body}}</p>
+						        	</div>
+							    </div>
+							</li>
+						{{/each}}
+						</ul>
+					</div>
+			    </div>
+			    <div id="comments">
+			    	<br>
+			    	<div class="right">
+			    		<h5>Comments</h5>
+			    	</div>
+			    	<br>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div id="modalCheckout" class="modal fullscreen-modal">
+		{{> checkout}}
+	</div>
+	<div id="copyLink-modal" class="modal">
+	    <div class="container">
+			<div class="section row">
+				<div class="modal-close btn-flat left">
+					<i class="fa fa-times-circle"></i>
+					<span>Close</span>
+				</div>
+	    	</div>
+	    	<div class="section row">
+	    		<div class="input-field">
+	                <input id="copy-link" value="" type="text" readonly>
+	            </div>
+	        </div>
+	  	</div>
+	</div>
+    {{> footer}}
 {{> endfile}}

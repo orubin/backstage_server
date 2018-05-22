@@ -1,194 +1,130 @@
-{{!--
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/" class="navbar-brand">BackStage</a>
-        </div>
-        <!-- Collection of nav links and other content for toggling -->
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="/">
-                    <a href="/">Home</a>
-                </li>
-                {{#if user}}
-                <li>
-                    <a href="/profile">Profile</a>
-                </li>
-                <li>
-                    <a href="/messages">Messages</a>
-                </li>
-                {{/if}}
-                <li>
-                    <a href="/creators">Creators</a>
-                </li>
-                <li>
-                    <a href="/categories">Categories</a>
-                </li>
-            </ul>
+<style>
+    .text-style {
+        color: #ef5350;
+    }
+    .icon-button a:hover {
+        text-decoration: none;
+    }
 
-            <div class="col-sm-3 col-md-3 pull-right">
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit" href="/search">
-                                <i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </div>
+    .header-search-icon {
+        position: relative;
+        bottom: 40%;
+    }
+
+    .header-search-wrapper {
+        height: 45px;
+        position: absolute;
+        margin-top: 10px;
+        margin-left:30%;
+        margin-right:25%;
+        border-radius: 4px;
+        width: 45%;
+    }
+    .header-left {
+        margin-left: 5%;
+    }
+    .header-right {
+        margin-right: 5%;
+    }
+    .header-search-button {
+        top: 10%;
+        float: right;
+        position: absolute;
+    }
+    .header-search-selector {
+        float: left;
+        width:25%;
+        margin-top: -1%;
+        position: relative;
+    }
+    .header-search-bar {
+        float: left;
+        width: 60%;
+        border-left: 1px solid white;
+    }
+    ::placeholder {
+       color: #424242;
+       opacity:  1;
+    }
+    .header-search-bar input:focus {
+       border-bottom: 1px solid #424242 !important;
+       box-shadow: 0 1px 0 0 grey !important
+     }
+    .header-search-bar input {
+       border-bottom: 0px !important;
+    }
+
+
+    select {
+        font-size: 16px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        height: 45px;
+        border: 0px;
+
+        padding: 10px;
+        margin: 8px 0;
+    }
+    .header-search-selector:after {
+        content: '\f0dd';
+        font: normal normal normal 15px/1 FontAwesome;
+        float:left;
+        margin-top: -25%;
+        margin-left: 8%;
+    }
+    .rtl {
+        direction:rtl;
+    }
+    .logo{
+        position:absolute;
+        right: 10%;
+        top: 15%;
+    }
+    .fullscreen-modal {
+        width: 100%;
+        max-height: 100%;
+        height: 100%;
+        top: 0 !important;
+    }
+</style>
+
+{{#if user}}
+
+{{else}}
+    <nav>
+        <div class="nav-wrapper white">
+            <div class="row">
+                <ul class="right header-right">
+                    <a href="/"><h6 class="center black-text logo"><span class="text-style">Back</span>Stage</h6></a>
+                    <li class="icon-button"><a><i class="material-icons grey-text text-darken-3">menu</i></a></li>
+                </ul>
+                <ul class="left header-left">
+                    <li><a class="grey-text text-darken-3 modal-trigger" href="#modalSignup">Sign Up</a></li>
+                    <li><a class="grey-text text-darken-3 modal-trigger" href="#modalLogin">Login</a></li>
+                    <li><a class="grey-text text-darken-3">Explore All</a></li>
+                </ul>
+                <div class="header-search-wrapper grey lighten-2">
+                    <div class="grey-text text-darken-3 header-search-selector rtl">
+                        <select class="browser-default">
+                            <option>All Creators</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
                     </div>
-                </form>
+                    <form class="header-search-bar">
+                        <input class="header-search-input z-depth-2 grey-text text-darken-3 right-align" placeholder="Search Creators" type="search" required>
+                        <button class="header-search-button btn-flat" type="submit" name="action"><i class="header-search-icon material-icons">search</i></button>
+                    </form>
+                </div>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                {{#if user}}
-                <li>
-                    Howdy {{ user.name }}!
-                    <a href="/logout"> Logout</a>
-                </li>
-                {{else}}
-                <li>
-                    <a href="/login">Login</a>
-                </li>
-                {{/if}}
-            </ul>
         </div>
+    </nav>
+    <div id="modalSignup" class="modal fullscreen-modal">
+        {{> signup registrationType=true }}
     </div>
-</nav> --}} {{!--
-<nav>
-    <div class="nav-wrapper">
-        <a href="/" class="left brand-logo">BackStage</a>
-        <ul id="nav-mobile" class="hide-on-med-and-down">
-            <li class="/">
-                <a href="/">Home</a>
-            </li>
-            {{#if user}}
-            <li>
-                <a href="/profile">Profile</a>
-            </li>
-            <li>
-                <a href="/messages">Messages</a>
-            </li>
-            {{/if}}
-            <li>
-                <a href="/creators">Creators</a>
-            </li>
-            <li>
-                <a href="/categories">Categories</a>
-            </li>
-        </ul>
-
-        {{#if user}}
-        <li>
-            Howdy {{ user.name }}!
-            <a href="/logout"> Logout</a>
-        </li>
-        {{else}}
-        <li>
-            <a href="/login">Login</a>
-        </li>
-        {{/if}}
-
-        <div class="nav-wrapper">
-            <form>
-                <div class="right input-field">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search">
-                        <i class="material-icons">search</i>
-                    </label>
-                    <i class="material-icons">close</i>
-                </div>
-            </form>
-        </div>
+    <div id="modalLogin" class="modal fullscreen-modal">
+        {{> signup registrationType=false }}
     </div>
-</nav> --}}
-
-
-<nav style="background-color: #3c3d41">
-    <div class="nav-wrapper">
-        <a href="/" class="brand-logo white-text">Backstage</a>
-        <ul class="hide-on-med-and-down right">
-            <li class="/">
-                <a href="/">Home</a>
-            </li>
-            {{#if user}}
-            <li>
-                <a href="/profile">Profile</a>
-            </li>
-            <li>
-                <a href="/messages">Messages</a>
-            </li>
-            {{/if}}
-            <li>
-                <a href="/creators">Creators</a>
-            </li>
-            <li>
-                <a href="/categories">Categories</a>
-            </li>
-            {{#if user}}
-            <li>
-                <a href="/logout">Logout</a>
-            </li>
-            {{else}}
-            <li>
-                <a href="/login">Login</a>
-            </li>
-            {{/if}}
-            <li>
-                <div class="center row">
-                    <div class="col s12">
-                        <div class="row">
-                            <div class="input-field col s6 s12 black-text">
-                                <i class="green-text material-icons prefix" style="top:0rem">search</i>
-                                <input type="text" class="blue-text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-</nav>
-
-<ul class="sidenav" id="mobile-demo">
-    <li class="/">
-        <a href="/">Home</a>
-    </li>
-    {{#if user}}
-    <li>
-        <a href="/profile">Profile</a>
-    </li>
-    <li>
-        <a href="/messages">Messages</a>
-    </li>
-    {{/if}}
-    <li>
-        <a href="/creators">Creators</a>
-    </li>
-    <li>
-        <a href="/categories">Categories</a>
-    </li>
-    {{#if user}}
-    <li>
-        <a href="/logout">Logout</a>
-    </li>
-    {{else}}
-    <li>
-        <a href="/login">Login</a>
-    </li>
-    {{/if}}
-</ul>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('.sidenav').sidenav();
-    });
-</script>
+{{/if}}
