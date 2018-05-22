@@ -101,7 +101,7 @@ module.exports = {
 		// 	return result;
 		// });
 
-		// var creators = models.instance.UserCreator.find({user_email: email}, function(err, result){
+		// var creators = models.instance.UserCreators.find({user_email: email}, function(err, result){
 		// 	if(err) {
 		// 		console.log(err);
 		// 		return;
@@ -128,7 +128,7 @@ module.exports = {
 	},
 
 	FollowCreator: function (user, creator_id) {
-		var userFollow = new models.instance.UserCreator({
+		var userFollow = new models.instance.UserCreators({
 			id: uuid(), // Check for UUID function
 			user_email: user.email,
 			creator_id: creator_id,

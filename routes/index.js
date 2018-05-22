@@ -175,13 +175,20 @@ routes.get('/categories/:id', function (req, res) {
 
 // Creators
 routes.get('/creators/:id', function (req, res) {
-  var data = creator_db_actions.LoadCreator(client, req.params.id);
-  res.render('layouts/creator', {
-      user : req.user, // get the user out of session and pass to template
-      data: JSON.parse(data),
-      title: data.name
+  creator_db_actions.LoadCreator(client, req.params.id, function(error, result){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Result: ' + result);
+      res.render('layouts/creator', {
+          user : req.user, // get the user out of session and pass to template
+          data: JSON.parse(result),
+          title: result.name
+      });
+    }
   });
 });
+
 routes.get('load_creator', function (req, res) {
   creator_db_actions.LoadCreator(req, res, client);
 });
