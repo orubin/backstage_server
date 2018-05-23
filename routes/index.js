@@ -12,6 +12,7 @@ var client = new cassandra.Client({ contactPoints: ['127.0.0.1'], keyspace: 'bac
 const routes = require('express').Router();
 
 routes.get('/', (request, response) => {
+  response.setLocale(request.cookies.i18n);
   response.render('layouts/main', {
       user : request.user, // get the user out of session and pass to template
       title: 'BackStage'

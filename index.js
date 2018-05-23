@@ -1,7 +1,8 @@
 // index.js
-const path = require('path')
-const exphbs = require('express-handlebars')
-const express = require('express')
+const path = require('path');
+const i18n = require('i18n');
+const exphbs = require('express-handlebars');
+const express = require('express');
 var hbs = require('hbs');
 var fs = require('fs');
 var bodyParser = require('body-parser');
@@ -26,9 +27,36 @@ app.engine('.hbs', exphbs({
     ]
 }))
 
+i18n.configure({
+    locales:['en', 'he'],
+    directory: __dirname + '/locales',
+    defaultLocale: 'en',
+    cookie: 'i18n'
+});
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser()); // read cookies (needed for auth)
+
+app.use(cookieParser("i18n_demo"));
+
+app.use(session({
+    secret: "i18n_demo",
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
+}));
+
+app.use(i18n.init);
+
+var hbs = require('hbs');
+hbs.registerHelper('__', function () {
+    return i18n.__.apply(this, arguments);
+});
+hbs.registerHelper('__n', function () {
+    return i18n.__n.apply(this, arguments);
+});
+
 // required for passport
 app.use(session({ secret: 'backstagekey', resave: false, saveUninitialized: false })); // session secret
 app.use(passport.initialize());
@@ -57,6 +85,16 @@ filenames.forEach(function (filename) {
 
 //  Connect all our routes to our application
 app.use('/', routes);
+
+app.get('/he', function (req, res) {
+    res.cookie('i18n', 'he');
+    res.redirect('/')
+});
+
+app.get('/en', function (req, res) {
+    res.cookie('i18n', 'en');
+    res.redirect('/')
+});
 
 app.listen(port, (err) => {
     if (err) {
