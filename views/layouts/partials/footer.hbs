@@ -251,7 +251,7 @@
                     </li>
                     <li class="ltr">
                         <div class="footer-language-selector rtl blue-grey darken-4">
-                            <select class="browser-default">
+                            <select class="browser-default" id="language">
                                 <option>English</option>
                                 <option>Hebrew</option>
                             </select>
@@ -262,6 +262,42 @@
                     </li>
                 </ul>
             </div>
+
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+            <script>
+
+                (function($) {
+                    $(function() {
+                        // bind change event to select
+                        $('#language').on('change', function () {
+                            var url = $(this).val(); // get selected value
+                            if (url === 'Hebrew') {
+                                window.location = 'he'; // redirect
+                            }
+                            if (url === 'English') {
+                                window.location = 'en'; // redirect
+                            }
+                            return false;
+                        });
+                    });
+                })(jQuery);
+                
+            </script>
+
+            <script>
+                $(document).ready(function () {
+                    var x = document.cookie;
+                    var elements = document.cookie.split(';');
+                    var lang = elements[3].split('=')[1];
+                    if(lang === 'he'){
+                        document.getElementById("language").selectedIndex = "1";
+                    }
+                    if(lang === 'en'){
+                        document.getElementById("language").selectedIndex = "0";
+                    }
+                });
+            </script>
 
         </div>
     </div>

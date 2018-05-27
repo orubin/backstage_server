@@ -64,6 +64,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, '/views/layouts/css')));
+app.use(express.static(path.join(__dirname, '/views/images')));
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.set('view engine', '.hbs');
