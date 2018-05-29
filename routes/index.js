@@ -21,6 +21,16 @@ routes.get('/', (request, response) => {
   })
 })
 
+routes.get('/explore', (request, response) => {
+  if (request.cookies.i18n !== undefined){
+    response.setLocale(request.cookies.i18n);
+  }
+  response.render('layouts/explore', {
+      user : request.user, // get the user out of session and pass to template
+      title: 'BackStage'
+  })
+})
+
 // Users
 /*routes.get('/checkout', function (req, res) {
   res.render('layouts/thankyou', { message: req.flash('thankYouMessage'), user : req.user, title: 'Thank You' });
