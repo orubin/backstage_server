@@ -28,36 +28,47 @@
 </script>
 {{> startfile}}
     {{> header}}
-    <div class="container"
-    	<div class="class="section">
+    <div class="container">
+    	<div class="section">
     		<div class="row">
     			<h3 class="right">Explore Creators Worth Sponsering</h3>
     		</div>
     		<div class="row">
     			<h6 class="text-style right">Filter Creators By Category</h6>
     		</div>
-    		<div class="row right">
-    			<div class="chip active-chip" onClick="selectChip(this)">
-				    View All
-				</div>
-    			<div class="chip custom-chip" onClick="selectChip(this)">
-				    Music
-				</div>
-				<div class="chip custom-chip" onClick="selectChip(this)">
-				    Technology
-				</div>
-				<div class="chip custom-chip" onClick="selectChip(this)">
-				    Art
-				</div>
-				<div class="chip custom-chip" onClick="selectChip(this)">
-				    Podcasting
-				</div>
-				<div class="chip custom-chip" onClick="selectChip(this)">
-				    Comedy
+    		<div class="row">
+	    		<div class="right">
+	    			<div class="chip active-chip" onClick="selectChip(this)">
+					    View All
+					</div>
+	    			<div class="chip custom-chip" onClick="selectChip(this)">
+					    Music
+					</div>
+					<div class="chip custom-chip" onClick="selectChip(this)">
+					    Technology
+					</div>
+					<div class="chip custom-chip" onClick="selectChip(this)">
+					    Art
+					</div>
+					<div class="chip custom-chip" onClick="selectChip(this)">
+					    Podcasting
+					</div>
+					<div class="chip custom-chip" onClick="selectChip(this)">
+					    Comedy
+					</div>
 				</div>
     		</div>
     	</div>
-    	<div class="class="section">
+    	<div class="section">
+    		<div class="row">
+	    		{{#each data}}
+	    			{{{renderStart this @index}}}
+	    			<div class="col s4">
+	    				{{>creatorcard}}
+	    			</div>
+	    			{{{renderEnd this @index}}}
+	    		{{/each}}
+	    	</div>
     	</div>
     </div>
     {{> footer}}
