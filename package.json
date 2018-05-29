@@ -45,6 +45,7 @@
     "nodemailer": "^4.6.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "paypal-express-checkout": "^1.6.3",
     "react": "^16.3.2",
     "sendmail": "^1.4.1"
   }
