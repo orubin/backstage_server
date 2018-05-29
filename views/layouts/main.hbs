@@ -37,6 +37,12 @@
 	.rtl {
     	direction:rtl;
 	}
+	.demo {
+		width: 80%;
+	}
+	.carousel-container {
+		width: 80% !important;
+	}
 </style>
 {{> startfile}}
     {{> header}}
@@ -121,14 +127,21 @@
 		    	</div>
 		    </div>
 		</div>
-		<div class="section row rec-section grey lighten-2">
-			<br>
-			<br>
-			<h4 class="center">Recommended Artists</h4>
-			<p class="center col s6 offset-s3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
-			<div class="col s12">
-				<div class="col s3">
-					{{> creatorcard}}
+		<div class="grey lighten-2">
+			<div class="section row rec-section">
+				<br>
+				<br>
+				<h4 class="center">Recommended Artists</h4>
+				<p class="center col s6 offset-s3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+			</div>
+			<div class="container">
+				<div class="owl-carousel owl-theme">
+				  	<div> {{> creatorcard}} </div>
+				  	<div> {{> creatorcard}} </div>
+				  	<div> {{> creatorcard}} </div>
+				  	<div> {{> creatorcard}} </div>
+				  	<div> {{> creatorcard}} </div>
+				  	<div> {{> creatorcard}} </div>
 				</div>
 			</div>
 		</div>
