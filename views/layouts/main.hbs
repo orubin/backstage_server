@@ -103,18 +103,26 @@
 		background-color: #ef5350 !important;
 		border: #ef5350 !important;
 	}
+	.news-avatar {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .news-card {
+    	position: absolute;
+    	margin-top: -10%;
+    }
 </style>
 <script>
-window.addEventListener('load', function() {
-  document.getElementById('input-file').addEventListener('change', function() {
-      if (this.files && this.files[0]) {
-          var img = document.getElementById('upload-img');
-          img.src = URL.createObjectURL(this.files[0]); // set src to file url
-          img.style.width="100%";
-          img.style.height="100%";
-      }
-  });
-});
+	window.addEventListener('load', function() {
+	  document.getElementById('input-file').addEventListener('change', function() {
+	      if (this.files && this.files[0]) {
+	          var img = document.getElementById('upload-img');
+	          img.src = URL.createObjectURL(this.files[0]); // set src to file url
+	          img.style.width="100%";
+	          img.style.height="100%";
+	      }
+	  });
+	});
 </script>
 {{> startfile}}
     {{> header}}
@@ -257,7 +265,103 @@ window.addEventListener('load', function() {
 					        </div>
 					    </div>
 					</div>
-
+			<div class="col s6" id="news-carousel">
+				<div class="owl-carousel owl-theme">
+				  	<div>
+						<div class="card">
+						    <div class="card-image">
+						    	<img src="https://lorempixel.com/400/200/people/1">
+						    </div>
+						    <div class="news-card">
+							    <span class="col s5">
+							        <div class="col s6">
+							            <span>Monthly Target</span>
+							        </div>
+							        <div class="col s6">
+										<div class="c100 p75 small custom-color">
+								            <span>75%</span>
+								            <div class="slice">
+								                <div class="bar"></div>
+								                <div class="fill"></div>
+								            </div>
+								        </div>
+							        </div>
+								</span>
+								<span class="col s7">
+									<div class="col s9">
+										<span class="rtl"><span class="text-style">Kevin Stewart</span> is creating internet videos and podcasts</span>
+									</div>
+									<div class="col s3">
+										<a><img class="circle news-avatar" src="https://lorempixel.com/200/200/people/9"></a>
+									</div>
+								</span>
+							</div>
+						</div>
+				  	</div>
+				  	<div>
+						<div class="card">
+						    <div class="card-image">
+						    	<img src="https://lorempixel.com/400/200/people/1">
+						    </div>
+						    <div class="news-card">
+							    <span class="col s5">
+							        <div class="col s6">
+							            <span>Monthly Target</span>
+							        </div>
+							        <div class="col s6">
+										<div class="c100 p75 small custom-color">
+								            <span>75%</span>
+								            <div class="slice">
+								                <div class="bar"></div>
+								                <div class="fill"></div>
+								            </div>
+								        </div>
+							        </div>
+								</span>
+								<span class="col s7">
+									<div class="col s9">
+										<span class="rtl"><span class="text-style">Kevin Stewart</span> is creating internet videos and podcasts</span>
+									</div>
+									<div class="col s3">
+										<a><img class="circle news-avatar" src="https://lorempixel.com/200/200/people/9"></a>
+									</div>
+								</span>
+							</div>
+						</div>
+				  	</div>
+				  	<div>
+						<div class="card">
+						    <div class="card-image">
+						    	<img src="https://lorempixel.com/400/200/people/1">
+						    </div>
+						    <div class="news-card">
+							    <span class="col s5">
+							        <div class="col s6">
+							            <span>Monthly Target</span>
+							        </div>
+							        <div class="col s6">
+										<div class="c100 p75 small custom-color">
+								            <span>75%</span>
+								            <div class="slice">
+								                <div class="bar"></div>
+								                <div class="fill"></div>
+								            </div>
+								        </div>
+							        </div>
+								</span>
+								<span class="col s7">
+									<div class="col s9">
+										<span class="rtl"><span class="text-style">Kevin Stewart</span> is creating internet videos and podcasts</span>
+									</div>
+									<div class="col s3">
+										<a><img class="circle news-avatar" src="https://lorempixel.com/200/200/people/9"></a>
+									</div>
+								</span>
+							</div>
+						</div>
+				  	</div>
+				</div>
+			</div>
 					<div class="card col s3 right">
 					    <div class="card-content">
 					    	<div class="section center">
