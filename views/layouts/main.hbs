@@ -87,8 +87,9 @@
 		top: 0;
 		position: absolute;
 	}
-	.upload-btn {
+	.flat-bordered-btn {
 		border: solid #e0e0e0 !important;
+		width: 100%;
 	}
 	.upload-descrip {
 		padding: 20px;
@@ -97,6 +98,10 @@
 	    border: .5px solid grey !important;
 	    border-radius: 2px !important;
 		margin-top: 10px !important;
+	}
+	[type="checkbox"].filled-in:checked + span:not(.lever)::after {
+		background-color: #ef5350 !important;
+		border: #ef5350 !important;
 	}
 </style>
 <script>
@@ -333,7 +338,7 @@ window.addEventListener('load', function() {
 									<div class="right rtl upload-descrip">
 										<p>Profile Picture/Company Logo</p>
 										<p>Placeholder text about your profile picture goes in here</p>
-										<button class="btn-flat upload-btn waves-effect">
+										<button class="btn-flat flat-bordered-btn waves-effect">
 						        			Upload Photo            
 						        		</button>
 									</div>
@@ -417,15 +422,182 @@ window.addEventListener('load', function() {
 					</div>
 					<div class="card col s12 right">
 					    <div class="card-content">
-					    	<div class="section right">
-					    		<h6>My Notifications <i class="material-icons">mail_outline</i></h6>
+					    	<div class="section">
+					    		<div class="row">
+					    			<h6 class="right">My Notifications <i class="material-icons">mail_outline</i></h6>
+					    		</div>
 					    	</div>
+					    	<div class="section">
+					    		<div class="row right">
+					    			<form>
+									    <p>
+									      	<label>
+									        	<input type="checkbox" class="filled-in red-checkbox" />
+									        	<span>I want to recieve emails when...</span>
+									      	</label>
+									    </p>
+									    <p>
+									      	<label>
+									        	<input type="checkbox" class="filled-in red-checkbox" />
+									        	<span>I want to recieve emails when...</span>
+									      	</label>
+									    </p>
+									    <p>
+									      	<label>
+									        	<input type="checkbox" class="filled-in red-checkbox" />
+									        	<span>I want to recieve emails when...</span>
+									      	</label>
+									    </p>
+									    <p>
+									      	<label>
+									        	<input type="checkbox" class="filled-in red-checkbox" />
+									        	<span>I want to recieve emails when...</span>
+									      	</label>
+									    </p>
+									    <p>
+									      	<label>
+									        	<input type="checkbox" class="filled-in red-checkbox" />
+									        	<span>I want to recieve emails when...</span>
+									      	</label>
+									    </p>
+									    <p>
+									      	<label>
+									        	<input type="checkbox" class="filled-in red-checkbox" />
+									        	<span>I want to recieve emails when...</span>
+									      	</label>
+									    </p>
+									</form>
+								</div>
+							</div>
 					    </div>
 					</div>
 					<div class="card col s12 right">
 					    <div class="card-content">
-					    	<div class="section right">
-					    		<h6>My Payment Details <i class="material-icons">credit_card</i></h6>
+					    	<div class="section">
+					    		<div class="row">
+						    		<h6 class="right">My Payment Details <i class="material-icons">credit_card</i></h6>
+						    	</div>
+					    	</div>
+					    	<div class="section">
+					    		<div class="row">
+									<ul class="collapsible">
+									    <li>
+									      	<div class="collapsible-header grey lighten-3">
+												<div class="col s3">
+												</div>
+												<div class="col s3">
+													<div class="right">
+														09/17 (Expired)
+													</div>
+												</div>
+												<div class="col s6">
+													<div class="right">
+														Visa/Delta/Electron ending in 2178
+														<i class="fa fa-cc-visa"></i>
+													</div>
+												</div>
+									     	</div>
+									      	<div class="collapsible-body">
+									      		<div class="row">
+													<div class="col s6">
+														<div class="right">
+															Billing Address
+														</div>
+													</div>
+													<div class="col s6">
+														<div class="right">
+															Name on card
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col s6">
+														<div class="right">
+															<p>Jurgen Klopp</p>
+															<p>5 Street Name</p>
+															<p>Liverpool, United Kingdom, LI6 7XW</p>
+														</div>
+													</div>
+													<div class="col s6">
+														<div class="right">
+															Mr J Klopp
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col s3">
+														<button class="btn-flat flat-bordered-btn waves-effect">
+						        							Edit Details            
+						        						</button>
+													</div>
+													<div class="col s3">
+														<button class="btn-flat flat-bordered-btn waves-effect">
+						        							Delete          
+						        						</button>
+													</div>
+												</div>
+									      	</div>
+									    </li>
+									    <li>
+									      	<div class="collapsible-header grey lighten-3">
+												<div class="col s3">
+													Card Being used
+												</div>
+												<div class="col s3">
+													<div class="right">
+														02/22
+													</div>
+												</div>
+												<div class="col s6">
+													<div class="right">
+														Mastercard ending in 9554
+														<i class="fa fa-cc-mastercard"></i>
+													</div>
+												</div>
+									     	</div>
+									      	<div class="collapsible-body">
+									      		<div class="row">
+													<div class="col s6">
+														<div class="right">
+															Billing Address
+														</div>
+													</div>
+													<div class="col s6">
+														<div class="right">
+															Name on card
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col s6">
+														<div class="right">
+															<p>Jurgen Klopp</p>
+															<p>5 Street Name</p>
+															<p>Liverpool, United Kingdom, LI6 7XW</p>
+														</div>
+													</div>
+													<div class="col s6">
+														<div class="right">
+															Mr J Klopp
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col s3">
+														<button class="btn-flat flat-bordered-btn waves-effect">
+						        							Edit Details            
+						        						</button>
+													</div>
+													<div class="col s3">
+														<button class="btn-flat flat-bordered-btn waves-effect">
+						        							Delete          
+						        						</button>
+													</div>
+												</div>
+									      	</div>
+									    </li>
+									</ul>
+								</div>
 					    	</div>
 					    </div>
 					</div>
