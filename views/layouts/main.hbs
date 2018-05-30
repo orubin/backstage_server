@@ -87,6 +87,17 @@
 		top: 0;
 		position: absolute;
 	}
+	.upload-btn {
+		border: solid #e0e0e0 !important;
+	}
+	.upload-descrip {
+		padding: 20px;
+	}
+	.prof-input {
+	    border: .5px solid grey !important;
+	    border-radius: 2px !important;
+		margin-top: 10px !important;
+	}
 </style>
 <script>
 window.addEventListener('load', function() {
@@ -309,16 +320,56 @@ window.addEventListener('load', function() {
 				<div id="settings" class="container row">
 					<div class="card col s12 right">
 					    <div class="card-content">
-					    	<div class="section row">
-					    		<h6 class="right">My Profile Details <i class="material-icons">person_outline</i></h6>
-					    	</div>
-<div class="section row">
-	<div class="right upload-wrapper">
-		<i class="material-icons grey-text text-lighten-1 icon">photo_camera</i>
-		<input id="input-file" class="upload" data-default-file="" type="file">
-		<img id="upload-img" src="">
-	</div>
-</div>
+					    	<div class="section">
+						    	<div class="row">
+						    		<h6 class="right">My Profile Details <i class="material-icons">person_outline</i></h6>
+						    	</div>
+								<div class="row">
+									<div class="right upload-wrapper">
+										<i class="material-icons grey-text text-lighten-1 icon">photo_camera</i>
+										<input id="input-file" class="upload" data-default-file="" type="file">
+										<img id="upload-img" src="">
+									</div>
+									<div class="right rtl upload-descrip">
+										<p>Profile Picture/Company Logo</p>
+										<p>Placeholder text about your profile picture goes in here</p>
+										<button class="btn-flat upload-btn waves-effect">
+						        			Upload Photo            
+						        		</button>
+									</div>
+								</div>
+							</div>
+							<div class="divider"></div>
+							<div class="section">
+								<div class="row">
+									<div class="col s6">
+									    <span class="right">First Name</span>
+									    <div class="input-field">
+									        <input class="prof-input" id="first-name" placeholder="First Name" type="text" required>
+									    </div>
+									</div>
+									<div class="col s6">
+									    <span class="right">Last Name</span>
+									    <div class="input-field">
+									        <input class="prof-input" id="last-name" placeholder="Last Name" type="text" required>
+									    </div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col s6">
+									    <span class="right">Your Email</span>
+									    <div class="input-field">
+									        <input class="prof-input" id="email" placeholder="Email" type="text" required>
+									    </div>
+									</div>
+									<div class="col s6">
+									    <span class="right">Phone Number</span>
+									    <div class="input-field">
+									        <input class="prof-input" id="phone" placeholder="Phone Number" type="text" required>
+									    </div>
+									</div>
+								</div>
+							</div>
 					    </div>
 					</div>
 					<div class="card col s12 right">
