@@ -60,7 +60,46 @@
     	border-bottom: solid #e0e0e0;
     	border-width: thin;
     }
+    .upload-wrapper {
+    	border: solid #e0e0e0;
+    	width: 125px;
+    	height: 125px;
+    	position: relative;
+    }
+	.upload-wrapper input {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    height: 100%;
+	    width: 100%;
+	    opacity: 0;
+	    cursor: pointer;
+	    z-index: 5;
+	}
+	.upload-wrapper .icon {
+		margin: 50px;
+		width: 25px;
+		height: 25px;
+	}
+	.upload-wrapper img {
+		top: 0;
+		position: absolute;
+	}
 </style>
+<script>
+window.addEventListener('load', function() {
+  document.getElementById('input-file').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.getElementById('upload-img');
+          img.src = URL.createObjectURL(this.files[0]); // set src to file url
+          img.style.width="100%";
+          img.style.height="100%";
+      }
+  });
+});
+</script>
 {{> startfile}}
     {{> header}}
 	{{#if user}}
@@ -267,8 +306,42 @@
 					    </div>
 					</div>
 				</div>
-				<div id="settings">
-				s
+				<div id="settings" class="container row">
+					<div class="card col s12 right">
+					    <div class="card-content">
+					    	<div class="section row">
+					    		<h6 class="right">My Profile Details <i class="material-icons">person_outline</i></h6>
+					    	</div>
+<div class="section row">
+	<div class="right upload-wrapper">
+		<i class="material-icons grey-text text-lighten-1 icon">photo_camera</i>
+		<input id="input-file" class="upload" data-default-file="" type="file">
+		<img id="upload-img" src="">
+	</div>
+</div>
+					    </div>
+					</div>
+					<div class="card col s12 right">
+					    <div class="card-content">
+					    	<div class="section right">
+					    		<h6>My Password <i class="material-icons">lock_outline</i></h6>
+					    	</div>
+					    </div>
+					</div>
+					<div class="card col s12 right">
+					    <div class="card-content">
+					    	<div class="section right">
+					    		<h6>My Notifications <i class="material-icons">mail_outline</i></h6>
+					    	</div>
+					    </div>
+					</div>
+					<div class="card col s12 right">
+					    <div class="card-content">
+					    	<div class="section right">
+					    		<h6>My Payment Details <i class="material-icons">credit_card</i></h6>
+					    	</div>
+					    </div>
+					</div>
 				</div>
 			</div>
     	</div>
