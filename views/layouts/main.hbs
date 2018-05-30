@@ -43,9 +43,27 @@
 	.carousel-container {
 		width: 80% !important;
 	}
+	
+	.tabs .tab a.active {
+        color: #ef5350;
+    }
+    .tabs .tab a {
+        color: #424242;
+    }
+    .tab-section {
+    	padding-top: 10px;
+    }
+    .tab-content .container {
+    	width: 85% !important;
+    }
+    .lower-border {
+    	border-bottom: solid #e0e0e0;
+    	border-width: thin;
+    }
 </style>
 {{> startfile}}
     {{> header}}
+	{{#if user}}
 		<div>
 		    <div class="section row intro-section">
 		    	<div class="col s6 carousel-container">
@@ -127,7 +145,7 @@
 		    	</div>
 		    </div>
 		</div>
-		<div class="grey lighten-2">
+		<div class="grey lighten-3">
 			<div class="section row rec-section">
 				<br>
 				<br>
@@ -148,5 +166,112 @@
 		<div id="modalSignup" class="modal">
         	{{> signup registrationType=true }}
     	</div>
+    {{else}}
+    	<div class="grey lighten-3">
+		    <div class="tab-section lower-border">
+			    <div class="center">
+			      	<ul class="tabs grey lighten-3">
+				        <li class="tab"><a class="active" href="#news">News Feed</a></li>
+				        <li class="tab"><a href="#support">Artist Support</a></li>
+				        <li class="tab"><a href="#settings">Account Settings</a></li>
+			      	</ul>
+			    </div>
+			</div>
+			<div class="tab-content">
+				<div id="news" class="container row">
+					<div class="card col s3">
+					    <div class="card-content">
+					    	<div class="section">
+					    		<p class="rtl">Creators You Might Like</p>
+					    	</div>
+					    	<div class="divider"></div>
+					    	<div class="section">
+					    		<div class="left">
+					        		<p class="rtl">Kevin Stewart</p>
+					        		<p class="rtl">Creating Online Podcasts</p>
+					        	</div>
+					        	<a><img width="50" height="50" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
+					        </div>
+					        <div class="divider"></div>
+					        <div class="section">
+					        	<div class="left">
+					        		<p class="rtl">Kevin Stewart</p>
+					        		<p class="rtl">Creating Online Podcasts</p>
+					        	</div>
+					        	<a><img width="50" height="50" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
+					        </div>
+					    </div>
+					</div>
+
+					<div class="card col s3 right">
+					    <div class="card-content">
+					    	<div class="section center">
+					    		<a><img width="60" height="60" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
+					    		<p>Kevin Stewart</p>
+					    	</div>
+					    </div>
+					</div>
+
+				</div>
+				<div id="support" class="container row">
+					<div class="card col s12 right">
+					    <div class="card-content">
+							<table>
+						        <thead>
+						          	<tr>
+						              	<th>Reward</th>
+						              	<th>Package</th>
+						              	<th>Creator</th>
+						          	</tr>
+						        </thead>
+
+						        <tbody>
+						          	<tr>
+						            	<td>None</td>
+						            	<td>
+						            		<div>
+				        						<p>Custom</p>
+				        						<p>$50 Per Month</p>
+				        					</div>
+						            	</td>
+						            	<td>
+						            		<div class="section">
+					    						<div class="left">
+					        						<p>Kevin Stewart</p>
+					        						<p>Creating Online Podcasts</p>
+					        					</div>
+					        					<a><img width="50" height="50" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
+					        				</div>
+					        			</td>
+						          	</tr>
+						          	<tr>
+						            	<td>None</td>
+							            <td>
+							            	<div>
+				        						<p>Custom</p>
+				        						<p>$50 Per Month</p>
+				        					</div>
+							            </td>
+							            <td>
+						            		<div class="section">
+					    						<div class="left">
+					        						<p class="rtl">Kevin Stewart</p>
+					        						<p class="rtl">Creating Online Podcasts</p>
+					        					</div>
+					        					<a><img width="50" height="50" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
+					        				</div>
+							            </td>
+							        </tr>
+						        </tbody>
+						    </table>
+					    </div>
+					</div>
+				</div>
+				<div id="settings">
+				s
+				</div>
+			</div>
+    	</div>
+	{{/if}}
     {{> footer}}
 {{> endfile}}
