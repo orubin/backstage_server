@@ -245,6 +245,9 @@
 .c100.big {
   font-size: 240px;
 }
+.c100.medium {
+  font-size: 75px;
+}
 .c100.small {
   font-size: 50px;
 }

@@ -1,0 +1,330 @@
+<style>
+	.upload-wrapper {
+    	border: solid #e0e0e0;
+    	width: 125px;
+    	height: 125px;
+    	position: relative;
+    }
+	.upload-wrapper input {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    height: 100%;
+	    width: 100%;
+	    opacity: 0;
+	    cursor: pointer;
+	    z-index: 5;
+	}
+	.upload-wrapper .icon {
+		margin: 50px;
+		width: 25px;
+		height: 25px;
+	}
+	.upload-wrapper img {
+		top: 0;
+		position: absolute;
+	}
+	.flat-bordered-btn {
+		border: solid #e0e0e0 !important;
+	}
+	.upload-descrip {
+		padding: 20px;
+	}
+	.prof-input {
+	    border: .5px solid grey !important;
+	    border-radius: 2px !important;
+		margin-top: 10px !important;
+	}
+</style>
+<script>
+	window.addEventListener('load', function() {
+	  document.getElementById('input-file').addEventListener('change', function() {
+	      if (this.files && this.files[0]) {
+	          var img = document.getElementById('upload-img');
+	          img.src = URL.createObjectURL(this.files[0]); // set src to file url
+	          img.style.width="100%";
+	          img.style.height="100%";
+	      }
+	  });
+	});
+</script>
+<div class="card col s12 right">
+    <div class="card-content">
+    	<div class="section">
+	    	<div class="row">
+	    		<h6 class="right">My Profile Details <i class="material-icons">person_outline</i></h6>
+	    	</div>
+			<div class="row">
+				<div class="right upload-wrapper">
+					<i class="material-icons grey-text text-lighten-1 icon">photo_camera</i>
+					<input id="input-file" class="upload" data-default-file="" type="file">
+					<img id="upload-img" src="">
+				</div>
+				<div class="right rtl upload-descrip">
+					<p>Profile Picture/Company Logo</p>
+					<p>Placeholder text about your profile picture goes in here</p>
+					<button class="btn-flat flat-bordered-btn wide waves-effect">
+	        			Upload Photo            
+	        		</button>
+				</div>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="section">
+			<div class="row">
+				<div class="col s6">
+				    <span class="right">First Name</span>
+				    <div class="input-field">
+				        <input class="prof-input" id="first-name" placeholder="First Name" type="text" required>
+				    </div>
+				</div>
+				<div class="col s6">
+				    <span class="right">Last Name</span>
+				    <div class="input-field">
+				        <input class="prof-input" id="last-name" placeholder="Last Name" type="text" required>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s6">
+				    <span class="right">Your Email</span>
+				    <div class="input-field">
+				        <input class="prof-input" id="email" placeholder="Email" type="text" required>
+				    </div>
+				</div>
+				<div class="col s6">
+				    <span class="right">Phone Number</span>
+				    <div class="input-field">
+				        <input class="prof-input" id="phone" placeholder="Phone Number" type="text" required>
+				    </div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<div class="card col s12 right">
+    <div class="card-content">
+    	<div class="section">
+    		<div class="row">
+    			<h6 class="right">My Password <i class="material-icons">lock_outline</i></h6>
+    		</div>
+    	</div>
+    	<div class="section">
+			<div class="row">
+				<div class="col s6">
+				    <span class="right">New Password</span>
+				    <div class="input-field">
+				        <input class="prof-input" id="new-password" type="text" required>
+				    </div>
+				</div>
+				<div class="col s6">
+				    <span class="right">Confirm New Password</span>
+				    <div class="input-field">
+				        <input class="prof-input" id="confirm-new-password" type="text" required>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12">
+				    <span class="right">Current Password</span>
+				    <div class="input-field">
+				        <input class="prof-input" id="curr-password" type="text" required>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="right">
+					<a>I've Forgotten My Password</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="right">
+					<button class="btn-large red lighten-1 waves-effect waves-light">Update Password</button>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<div class="card col s12 right">
+    <div class="card-content">
+    	<div class="section">
+    		<div class="row">
+    			<h6 class="right">My Notifications <i class="material-icons">mail_outline</i></h6>
+    		</div>
+    	</div>
+    	<div class="section">
+    		<div class="row right">
+    			<form>
+				    <p>
+				      	<label>
+				        	<input type="checkbox" class="filled-in red-checkbox" />
+				        	<span>I want to recieve emails when...</span>
+				      	</label>
+				    </p>
+				    <p>
+				      	<label>
+				        	<input type="checkbox" class="filled-in red-checkbox" />
+				        	<span>I want to recieve emails when...</span>
+				      	</label>
+				    </p>
+				    <p>
+				      	<label>
+				        	<input type="checkbox" class="filled-in red-checkbox" />
+				        	<span>I want to recieve emails when...</span>
+				      	</label>
+				    </p>
+				    <p>
+				      	<label>
+				        	<input type="checkbox" class="filled-in red-checkbox" />
+				        	<span>I want to recieve emails when...</span>
+				      	</label>
+				    </p>
+				    <p>
+				      	<label>
+				        	<input type="checkbox" class="filled-in red-checkbox" />
+				        	<span>I want to recieve emails when...</span>
+				      	</label>
+				    </p>
+				    <p>
+				      	<label>
+				        	<input type="checkbox" class="filled-in red-checkbox" />
+				        	<span>I want to recieve emails when...</span>
+				      	</label>
+				    </p>
+				</form>
+			</div>
+		</div>
+    </div>
+</div>
+<div class="card col s12 right">
+    <div class="card-content">
+    	<div class="section">
+    		<div class="row">
+	    		<h6 class="right">My Payment Details <i class="material-icons">credit_card</i></h6>
+	    	</div>
+    	</div>
+    	<div class="section">
+    		<div class="row">
+				<ul class="collapsible">
+				    <li>
+				      	<div class="collapsible-header grey lighten-3">
+							<div class="col s3">
+							</div>
+							<div class="col s3">
+								<div class="right">
+									09/17 (Expired)
+								</div>
+							</div>
+							<div class="col s6">
+								<div class="right">
+									Visa/Delta/Electron ending in 2178
+									<i class="fa fa-cc-visa"></i>
+								</div>
+							</div>
+				     	</div>
+				      	<div class="collapsible-body">
+				      		<div class="row">
+								<div class="col s6">
+									<div class="right">
+										Billing Address
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="right">
+										Name on card
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<div class="right">
+										<p>Jurgen Klopp</p>
+										<p>5 Street Name</p>
+										<p>Liverpool, United Kingdom, LI6 7XW</p>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="right">
+										Mr J Klopp
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s3">
+									<button class="btn-flat flat-bordered-btn wide waves-effect">
+	        							Edit Details            
+	        						</button>
+								</div>
+								<div class="col s3">
+									<button class="btn-flat flat-bordered-btn wide waves-effect">
+	        							Delete          
+	        						</button>
+								</div>
+							</div>
+				      	</div>
+				    </li>
+				    <li>
+				      	<div class="collapsible-header grey lighten-3">
+							<div class="col s3">
+								Card Being used
+							</div>
+							<div class="col s3">
+								<div class="right">
+									02/22
+								</div>
+							</div>
+							<div class="col s6">
+								<div class="right">
+									Mastercard ending in 9554
+									<i class="fa fa-cc-mastercard"></i>
+								</div>
+							</div>
+				     	</div>
+				      	<div class="collapsible-body">
+				      		<div class="row">
+								<div class="col s6">
+									<div class="right">
+										Billing Address
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="right">
+										Name on card
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<div class="right">
+										<p>Jurgen Klopp</p>
+										<p>5 Street Name</p>
+										<p>Liverpool, United Kingdom, LI6 7XW</p>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="right">
+										Mr J Klopp
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s3">
+									<button class="btn-flat flat-bordered-btn wide waves-effect">
+	        							Edit Details            
+	        						</button>
+								</div>
+								<div class="col s3">
+									<button class="btn-flat flat-bordered-btn wide waves-effect">
+	        							Delete          
+	        						</button>
+								</div>
+							</div>
+				      	</div>
+				    </li>
+				</ul>
+			</div>
+    	</div>
+    </div>
+</div>
