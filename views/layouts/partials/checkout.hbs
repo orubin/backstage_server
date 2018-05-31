@@ -30,6 +30,14 @@
 		z-index: 5;
 		right: 5px;
     }
+    .check-box {
+		margin-left: 10px;
+		margin-top: 5px;
+	}
+    .vertical-align {
+	    display: flex;
+    	align-items: center;
+    }
 </style>
 <div class="container">
 	<div class="section row">
@@ -123,10 +131,13 @@
 		    </div>
 		    <div class="divider"></div>
 		    <div class="section">
-		    	<label>
-			        <input type="checkbox" class="filled-in" />
-			        <span>I want the amount I donated to remain anonymous</span>
-			    </label>
+		    	<p class="vertical-align">
+			    	<span>I want the amount I donated to remain anonymous</span>
+			    	<label class="check-box">
+				        <input type="checkbox" class="filled-in" />
+				        <span></span>
+				    </label>
+				</p>
 		    </div>
 		    <div class="divider"></div>
 		    <div class="section right">

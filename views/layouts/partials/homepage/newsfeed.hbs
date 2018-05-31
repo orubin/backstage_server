@@ -28,6 +28,12 @@
 	    display: flex;
     	align-items: center;
     }
+    #profile-pic, #username {
+    	margin-bottom: 15px;
+    }
+    .vertical-divider {
+    	border-right: solid #d1d1d1 thin;
+    }
 </style>
 <div id="left-handside" class="col s3">
 	<div class="card">
@@ -104,12 +110,34 @@
 					<h6 class="thick right">Updates From Your Supported Creators</h6>
 				</div>
 			</div>
+
 			<div class="divider"></div>
 			<div class="section">
-
-
-
+				<div class="container">
+					<div class="row vertical-align">
+						<div class="col s6">
+							<div>
+								April 13th
+							</div>
+						</div>
+						<div class="col s6">
+							<div class="vertical-align right">
+					    		<div>
+					        		<p class="rtl">Kevin Stewart</p>
+					        	</div>
+					        	<a class="creators"><img width="50" height="50" class="circle" src="https://lorempixel.com/200/200/animals/9"></a>
+					        </div>
+				        </div>
+					</div>
+					<div class="row">
+						<img width="100%" src="https://lorempixel.com/800/800/animals/9" />
+					</div>
+					<div class="rtl">
+						<p>Example Text</p>
+					</div>
+				</div>
 			</div>
+
 		</div>
 	</div>
 </div>
@@ -118,12 +146,12 @@
 	<div class="card">
 	    <div class="card-content">
 	    	<div class="section center">
-	    		<a><img width="60" height="60" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
-	    		<p class="thick">Kevin Stewart</p>
+	    		<a><img id="profile-pic" width="60" height="60" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
+	    		<p class="thick" id="username">Kevin Stewart</p>
 	    	</div>
 	    	<div class="divider"></div>
 	    	<div class="section row">
-		    	<div class="center col s6">
+		    	<div class="center col s6 vertical-divider">
 		    		<h5 class="text-style">02</h5>
 		    		<p>Creators Supported</p>
 		    	</div>

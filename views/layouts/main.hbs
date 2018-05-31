@@ -1,4 +1,7 @@
 <style>
+	.rtl {
+		direction:rtl;
+	}
 	.text-style {
 		color: #ef5350;
 	}
@@ -17,7 +20,6 @@
 		position: absolute;
 		z-index: -1;
 	}
-
 	.bgtext:after {
 		content: "About Us";
 		position: absolute;
@@ -33,9 +35,6 @@
 	}
 	.email-input {
 		padding-bottom: 50px;
-	}
-	.rtl {
-    	direction:rtl;
 	}
 	.demo {
 		width: 80%;
@@ -73,6 +72,29 @@
 {{> startfile}}
     {{> header}}
 	{{#if user}}
+    	<div class="grey lighten-3">
+		    <div class="tab-section lower-border">
+			    <div class="center">
+			      	<ul class="tabs grey lighten-3">
+				        <li class="tab"><a class="active" href="#news">News Feed</a></li>
+				        <li class="tab"><a href="#support">Artist Support</a></li>
+				        <li class="tab"><a href="#settings">Account Settings</a></li>
+			      	</ul>
+			    </div>
+			</div>
+			<div class="tab-content">
+				<div id="news" class="container row">
+					{{>homepage/newsfeed}}
+				</div>
+				<div id="support" class="container row">
+					{{>homepage/support}}
+				</div>
+				<div id="settings" class="container row">
+					{{>homepage/settings}}
+				</div>
+			</div>
+    	</div>
+    {{else}}
 		<div>
 		    <div class="section row intro-section">
 		    	<div class="col s6 carousel-container">
@@ -174,29 +196,6 @@
 		</div>
 		<div id="modalSignup" class="modal">
         	{{> signup registrationType=true }}
-    	</div>
-    {{else}}
-    	<div class="grey lighten-3">
-		    <div class="tab-section lower-border">
-			    <div class="center">
-			      	<ul class="tabs grey lighten-3">
-				        <li class="tab"><a class="active" href="#news">News Feed</a></li>
-				        <li class="tab"><a href="#support">Artist Support</a></li>
-				        <li class="tab"><a href="#settings">Account Settings</a></li>
-			      	</ul>
-			    </div>
-			</div>
-			<div class="tab-content">
-				<div id="news" class="container row">
-					{{>homepage/newsfeed}}
-				</div>
-				<div id="support" class="container row">
-					{{>homepage/support}}
-				</div>
-				<div id="settings" class="container row">
-					{{>homepage/settings}}
-				</div>
-			</div>
     	</div>
 	{{/if}}
     {{> footer}}
