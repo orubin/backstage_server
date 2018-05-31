@@ -1,51 +1,67 @@
+<style>
+    .text-align-right {
+		text-align: right;
+    }
+    .vertical-align {
+	    display: flex;
+    	align-items: center;
+    }
+    .creators {
+    	padding-left: 5%;
+    }
+    .subtitle {
+    	color: #9e9e9e;
+    	font-size: 90%;
+    }
+    .widen {
+    	width: 200px;
+    }
+</style>
 <div class="card col s12 right">
     <div class="card-content">
 		<table>
 	        <thead>
 	          	<tr>
-	              	<th>Reward</th>
-	              	<th>Package</th>
-	              	<th>Creator</th>
+	          		<th></th>
+	              	<th class="text-align-right grey-text">Reward</th>
+	              	<th class="text-align-right grey-text">Package</th>
+	              	<th class="text-align-right grey-text">Creator</th>
 	          	</tr>
 	        </thead>
 
 	        <tbody>
+
 	          	<tr>
-	            	<td>None</td>
+	          		<td>
+	          			<div class="row">
+		          			<button class="btn-flat waves-effect">
+					        	<span class="text-style">Cancel</span>
+					        </button>
+					        <button class="btn-flat waves-effect">
+					        	Edit
+					        </button>
+				        <div>
+	          		</td>
 	            	<td>
-	            		<div>
-    						<p>Custom</p>
-    						<p>$50 Per Month</p>
+	            		<div class="text-align-right">
+	            			None
+	            		</div>
+	            	<td>
+	            		<div class="text-align-right">
+    						<p class="text-align-right">Custom</p>
+    						<p class="text-align-right">$50 Per Month</p>
     					</div>
 	            	</td>
 	            	<td>
-	            		<div class="section">
-    						<div class="left">
-        						<p>Kevin Stewart</p>
-        						<p>Creating Online Podcasts</p>
+	            		<div class="section vertical-align right">
+    						<div class="left widen">
+        						<p class="text-align-right">Kevin Stewart</p>
+        						<p class="text-align-right subtitle">Creating Online Podcasts</p>
         					</div>
-        					<a><img width="50" height="50" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
+        					<a class="creators"><img width="50" height="50" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
         				</div>
         			</td>
 	          	</tr>
-	          	<tr>
-	            	<td>None</td>
-		            <td>
-		            	<div>
-    						<p>Custom</p>
-    						<p>$50 Per Month</p>
-    					</div>
-		            </td>
-		            <td>
-	            		<div class="section">
-    						<div class="left">
-        						<p class="rtl">Kevin Stewart</p>
-        						<p class="rtl">Creating Online Podcasts</p>
-        					</div>
-        					<a><img width="50" height="50" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
-        				</div>
-		            </td>
-		        </tr>
 	        </tbody>
 	    </table>
     </div>
