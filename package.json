@@ -43,6 +43,7 @@
     "material-ui-next": "^1.0.0-beta.42",
     "morgan": "^1.9.0",
     "nodemailer": "^4.6.4",
+    "owl.carousel": "^2.3.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "paypal-express-checkout": "^1.6.3",

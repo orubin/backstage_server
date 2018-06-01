@@ -10,10 +10,34 @@
 	    border-radius: 2px !important;
 		margin-top: 10px !important;
 	}
+	.checkout-input ::placeholder {
+		text-align: right;
+	}
 	.input-field {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
+	[type="checkbox"].filled-in:checked + span:not(.lever)::after {
+		background-color: #ef5350 !important;
+		border: #ef5350 !important;
+	}
+	.text-align-right {
+		text-align: right;
+    }
+    .check {
+		position: relative;
+		top: 35px;
+		z-index: 5;
+		right: 5px;
+    }
+    .check-box {
+		margin-left: 10px;
+		margin-top: 5px;
+	}
+    .vertical-align {
+	    display: flex;
+    	align-items: center;
+    }
 </style>
 <div class="container">
 	<div class="section row">
@@ -48,7 +72,9 @@
     			<h6 class="right">Your Choosen Sponsorship Package</h6>
     		</div>
     		<div id="selectedCard">
-    			<i class="material-icons text-style" id="checkmark">check_circle</i>
+    			<div class="text-align-right check">
+    				<i class="material-icons text-style" id="checkmark">check_circle</i>
+    			</div>
 		    </div>
 			<div class="divider"></div>
 			<div class="row">
@@ -83,7 +109,7 @@
 					<div class="col s12">
 						<span class="right">Card Number</span>
 						<div class="input-field">
-			                <input class="checkout-input" id="card-number" placeholder="Card Number" type="text" required>
+			                <input class="checkout-input rtl" id="card-number" placeholder="Card Number" type="text" required>
 			            </div>
 		            </div>
 		        </div>
@@ -92,23 +118,26 @@
 		            	<i class="material-icons left">info_outline</i>
 		            	<span class="right">CVV Code</span>
 			            <div class="input-field">
-			                <input class="checkout-input" id="card-number" placeholder="XXX" type="text" required>
+			                <input class="checkout-input rtl" id="card-number" placeholder="XXX" type="text" required>
 			            </div>
 			        </div>
 			        <div class="col s6">
 			            <span class="right">Expiry Date</span>
 			            <div class="input-field">
-			                <input class="checkout-input" id="card-number" placeholder="MM/YY" type="text" required>
+			                <input class="checkout-input rtl" id="card-number" placeholder="MM/YY" type="text" required>
 			            </div>
 			        </div>
 		        </div>
 		    </div>
 		    <div class="divider"></div>
 		    <div class="section">
-		    	<label>
-			        <input type="checkbox" class="filled-in" />
-			        <span>I want the amount I donated to remain anonymous</span>
-			    </label>
+		    	<p class="vertical-align">
+			    	<span>I want the amount I donated to remain anonymous</span>
+			    	<label class="check-box">
+				        <input type="checkbox" class="filled-in" />
+				        <span></span>
+				    </label>
+				</p>
 		    </div>
 		    <div class="divider"></div>
 		    <div class="section right">
