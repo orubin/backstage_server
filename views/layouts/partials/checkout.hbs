@@ -2,18 +2,6 @@
     .selected {
     	border: 2px solid #ef5350;
     }
-	.checkout-input {
-	    border: .5px solid grey !important;
-	    border-radius: 2px !important;
-		margin-top: 10px !important;
-	}
-	.checkout-input ::placeholder {
-		text-align: right;
-	}
-	.input-field {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
 	[type="checkbox"].filled-in:checked + span:not(.lever)::after {
 		background-color: #ef5350 !important;
 		border: #ef5350 !important;
@@ -27,6 +15,10 @@
     .check-box {
 		margin-left: 10px;
 		margin-top: 5px;
+	}
+	.bordered-box {
+		border: .5px solid grey !important;
+	    border-radius: 2px !important;
 	}
 </style>
 <div class="container">
@@ -90,15 +82,15 @@
 				{{/each}}
 			</div>
 		</div>
-		<div class="col s6 right">
+		<div class="col s6 right bordered-box">
 			<div class="section">
 				<div class="row">
-					<h6 class="right">Payment Details</h6>
+	            	<h6 class="col s4 offset-s8">Payment Details</h6>
 				</div>
 	            <div class="row">
-	            	<div class="right">
-	            		<button class="btn-flat wide waves-effect">
-		        			View All
+	            	<div class="col s4 offset-s8">
+	            		<button class="btn white black-text wide waves-effect">
+		        			Pay With PayPal
 		        		</button>
 	            	</div>
 		        </div>
