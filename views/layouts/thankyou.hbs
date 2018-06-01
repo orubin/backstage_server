@@ -1,0 +1,93 @@
+<style>
+	.cover-image {
+		width: 100%;
+		height: 40%;
+		z-index: -1;
+		position: absolute;
+	}
+	.video-section {
+		margin-top: 5%;
+	}
+    .text-align-right {
+		text-align: right;
+    }
+	.rtl {
+		direction:rtl;
+	}
+	.comment-input {
+	    border: .5px solid grey !important;
+	    border-radius: 2px !important;
+	}
+	.comment-input::placeholder {
+		text-align: right !important;
+	}
+</style>
+{{> startfile}}
+    {{> header}}
+    <div>
+    	<div>
+    		<img class="cover-image" src="https://lorempixel.com/800/800/city/1">
+    	</div>
+    	<div class="container">
+			<div class="center section video-section">
+				<video width="640" height="360" controls>
+					<source src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
+				</video>
+			</div>
+			<div class="section center">
+    			<h3>Thank You For Sponsering</h3>
+    			<h3>"Kevin Stewart Creating Online Podcasts"</h3>
+    		</div>
+    		<div class="divider"></div>
+    		<div class="section row">
+    			<div class="col s6">
+    				<div class="section row">
+    					<div class="left">
+    						Name of Package
+    					</div>
+    					<div class="right">
+    						Package:
+    					</div>
+    				</div>
+    				<div class="divider"></div>
+    				<div class="section row">
+    					<div class="left">
+    						Reward if any
+    					</div>
+    					<div class="right">
+    						Reward:
+    					</div>
+    				</div>
+    				<div class="divider"></div>
+    				<div class="section row">
+    					<div class="left">
+    						$150
+    					</div>
+    					<div class="right">
+    						Cost:
+    					</div>
+    				</div>
+    				<div class="divider"></div>
+    			</div>
+    			<div class="col s6">
+    				<div class="section col s10 offset-s2">
+    					<p class="rtl text-align-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lrm;</p>
+	    			</div>
+    				<div class="section">
+    					<p class="right">Leave a Comment</p>
+    				</div>
+    				<div class="section col s10 offset-s2">
+				        <div class="input-field col s12">
+				          <textarea id="textarea" class="comment-input materialize-textarea" placeholder="e.g. sample text here (460 characters)"></textarea>
+				        </div>
+    				</div>
+    				<div class="section col s10 offset-s2">
+				        <button class="right btn-large red lighten-1 waves-effect waves-light" type="submit">Post Comment</button>
+    				</div>
+    			</div>
+    		</div>
+		</div>
+    </div>
+    {{>recommended}}
+    {{> footer}}
+{{> endfile}}
