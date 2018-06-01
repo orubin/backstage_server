@@ -1,0 +1,16 @@
+.rtl {
+	direction:rtl;
+}
+.text-style {
+	color: #ef5350;
+}
+.text-align-right {
+	text-align: right !important;
+}
+.vertical-align {
+    display: flex;
+	align-items: center;
+}
+.thick {
+    font-weight: bold;
+}

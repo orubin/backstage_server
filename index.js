@@ -63,7 +63,6 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, '/views/layouts/css')));
 app.use(express.static(path.join(__dirname, '/views/images')));
 app.use(flash()); // use connect-flash for flash messages stored in session
 
@@ -106,3 +105,4 @@ app.listen(port, (err) => {
 
 //owl-carousel
 app.use('/modules', express.static(path.join(__dirname, 'node_modules')))
+app.use('/css', express.static(path.join(__dirname, 'views/layouts/css')))

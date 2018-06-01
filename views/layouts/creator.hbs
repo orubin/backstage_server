@@ -1,17 +1,11 @@
 <style>
-	.text-style {
-		color: #ef5350;
-	}
-	.raised-progress {
-		background-color: #ef5350;
-	}
 	.cover-image {
 		width: 100%;
 		height: 40%;
 		z-index: -1;
 		position: absolute;
 	}
-	.container {
+	.page.container {
 		width: 80%;
 	}
 	.tabs .tab a.active {
@@ -38,7 +32,6 @@
     .left-section {
     	float:left;
     	width: 30%;
-    	margin-left: -5%;
     }
     .payment-selector select {
         font-size: 16px;
@@ -170,6 +163,7 @@
 
 	.overview-section {
 		position: absolute;
+		margin-top: -10%;
 	}
 
 	.overview {
@@ -181,10 +175,6 @@
 	}
 	.share-btn button {
 		width: 100%;
-	}
-
-	.progress .determinate {
-		background-color: #eeeeee;
 	}
     .shift-left {
     	margin-right: 20%;
@@ -208,13 +198,15 @@
     .btn-font {
     	font-size: 75%;
     }
-    .progress {
-  		height: 1.5em;
-  		border-radius: 10px;
-	}
-	.rtl {
-		direction:rtl;
-	}
+    .background-grey {
+    	background-color: #e0e0e0;
+    }
+    .background-grey:after {
+    	background-color: #ffffff;
+    }
+    .circle-loader.c100 > span {
+    	top: -10%;
+    }
 </style>
 {{> startfile}}
     {{> header}}
@@ -232,24 +224,27 @@
 			    </div>
 		    </div>
 		    
-		    <div class="row container">
+		    <div class="row page container">
 				<div class="col s3 left overview-section">
 					<div class="card">
 				        <div class="card-content">
 				        	<div class="section">
-					        	<div class="progress raised-progress">
-							      	<div class="determinate" style="width: 30%"></div>
-							  	</div>
-							  	<div class="row">
-							  		<span><span class="text-style">$1,000</span> of $3,000</span>
-							  		<span class="right">Amount Raised</span>
+							    <div class="circle-loader c100 p73 big center custom-color background-grey">
+							    	<span class="black-text thick">73<span style="font-size: 50%;">%</span><div class="grey-text center" style="font-size: 30%; margin-top: -80%;">Of Target Raised</div></span>
+				                    <div class="slice">
+				                        <div class="bar"></div>
+				                        <div class="fill"></div>
+				                    </div>
+				                </div>
+							  	<div class="center row">
+							  		<span class="grey-text"><span class="text-style thick">$19,300</span> of $25,250</span>
 							  	</div>
 					        </div>
 					        <div class="divider"></div>
 					        <div class="section center">
 					        	<div>
 					        		<i class="material-icons text-style">group</i>
-						        	<h6>Contributors<span>:&lrm;</span></h6>
+						        	<h6 class="grey-text">Contributors<span>:&lrm;</span></h6>
 						        	<spam>{{data.sponsors}}</spam>
 						        </div>
 					        </div>
@@ -257,14 +252,14 @@
 					        <div class="section center">
 					        	<div>
 					        		<i class="material-icons text-style">music_note</i>
-					        		<h6>Category<span>:&lrm;</span></h6>
+					        		<h6 class="grey-text">Category<span>:&lrm;</span></h6>
 					        		<spam>{{data.category.type}}</spam>
 					        	</div>
 					        </div>
 					        <div class="divider"></div>
 					        <div class="section center">
 					        	<div>
-					        		<h6>Elsewhere</h6>
+					        		<h6 class="grey-text">Elsewhere</h6>
 					        	</div>
 					        	<div>
 					        		<button class="btn-flat waves-effect">
@@ -304,7 +299,7 @@
 					{{/if}}
 				</div>
 			</div>
-			<div class="row container">
+			<div class="row page container">
 				<div class="col s7 offset-s5">
 					<div class="section overview">
 						<h5 class ="right">Overview</h5>
@@ -331,12 +326,12 @@
 		        			<i class="fa fa-facebook-square facebook left"></i>
 		        			<spam>Facebook</spam>
 			        	</a>
-		        		<spam class='col rtl right'>Share This Page</spam>
+		        		<spam class='col rtl right grey-text'>Share This Page</spam>
 			        </div>
 				</div>
 			</div>
 	    </div>
-	    <div class="row container">
+	    <div class="row container page">
 		    <div class="right">
 		      	<ul class="tabs">
 			        <li class="tab"><a href="#faqs">FAQs</a></li>
@@ -347,7 +342,7 @@
 		</div>
 	</div>
 	<div class="grey lighten-3">
-		<div class="container row">
+		<div class="container page row">
 			<div class="left-section">
 				<br>
 		    	<div class="package-header">
@@ -469,7 +464,7 @@
 		{{> checkout}}
 	</div>
 	<div id="copyLink-modal" class="modal">
-	    <div class="container">
+	    <div class="container page">
 			<div class="section row">
 				<div class="modal-close btn-flat left">
 					<i class="fa fa-times-circle"></i>
