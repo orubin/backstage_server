@@ -22,6 +22,12 @@
         width: 60px !important;
         height: 60px !important;
     }
+    .artist.chip {
+        position: relative;
+        margin-top: -15%;
+        margin-left: 5%;
+        text-align: left !important;
+    }
     .card-text {
         font-size: 90%;
     }
@@ -29,16 +35,23 @@
         display: flex;
         align-items: center;
     }
+    .creator-descrip {
+        visibility: hidden;
+        display: none;
+    }
 </style>
 <div class="card">
     <div class="card-image">
     	<img src="https://lorempixel.com/400/200/people/1">
     </div>
-
+    <div class="red lighten-2 white-text artist chip left">Artist</div>
     	<a><img class="circle avatar right" src="https://lorempixel.com/200/200/people/9"></a>
     <div class="card-content">
     	<div class="section" style="text-align: right;">
         	<p class="rtl"><span class="text-style">Kevin Stewart</span> is creating internet videos and podcasts</p>
+        </div>
+        <div class="section creator-descrip" style="text-align: right;">
+            <p>Example of a description, which can be revealed when card is centered</p>
         </div>
         <div class="divider"></div>
         <div class="section row card-end">
