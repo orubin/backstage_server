@@ -68,6 +68,32 @@
     .thick {
         font-weight: bold;
     }
+    .text-align-right {
+		text-align: right;
+    }
+    .vertical-align {
+	    display: flex;
+    	align-items: center;
+    }
+	.email-input ::placeholder {
+		text-align: right;
+	}
+	#rec-carousel .owl-next {
+		position: absolute !important;
+		right: -10% !important;
+		top: 35% !important;
+	}
+	#rec-carousel .owl-prev {
+		position: absolute !important;
+		left: -10% !important;
+		top: 35% !important;
+	}
+	#rec-carousel .owl-item {
+		opacity: .5 !important;
+	}
+	#rec-carousel .owl-item.active.center {
+		opacity: 1 !important;
+	}
 </style>
 {{> startfile}}
     {{> header}}
@@ -115,21 +141,22 @@
 		            <br>
 		            <div class="row email-input">
 					   <form class="col s12">
-					       <div class="row">
-					           <div class="input-field col s9">
-					           		<i class="material-icons prefix">mail</i>
-					           		<input
-		                                id="email"
-		                                name="email"
-		                                type="email"
-		                                onchange="this.setCustomValidity(if(this.checkValidity()) form.email-confirm.pattern = this.value;"
-		                                required
-		                            >
-									<label for="email">Lets start with your email...</label>
-					           </div>
+					       <div class="row vertical-align">
 					           <div class="input-field col s3">
 					               <button class="btn-large red lighten-1 waves-effect waves-light modal-trigger" href="#modalSignup" type="submit">Sign up</button>
 					           </div>
+					           <div class="input-field col s8">
+					           		<input
+		                                class="rtl email-input"
+		                                id="email"
+		                                name="email"
+		                                type="email"
+		                                placeholder="Lets start with your email...&lrm;"
+		                                onchange="this.setCustomValidity(if(this.checkValidity()) form.email-confirm.pattern = this.value;"
+		                                required
+		                            >
+					           </div>
+					           <i class="material-icons">mail</i>
 					       </div>
 					   </form>
 					</div>
@@ -163,10 +190,10 @@
 		    <br>
 		    <br>
 		    <div class="section row fees-section">
-		    	<div class="col s4 offset-s2">
+		    	<div class="col s4 offset-s6">
 		    		<h3 class="red-text text-lighten-1 rtl">BackStage Fees</h3>
-		    		<p class="rtl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-		    		<p class="rtl">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		    		<p class="rtl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lrm;</p>
+		    		<p class="rtl">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lrm;</p>
 		    		<div class="right">
 		    			<a class="btn-large waves-effect waves-light" href="/explore">Explore Artists</a>
 		    			<a class="btn-large white waves-effect blue-grey-text text-darken-4 modal-trigger" href="#modalSignup">Sign up</a>
@@ -183,7 +210,9 @@
 				<h4 class="center">Recommended Artists</h4>
 				<p class="center col s6 offset-s3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
 			</div>
-			<div class="container">
+			<div class="container" id="rec-carousel">
+				<a class="btn-floating btn-small waves-effect waves-light grey lighten-4 am-prev"><i class="material-icons black-text">keyboard_arrow_left</i></a>
+				<a class="btn-floating btn-small waves-effect waves-light grey lighten-4 am-next"><i class="material-icons black-text">keyboard_arrow_right</i></a>
 				<div class="owl-carousel owl-theme">
 				  	<div> {{> creatorcard}} </div>
 				  	<div> {{> creatorcard}} </div>
@@ -192,6 +221,7 @@
 				  	<div> {{> creatorcard}} </div>
 				  	<div> {{> creatorcard}} </div>
 				</div>
+				
 			</div>
 		</div>
 		<div id="modalSignup" class="modal">

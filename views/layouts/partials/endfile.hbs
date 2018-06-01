@@ -44,12 +44,35 @@
             $('.modal').modal();
         });
         $(document).ready(function(){
-            $('.owl-carousel').owlCarousel();
+            $('.owl-carousel').owlCarousel({
+                margin: 10,
+                loop: true,
+                center: true,
+                nav: true,
+                navText: [$('.am-prev'),$('.am-next')],
+
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        center:false,
+                        singleItem:true,
+                        itemsScaleUp:true,
+                    },
+                    960:{
+                        items:3,
+                        center:true,
+                        singleItem:false,
+                        itemsScaleUp:false,
+                    }
+                }
+            });
         });
         $('#news-carousel .owl-carousel').owlCarousel({
             items:1,
             loop:false,
-            center:true
+            center:true,
+            margin: 0
         });
     </script> 
 </body>
