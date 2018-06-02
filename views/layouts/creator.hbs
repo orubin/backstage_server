@@ -207,6 +207,11 @@
     .circle-loader.c100 > span {
     	top: -10%;
     }
+    #faq-section.collapsible {
+    	border: 0;
+    	webkit-box-shadow: 0 !important;
+		box-shadow: unset !important;
+    }
 </style>
 {{> startfile}}
     {{> header}}
@@ -386,35 +391,19 @@
 			    	<div class="right">
 			    		<h5>FAQs</h5>
 			    	</div>
-			    	<div class="collapse-section">
-				    	<ul class="collapsible popout">
+			    	<div id="faq-collapse" class="collapse-section col s11 offset-s1" style="margin-top: 2% !important;">
+				    	<ul id="faq-section" class="collapsible">
+
 						    <li>
-						      	<div class="collapsible-header">
+						      	<div class="collapsible-header grey lighten-3">
 						      		<i class="material-icons text-style">add_circle_outline</i>
 						      		First
 						      	</div>
-						      	<div class="collapsible-body">
+						      	<div class="collapsible-body grey lighten-3">
 						      		<span class="right">Lorem ipsum dolor sit amet.</span>
 						      	</div>
 						    </li>
-						    <li>
-						      	<div class="collapsible-header">
-						      		<i class="material-icons text-style">add_circle_outline</i>
-						      		Second
-						      	</div>
-						      	<div class="collapsible-body">
-						      		<span class="right">Lorem ipsum dolor sit amet.</span>
-						      	</div>
-						    </li>
-						    <li>
-						      	<div class="collapsible-header">
-						      		<i class="material-icons text-style">add_circle_outline</i>
-						      		Third
-						      	</div>
-						      	<div class="collapsible-body">
-						      		<span class="right">Lorem ipsum dolor sit amet.</span>
-						      	</div>
-						    </li>
+
 						</ul>
 					</div>
 				</div>
