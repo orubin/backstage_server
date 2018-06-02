@@ -159,6 +159,11 @@
 
 	.post-section {
 		padding-bottom: 10%;
+		margin-top:10px !important;
+	}
+	.all-posts ul::before {
+		top: -2%;
+		height: 99%;
 	}
 
 	.overview-section {
@@ -211,6 +216,30 @@
     	border: 0;
     	webkit-box-shadow: 0 !important;
 		box-shadow: unset !important;
+    }
+    .comment-card .row {
+    	margin-bottom: 0px;
+    }
+    .comment-card.card-content {
+    	padding-right: 50px !important;
+    	padding-top:0 !important;
+    	padding-left:0 !important;
+    	padding-bottom:0 !important;
+    }
+    .user-circle {
+      	width: 50px;
+      	height: 50px;
+      	-webkit-border-radius: 25px;
+      	-moz-border-radius: 25px;
+      	border-radius: 25px;
+      	background: #ef5350;
+      	position: absolute;
+		right: -25px;
+		line-height: 50px;
+  		text-align: center;
+    }
+    .card.vertical-align {
+    	display: grid;
     }
 </style>
 {{> startfile}}
@@ -409,7 +438,7 @@
 				</div>
 			    <div id="updates">
 			    	<br>
-			    	<div class="right">
+			    	<div class="text-align-right">
 			    		<h5>Updates</h5>
 			    	</div>
 			    	<br>
@@ -422,9 +451,10 @@
 									<span>JUN, 17<sup>th</sup></span>
 								</div>
 								<div class="section">
-									<div class="right rtl">
+									<div class="text-align-right">
 										<br>
 						        		<h5>{{this.title}}</h5>
+						        		<img src="https://lorempixel.com/400/200/nightlife/5">
 						        		<br>
 						        		<p>{{this.body}}</p>
 						        	</div>
@@ -439,11 +469,17 @@
 			    	<div>
 			    		<h5 class="right">Comments</h5>
 			    	</div>
-			    	<div class="card col s6 offset-s6">
-				        <div class="card-content">
-					        <div class="section">
+			    	<div class="card col s9 offset-s2 vertical-align">
+				        <div class="card-content comment-card">
+					        <div class="section row">
+					        	<div class="grey-text col s6">30th Oct 2017</div>
+					        	<div class="text-align-right col s6">Phil</div>
+					        </div>
+					        <div class="section row">
+					        	<div class="text-align-right col s12">"Lorem ipsum dolor sit amet, consectetur adipiscing elit"</div>
 					        </div>
 				        </div>
+				        <div class="user-circle white-text center">PC</div>
 				    </div>
 			    </div>
 			</div>
