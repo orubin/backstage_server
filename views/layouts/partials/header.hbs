@@ -82,43 +82,62 @@
         height: 100%;
         top: 0 !important;
     }
+    .header-avatar {
+        width: 45px;
+        height: 45px;
+        margin-right: 15%;
+    }
 </style>
 
-{{#if user}}
-
-{{else}}
-    <nav>
-        <div class="nav-wrapper white">
-            <div class="row">
-                <ul class="right header-right">
-                    <a href="/"><h6 class="center black-text logo"><span class="text-style">Back</span>Stage</h6></a>
-                    <li class="icon-button"><a><i class="material-icons grey-text text-darken-3">menu</i></a></li>
-                </ul>
-                <ul class="left header-left">
+<nav>
+    <div class="nav-wrapper white">
+        <div class="row">
+            <ul class="right header-right">
+                <a href="/"><h6 class="center black-text logo"><span class="text-style">Back</span>Stage</h6></a>
+                <li class="icon-button">
+                    <a class='dropdown-trigger' data-target='dropdown'>
+                        <i class="material-icons grey-text text-darken-3">menu</i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="left header-left">
+                {{#if user}}
+                    <li>
+                        <a class="vertical-align">
+                            <img class="circle header-avatar" src="https://lorempixel.com/200/200/people/9">
+                            <span class="grey-text text-darken-3">Kevin</span>
+                        </a>
+                    </li>
+                {{else}}
                     <li><a class="grey-text text-darken-3 modal-trigger" href="#modalSignup">{{__ 'Sign Up'}}</a></li>
                     <li><a class="grey-text text-darken-3 modal-trigger" href="#modalLogin">{{__ 'Login'}}</a></li>
-                    <li><a class="grey-text text-darken-3" href="/explore">{{__ 'Explore All'}}</a></li>
-                </ul>
-                <div class="header-search-wrapper grey lighten-3">
-                    <div class="grey-text text-darken-3 header-search-selector rtl">
-                        <select class="browser-default">
-                            <option>All Creators</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                        </select>
-                    </div>
-                    <form class="header-search-bar">
-                        <input class="header-search-input z-depth-2 grey-text text-darken-3 right-align" placeholder="Search Creators" type="search" required>
-                        <button class="header-search-button btn-flat" type="submit" name="action"><i class="header-search-icon material-icons">search</i></button>
-                    </form>
+                {{/if}}
+                <li><a class="grey-text text-darken-3" href="/explore">{{__ 'Explore All'}}</a></li>
+            </ul>
+            <div class="header-search-wrapper grey lighten-3">
+                <div class="grey-text text-darken-3 header-search-selector rtl">
+                    <select class="browser-default">
+                        <option>All Creators</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
                 </div>
+                <form class="header-search-bar">
+                    <input class="header-search-input z-depth-2 grey-text text-darken-3 right-align" placeholder="Search Creators" type="search" required>
+                    <button class="header-search-button btn-flat" type="submit" name="action"><i class="header-search-icon material-icons">search</i></button>
+                </form>
             </div>
         </div>
-    </nav>
-    <div id="modalSignup" class="modal fullscreen-modal">
-        {{> signup registrationType=true }}
     </div>
-    <div id="modalLogin" class="modal fullscreen-modal">
-        {{> signup registrationType=false }}
-    </div>
-{{/if}}
+</nav>
+<div id="modalSignup" class="modal fullscreen-modal">
+    {{> signup registrationType=true }}
+</div>
+<div id="modalLogin" class="modal fullscreen-modal">
+    {{> signup registrationType=false }}
+</div>
+<ul id='dropdown' class='dropdown-content'>
+    <li><a href="/">Home</a></li>
+    <li><a href="/explore">Explore All</a></li>
+    <li><a href="/about_us">About Us</a></li>
+</ul>
