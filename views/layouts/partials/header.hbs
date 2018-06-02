@@ -87,6 +87,13 @@
         height: 45px;
         margin-right: 15%;
     }
+    #dropdown.dropdown-content {
+        width:300px;
+        top:64px !important;
+    }
+    #user-dropdown.dropdown-content {
+        top:64px !important;
+    }
 </style>
 
 <nav>
@@ -103,7 +110,7 @@
             <ul class="left header-left">
                 {{#if user}}
                     <li>
-                        <a class="vertical-align">
+                        <a class="vertical-align dropdown-trigger" data-target='user-dropdown'>
                             <img class="circle header-avatar" src="https://lorempixel.com/200/200/people/9">
                             <span class="grey-text text-darken-3">Kevin</span>
                         </a>
@@ -118,8 +125,6 @@
                 <div class="grey-text text-darken-3 header-search-selector rtl">
                     <select class="browser-default">
                         <option>All Creators</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
                     </select>
                 </div>
                 <form class="header-search-bar">
@@ -137,7 +142,12 @@
     {{> signup registrationType=false }}
 </div>
 <ul id='dropdown' class='dropdown-content'>
-    <li><a href="/">Home</a></li>
-    <li><a href="/explore">Explore All</a></li>
-    <li><a href="/about_us">About Us</a></li>
+    <li><a href="/" class="grey-text text-darken-3 text-align-right">Home</a></li>
+    <li><a href="/explore" class="grey-text text-darken-3 text-align-right">Explore All</a></li>
+    <li><a href="/about_us" class="grey-text text-darken-3 text-align-right">About Us</a></li>
+</ul>
+<ul id='user-dropdown' class='dropdown-content'>
+    <li><a href="" class="grey-text text-darken-3 text-align-right">Create On BackStage</a></li>
+    <li><a href="" class="grey-text text-darken-3 text-align-right">My Account</a></li>
+    <li><a href="" class="grey-text text-darken-3 text-align-right">Sign Out</a></li>
 </ul>
