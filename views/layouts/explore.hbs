@@ -1,0 +1,124 @@
+<style>
+	.rtl {
+    	direction:rtl;
+	}
+    .text-style {
+        color: #ef5350;
+    }
+    .custom-chip {
+    	color: black !important;
+    	background-color: white !important;
+    	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    	cursor: pointer;
+    }
+    .active-chip {
+    	color: white !important;
+    	background-color: #ef5350 !important;
+    	cursor: pointer;    	
+    }
+    .thick {
+        font-weight: bold;
+    }
+    .explore-search {
+    	margin-top: 0 !important;
+    	margin-bottom: 0 !important;
+    }
+    .explore-search input {
+       border-bottom: 0px !important;
+    }
+    .middle {
+    	margin-top: 15px;
+    }
+</style>
+<script>
+	function selectChip(chip) {
+		if (chip.className.includes("custom")) {
+			chip.className = "chip active-chip";
+		} else {
+			chip.className = "chip custom-chip";
+		}
+	}
+</script>
+{{> startfile}}
+    {{> header}}
+    <div>
+    	<div>
+		    <div class="container">
+		    	<div class="section">
+		    		<div class="row">
+		    			<h3 class="right thick">Explore Creators Worth Sponsering</h3>
+		    		</div>
+		    		<div class="row">
+		    			<h6 class="text-style right">Filter Creators By Category</h6>
+		    		</div>
+		    		<div class="row">
+		    			<div class="input-field col s3 explore-search">
+				          	<i class="material-icons prefix">search</i>
+				          	<input id="icon_prefix" type="text" class="validate">
+				          	<label for="icon_prefix">Search Creator By Name</label>
+				        </div>
+			    		<div class="right">
+			    			<div class="chip active-chip" onClick="selectChip(this)" id="all">
+							    View All
+							</div>
+			    			<div class="chip custom-chip" onClick="selectChip(this)">
+							    Music
+							</div>
+							<div class="chip custom-chip" onClick="selectChip(this)">
+							    Technology
+							</div>
+							<div class="chip custom-chip" onClick="selectChip(this)">
+							    Art
+							</div>
+							<div class="chip custom-chip" onClick="selectChip(this)">
+							    Podcasting
+							</div>
+							<div class="chip custom-chip" onClick="selectChip(this)">
+							    Comedy
+							</div>
+						</div>
+		    		</div>
+		    	</div>
+		    </div>
+	    </div>
+	    <div class="grey lighten-3">
+		    <div class="container">
+		    	<div class="section">
+		    		<div class="row">
+					  <div>
+					  	<div class="input-field col s3 explore-search">
+					    	<select>
+						    	<option value="1">Popularity of Creator</option>
+						    	<option value="2">Date</option>
+					    	</select>
+					  	</div>
+					  	<span class="text-style right thick middle">10,760 Creators Found</span>
+					  </div>
+		    		</div>
+		    		<div class="row">
+			    		{{#each data}}
+			    			{{{renderStart this @index}}}
+			    			<div class="col s4">
+			    				{{>creatorcard}}
+			    			</div>
+			    			{{{renderEnd this @index data}}}
+			    		{{/each}}
+			    		{{{renderCheck data}}}
+			    	</div>
+			    	<div class="row center">
+					  	<ul class="pagination">
+						    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+						    <li class="active"><a href="#!">1</a></li>
+						    <li class="waves-effect"><a href="#!">2</a></li>
+						    <li class="waves-effect"><a href="#!">3</a></li>
+						    <li class="waves-effect"><a href="#!">4</a></li>
+						    <li class="waves-effect"><a href="#!">5</a></li>
+						    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+					  	</ul>
+			    	</div>
+		    	</div>
+		    </div>
+	   </div>
+    </div>
+    {{> footer}}
+{{> endfile}}

@@ -3,6 +3,7 @@
         crossorigin="anonymous"></script> --}}
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="/modules/owl.carousel/dist/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav();
@@ -41,6 +42,37 @@
         });
         $(document).ready(function(){
             $('.modal').modal();
+        });
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                margin: 10,
+                loop: true,
+                center: true,
+                nav: true,
+                navText: [$('.am-prev'),$('.am-next')],
+
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        center:false,
+                        singleItem:true,
+                        itemsScaleUp:true,
+                    },
+                    960:{
+                        items:3,
+                        center:true,
+                        singleItem:false,
+                        itemsScaleUp:false,
+                    }
+                }
+            });
+        });
+        $('#news-carousel .owl-carousel').owlCarousel({
+            items:1,
+            loop:false,
+            center:true,
+            margin: 0
         });
     </script> 
 </body>

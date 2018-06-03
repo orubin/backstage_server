@@ -147,7 +147,7 @@
 	    width: 10px;
 	    height: 10px;
 	    border-radius: 50%;
-	    background:#e0e0e0;
+	    background:#eeeeee;
 	    border:1px solid #9e9e9e;
 	    position: absolute;
 	    right:50px
@@ -173,7 +173,7 @@
 	}
 
 	.overview {
-		min-height: 350px;
+		min-height: 250px;
 	}
 
 	.share-btn {
@@ -184,7 +184,7 @@
 	}
 
 	.progress .determinate {
-		background-color: #e0e0e0;
+		background-color: #eeeeee;
 	}
     .shift-left {
     	margin-right: 20%;
@@ -211,6 +211,9 @@
     .progress {
   		height: 1.5em;
   		border-radius: 10px;
+	}
+	.rtl {
+		direction:rtl;
 	}
 </style>
 {{> startfile}}
@@ -243,58 +246,43 @@
 							  	</div>
 					        </div>
 					        <div class="divider"></div>
-					        <div class="section rtl">
-					        	<div class="shift-left">
-					        		<h6>Category<span>:&lrm;</span></h6>
-					        		<spam>{{data.category.type}}</spam>
-					        	</div>
-					        	<i class="material-icons text-style shift-up">edit</i>
-					        </div>
-					        <div class="divider"></div>
-					        <div class="section rtl">
-					        	<div class="shift-left">
+					        <div class="section center">
+					        	<div>
+					        		<i class="material-icons text-style">group</i>
 						        	<h6>Contributors<span>:&lrm;</span></h6>
 						        	<spam>{{data.sponsors}}</spam>
 						        </div>
-					        	<i class="material-icons text-style shift-up">group</i>
 					        </div>
 					        <div class="divider"></div>
-					        <div class="section rtl">
-					        	<div class="shift-left">
-					        		<h6>Creator<span>:&lrm;</span></h6>
-					        		<spam>{{data.name}}</spam>
+					        <div class="section center">
+					        	<div>
+					        		<i class="material-icons text-style">music_note</i>
+					        		<h6>Category<span>:&lrm;</span></h6>
+					        		<spam>{{data.category.type}}</spam>
 					        	</div>
-					        	<a><img width="30" height="30" class="circle shift-up" src={{data.profile}}></a>
 					        </div>
 					        <div class="divider"></div>
-					        <div class="section rtl">
-					        	<div class="shift-left">
-					        		<h6>Else Where</h6>
+					        <div class="section center">
+					        	<div>
+					        		<h6>Elsewhere</h6>
 					        	</div>
 					        	<div>
 					        		<button class="btn-flat waves-effect">
-					        			<spam>Facebook</spam>
-					        			<i class="fa fa-facebook-square right text-style"></i>
+					        			<i class="material-icons text-style">web</i>            
+					        		</button>
+					        		<button class="btn-flat waves-effect">
+					        			<i class="fa fa-youtube-play text-style"></i>
+					        		</button>
+					        		<button class="btn-flat waves-effect">
+					        			<i class="fa fa-instagram text-style"></i>
+					        		</button>
+					        		<button class="btn-flat waves-effect">
+					        			<i class="fa fa-twitter text-style"></i>
+					        		</button>
+					        		<button class="btn-flat waves-effect">
+					        			<i class="fa fa-facebook-square text-style"></i>
 						        	</button>
 						        </div>
-					        	<div>
-					        		<button class="btn-flat waves-effect">
-					        			<spam>Twitter</spam>
-					        			<i class="fa fa-twitter-square right text-style"></i>
-					        		</button>
-					        	</div>
-					        	<div>
-					        		<button class="btn-flat waves-effect">
-					        			<spam>Instagram</spam>
-					        			<i class="fa fa-instagram right text-style"></i>
-					        		</button>
-					        	</div>
-					        	<div>
-					        		<button class="btn-flat waves-effect">
-					        			<spam>Youtube</spam>
-					        			<i class="fa fa-youtube-play right text-style"></i>
-					        		</button>
-					        	</div>
 					        </div>
 				        </div>
 				    </div>
@@ -358,42 +346,13 @@
 		    </div>
 		</div>
 	</div>
-	<div class="grey lighten-2">
+	<div class="grey lighten-3">
 		<div class="container row">
 			<div class="left-section">
 				<br>
 		    	<div class="package-header">
 		    		<h5>Sponsership Packages</h5>
 		    	</div>
-				<div class="card package-info">
-			        <div class="card-content">
-			        	<div class="section">
-				        	<div class="rtl payment-selector">
-		                        <select class="browser-default">
-		                            <option>Monthly Payment</option>
-		                            <option>Yearly Payment</option>
-		                        </select>
-		                    </div>
-				        </div>
-				        <div class="section">
-							<div class="currency-selector">
-		                        <select>
-		                        	<option>₪ ILS</option>
-		                            <option>$ US</option>
-		                        </select>
-		                    </div>
-		                    <div class="pay-total">
-		                    	<h6 id="pay">50</h6>
-		                    </div>
-							<form>
-								<p class="range-field payment-slider">
-							  		<input type="range" id="pay-slider" onchange="document.getElementById('pay').textContent= document.getElementById('pay-slider').value;" min="1" max="100" />
-								</p>
-							</form>
-				        	<button class="btn-flat right red-text waves-effect text-lighten-1 modal-trigger" href="#modalCheckout">Sponser</button>
-				        </div>
-			        </div>
-			    </div>
 			    {{#each data.rewards}}
 				    <div class="card package-info">
 				        <div class="card-content">
@@ -493,10 +452,15 @@
 			    </div>
 			    <div id="comments">
 			    	<br>
-			    	<div class="right">
-			    		<h5>Comments</h5>
+			    	<div>
+			    		<h5 class="right">Comments</h5>
 			    	</div>
-			    	<br>
+			    	<div class="card col s6 offset-s6">
+				        <div class="card-content">
+					        <div class="section">
+					        </div>
+				        </div>
+				    </div>
 			    </div>
 			</div>
 		</div>
