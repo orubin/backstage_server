@@ -1,24 +1,18 @@
 <style>
-	.text-style {
-		color: #ef5350;
-	}
-	.raised-progress {
-		background-color: #ef5350;
-	}
 	.cover-image {
 		width: 100%;
 		height: 40%;
 		z-index: -1;
 		position: absolute;
 	}
-	.container {
+	.page.container {
 		width: 80%;
 	}
 	.tabs .tab a.active {
-        color: #ef5350;
+        color: #ef5350 !important;
     }
     .tabs .tab a {
-        color: #424242;
+        color: #757575 !important;
     }
     .tab-content {
     	margin-left: 30%;
@@ -38,7 +32,6 @@
     .left-section {
     	float:left;
     	width: 30%;
-    	margin-left: -5%;
     }
     .payment-selector select {
         font-size: 16px;
@@ -166,10 +159,16 @@
 
 	.post-section {
 		padding-bottom: 10%;
+		margin-top:10px !important;
+	}
+	.all-posts ul::before {
+		top: -2%;
+		height: 99%;
 	}
 
 	.overview-section {
 		position: absolute;
+		margin-top: -10%;
 	}
 
 	.overview {
@@ -181,10 +180,6 @@
 	}
 	.share-btn button {
 		width: 100%;
-	}
-
-	.progress .determinate {
-		background-color: #eeeeee;
 	}
     .shift-left {
     	margin-right: 20%;
@@ -208,13 +203,74 @@
     .btn-font {
     	font-size: 75%;
     }
-    .progress {
-  		height: 1.5em;
-  		border-radius: 10px;
+    .background-grey {
+    	background-color: #e0e0e0;
+    }
+    .background-grey:after {
+    	background-color: #ffffff;
+    }
+    .circle-loader.c100 > span {
+    	top: -10%;
+    }
+    #faq-section.collapsible {
+    	border: 0;
+    	webkit-box-shadow: 0 !important;
+		box-shadow: unset !important;
+    }
+    .comment-card .row {
+    	margin-bottom: 0px;
+    }
+    .comment-card.card-content {
+    	padding-right: 50px !important;
+    	padding-top:0 !important;
+    	padding-left:0 !important;
+    	padding-bottom:0 !important;
+    }
+    .user-circle {
+      	width: 50px;
+      	height: 50px;
+      	-webkit-border-radius: 25px;
+      	-moz-border-radius: 25px;
+      	border-radius: 25px;
+      	background: #ef5350;
+      	position: absolute;
+		right: -25px;
+		line-height: 50px;
+  		text-align: center;
+    }
+    .card.vertical-align {
+    	display: grid;
+    }
+
+
+	.circle-top {
+	    content: "";
+	    display: block;
+	    width: 10px;
+	    height: 10px;
+	    border-radius: 50%;
+	    background:#eeeeee;
+	    border:1px solid #9e9e9e;
+	    position: absolute;
+	    top:-35px;
+	    right:-34px;
 	}
-	.rtl {
-		direction:rtl;
-	}
+
+.badge-custom {
+   position:relative;
+}
+.badge-custom[data-badge]:after {
+   content:attr(data-badge);
+   position:absolute;
+   top:0px;
+   right:0px;
+   font-size:.8em;
+   background-color: transparent;
+   color:#ef5350;
+   width:18px;height:18px;
+   text-align:center;
+   line-height:18px;
+}
 </style>
 {{> startfile}}
     {{> header}}
@@ -232,24 +288,27 @@
 			    </div>
 		    </div>
 		    
-		    <div class="row container">
+		    <div class="row page container">
 				<div class="col s3 left overview-section">
 					<div class="card">
 				        <div class="card-content">
 				        	<div class="section">
-					        	<div class="progress raised-progress">
-							      	<div class="determinate" style="width: 30%"></div>
-							  	</div>
-							  	<div class="row">
-							  		<span><span class="text-style">$1,000</span> of $3,000</span>
-							  		<span class="right">Amount Raised</span>
+							    <div class="circle-loader c100 p73 big center custom-color background-grey">
+							    	<span class="black-text thick">73<span style="font-size: 50%;">%</span><div class="grey-text center" style="font-size: 30%; margin-top: -80%;">Of Target Raised</div></span>
+				                    <div class="slice flip">
+				                        <div class="bar"></div>
+				                        <div class="fill"></div>
+				                    </div>
+				                </div>
+							  	<div class="center row">
+							  		<span class="grey-text"><span class="text-style thick">$19,300</span> of $25,250</span>
 							  	</div>
 					        </div>
 					        <div class="divider"></div>
 					        <div class="section center">
 					        	<div>
 					        		<i class="material-icons text-style">group</i>
-						        	<h6>Contributors<span>:&lrm;</span></h6>
+						        	<h6 class="grey-text">Contributors<span>:&lrm;</span></h6>
 						        	<spam>{{data.sponsors}}</spam>
 						        </div>
 					        </div>
@@ -257,14 +316,14 @@
 					        <div class="section center">
 					        	<div>
 					        		<i class="material-icons text-style">music_note</i>
-					        		<h6>Category<span>:&lrm;</span></h6>
+					        		<h6 class="grey-text">Category<span>:&lrm;</span></h6>
 					        		<spam>{{data.category.type}}</spam>
 					        	</div>
 					        </div>
 					        <div class="divider"></div>
 					        <div class="section center">
 					        	<div>
-					        		<h6>Elsewhere</h6>
+					        		<h6 class="grey-text">Elsewhere</h6>
 					        	</div>
 					        	<div>
 					        		<button class="btn-flat waves-effect">
@@ -304,11 +363,9 @@
 					{{/if}}
 				</div>
 			</div>
-			<div class="row container">
+			<div class="row page container">
 				<div class="col s7 offset-s5">
 					<div class="section overview">
-						<h5 class ="right">Overview</h5>
-						<br><br>
 						<p class="rtl">
 							{{data.overview}}
 						</p>
@@ -331,23 +388,24 @@
 		        			<i class="fa fa-facebook-square facebook left"></i>
 		        			<spam>Facebook</spam>
 			        	</a>
-		        		<spam class='col rtl right'>Share This Page</spam>
+		        		<spam class='col rtl right grey-text'>Share This Page</spam>
 			        </div>
 				</div>
 			</div>
 	    </div>
-	    <div class="row container">
+	    <div class="row container page">
 		    <div class="right">
 		      	<ul class="tabs">
 			        <li class="tab"><a href="#faqs">FAQs</a></li>
-			        <li class="tab"><a href="#comments">Supporters Feedback</a></li>
-			        <li class="tab"><a class="active" href="#updates">Updates</a></li>
+			        <li class="tab"><a href="#comments" class="badge-custom" data-badge="5">Supporters Feedback</a></li>
+			        <li class="tab"><a href="#updates" class="badge-custom" data-badge="2">Updates</a></li>
+			        <li class="tab"><a class="active" href="#overview">Overview</a></li>
 		      	</ul>
 		    </div>
 		</div>
 	</div>
 	<div class="grey lighten-3">
-		<div class="container row">
+		<div class="container page row">
 			<div class="left-section">
 				<br>
 		    	<div class="package-header">
@@ -386,51 +444,47 @@
 				{{/each}}
 			</div>
 			<div class="tab-content">
+				<div id="overview">
+			    	<br>
+			    	<div class="text-align-right">
+			    		<h5>Overview</h5>
+			    	</div>
+			    	<div class="section col s9 offset-s3">
+			    		<p class="rtl">
+							{{data.overview}}
+						</p>
+					</div>
+				</div>
 				<div id="faqs">
 			    	<br>
 			    	<div class="right">
 			    		<h5>FAQs</h5>
 			    	</div>
-			    	<div class="collapse-section">
-				    	<ul class="collapsible popout">
+			    	<div id="faq-collapse" class="collapse-section col s9 offset-s3" style="margin-top: 2% !important;">
+				    	<ul id="faq-section" class="collapsible">
+
 						    <li>
-						      	<div class="collapsible-header">
+						      	<div class="collapsible-header grey lighten-3">
 						      		<i class="material-icons text-style">add_circle_outline</i>
 						      		First
 						      	</div>
-						      	<div class="collapsible-body">
+						      	<div class="collapsible-body grey lighten-3">
 						      		<span class="right">Lorem ipsum dolor sit amet.</span>
 						      	</div>
 						    </li>
-						    <li>
-						      	<div class="collapsible-header">
-						      		<i class="material-icons text-style">add_circle_outline</i>
-						      		Second
-						      	</div>
-						      	<div class="collapsible-body">
-						      		<span class="right">Lorem ipsum dolor sit amet.</span>
-						      	</div>
-						    </li>
-						    <li>
-						      	<div class="collapsible-header">
-						      		<i class="material-icons text-style">add_circle_outline</i>
-						      		Third
-						      	</div>
-						      	<div class="collapsible-body">
-						      		<span class="right">Lorem ipsum dolor sit amet.</span>
-						      	</div>
-						    </li>
+
 						</ul>
 					</div>
 				</div>
 			    <div id="updates">
 			    	<br>
-			    	<div class="right">
+			    	<div class="text-align-right">
 			    		<h5>Updates</h5>
 			    	</div>
 			    	<br>
 		    		<div class="all-posts">
 						<ul>
+						<span class="circle-top"></span>
 						{{#each data.posts}}
 							<li class ="post-section">
 								<span></span>
@@ -438,9 +492,10 @@
 									<span>JUN, 17<sup>th</sup></span>
 								</div>
 								<div class="section">
-									<div class="right rtl">
+									<div class="text-align-right">
 										<br>
 						        		<h5>{{this.title}}</h5>
+						        		<img src="https://lorempixel.com/400/200/nightlife/5">
 						        		<br>
 						        		<p>{{this.body}}</p>
 						        	</div>
@@ -455,12 +510,20 @@
 			    	<div>
 			    		<h5 class="right">Comments</h5>
 			    	</div>
-			    	<div class="card col s6 offset-s6">
-				        <div class="card-content">
-					        <div class="section">
+			    	<div>
+				    	<div class="card col s9 offset-s2 vertical-align">
+					        <div class="card-content comment-card">
+						        <div class="section row">
+						        	<div class="grey-text col s6">30th Oct 2017</div>
+						        	<div class="text-align-right col s6">Phil</div>
+						        </div>
+						        <div class="section row">
+						        	<div class="text-align-right col s12">"Lorem ipsum dolor sit amet, consectetur adipiscing elit"</div>
+						        </div>
 					        </div>
-				        </div>
-				    </div>
+					        <div class="user-circle white-text center">PC</div>
+					    </div>
+					</div>
 			    </div>
 			</div>
 		</div>
@@ -469,7 +532,7 @@
 		{{> checkout}}
 	</div>
 	<div id="copyLink-modal" class="modal">
-	    <div class="container">
+	    <div class="container page">
 			<div class="section row">
 				<div class="modal-close btn-flat left">
 					<i class="fa fa-times-circle"></i>

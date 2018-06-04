@@ -1028,3 +1028,17 @@
 .c100.custom-color:hover > span {
   color: #ef5350;
 }
+.c100.custom-green .bar,
+.c100.custom-green .fill {
+  border-color: #00e676 !important;
+}
+.c100.custom-green:hover > span {
+  color: #00e676;
+}
+.c100.custom-blue .bar,
+.c100.custom-blue .fill {
+  border-color: #263238 !important;
+}
+.c100.custom-blue:hover > span {
+  color: #263238;
+}

@@ -1,29 +1,11 @@
 <style>
-    .text-style {
-        color: #ef5350;
-    }
     .selected {
     	border: 2px solid #ef5350;
     }
-	.checkout-input {
-	    border: .5px solid grey !important;
-	    border-radius: 2px !important;
-		margin-top: 10px !important;
-	}
-	.checkout-input ::placeholder {
-		text-align: right;
-	}
-	.input-field {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
 	[type="checkbox"].filled-in:checked + span:not(.lever)::after {
 		background-color: #ef5350 !important;
 		border: #ef5350 !important;
 	}
-	.text-align-right {
-		text-align: right;
-    }
     .check {
 		position: relative;
 		top: 35px;
@@ -34,10 +16,10 @@
 		margin-left: 10px;
 		margin-top: 5px;
 	}
-    .vertical-align {
-	    display: flex;
-    	align-items: center;
-    }
+	.bordered-box {
+		border: .5px solid grey !important;
+	    border-radius: 2px !important;
+	}
 </style>
 <div class="container">
 	<div class="section row">
@@ -100,37 +82,20 @@
 				{{/each}}
 			</div>
 		</div>
-		<div class="col s6 right">
+		<div class="col s6 right bordered-box">
 			<div class="section">
 				<div class="row">
-					<h6 class="right">Payment Details</h6>
+	            	<h6 class="col s4 offset-s8">Payment Details</h6>
 				</div>
-				<div class="row">
-					<div class="col s12">
-						<span class="right">Card Number</span>
-						<div class="input-field">
-			                <input class="checkout-input rtl" id="card-number" placeholder="Card Number" type="text" required>
-			            </div>
-		            </div>
-		        </div>
 	            <div class="row">
-	            	<div class="col s6">
-		            	<i class="material-icons left">info_outline</i>
-		            	<span class="right">CVV Code</span>
-			            <div class="input-field">
-			                <input class="checkout-input rtl" id="card-number" placeholder="XXX" type="text" required>
-			            </div>
-			        </div>
-			        <div class="col s6">
-			            <span class="right">Expiry Date</span>
-			            <div class="input-field">
-			                <input class="checkout-input rtl" id="card-number" placeholder="MM/YY" type="text" required>
-			            </div>
-			        </div>
+	            	<div class="col s4 offset-s8">
+	            		<button class="btn white black-text wide waves-effect">
+		        			Pay With PayPal
+		        		</button>
+	            	</div>
 		        </div>
 		    </div>
-		    <div class="divider"></div>
-		    <div class="section">
+		    <div class="section right">
 		    	<p class="vertical-align">
 			    	<span>I want the amount I donated to remain anonymous</span>
 			    	<label class="check-box">
@@ -139,10 +104,6 @@
 				    </label>
 				</p>
 		    </div>
-		    <div class="divider"></div>
-		    <div class="section right">
-	        	<button class="btn-large red lighten-1 waves-effect waves-light modal-trigger" href="#modalCheckout">Confirm and Sponsor</button>
-	        </div>
 		</div>
     </div>
 </div>

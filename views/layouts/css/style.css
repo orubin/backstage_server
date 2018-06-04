@@ -1,0 +1,23 @@
+.rtl {
+	direction:rtl;
+}
+.text-style {
+	color: #ef5350;
+}
+.text-align-right {
+	text-align: right !important;
+}
+.vertical-align {
+    display: flex;
+	align-items: center;
+}
+.thick {
+    font-weight: bold;
+}
+.flip {
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
