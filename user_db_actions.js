@@ -147,7 +147,51 @@ module.exports = {
 		userFollow.DeleteUser;
 	},
 
-	ClaimReward: function (user, reward_id) {
+	ClaimReward: function (user, reward_id, creator_id, amount) {
+		// increase amount of creator funding
+		
+		const query = 'SELECT funding_amount FROM creator where id = ' + creator_id;
+		// Set the prepare flag in the query options
+		client.execute(query, function (err, result) {
+			var funding_amount = result.rows[0];
+			const query = 'UPDATE creator where id = ' + creator_id + ' SET funding_amount = ' + funding_amount + amount;
+			client.execute(query, function (err, result) {
+				console.log('Error + ' + err);
+			});
+		});
+
+		var reward = new models.instance.UserReward({
+			id: uuid(), // Check for UUID function
+			user_email: user.email,
+			creator_id: creator_id,
+			reward_id: reward_id,
+			amount: amount,
+			updated_at: Date.now(),
+			created_at: Date.now()
+		});
+		reward.save(function(err){
+			if(err) {
+				return done(err);
+			}
+		});
+	},
+
+	UnClaimReward: function (user, reward_id, creator_id, amount) {
+		// decrease amount of creator funding
+		const query = 'SELECT funding_amount FROM creator where id = ' + creator_id;
+		// Set the prepare flag in the query options
+		client.execute(query, function (err, result) {
+			var funding_amount = result.rows[0];
+			const query = 'UPDATE creator where id = ' + creator_id + ' SET funding_amount = ' + funding_amount - amount;
+			client.execute(query, function (err, result) {
+				console.log('Error + ' + err);
+			});
+		});
+
+		const query2 = 'DELETE from user_reward where creator_id = ' + creator_id + ' AND user_email = ' + user.email;
+		client.execute(query2, function (err, result) {
+			console.log('Error + ' + err);
+		});
 
 	}
 }

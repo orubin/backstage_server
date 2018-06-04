@@ -115,6 +115,13 @@ routes.post('/delete_user', function (req, res) {
 routes.get('/load_user', function (req, res) {
   user_db_actions.LoadUser(req, res, client);
 });
+routes.get('/payment_completed', function (req, res) {
+  user_db_actions.ClaimReward(req, res, client);
+  res.render('layouts/payment_completed', {
+    user: req.user, // get the user out of session and pass to template
+    title: 'Payment Completed'
+  });
+});
 
 routes.get('/creators', function (req, res) {
   var creators = JSON.parse('{"creators":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
