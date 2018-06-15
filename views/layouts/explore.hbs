@@ -1,14 +1,17 @@
 <style>
     .custom-chip {
-    	color: black !important;
-    	background-color: white !important;
     	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    	cursor: pointer;
+    	border-bottom: solid white !important;
+    }
+    .custom-chip .card-content .card-end .category{
+    	color: #757575;
     }
     .active-chip {
-    	color: white !important;
-    	background-color: #ef5350 !important;
-    	cursor: pointer;    	
+    	cursor: pointer;
+    	border-bottom: solid #ef5350 !important;
+    }
+    .active-chip .card-content .card-end .category{
+    	color: black;
     }
     .thick {
         font-weight: bold;
@@ -23,13 +26,58 @@
     .middle {
     	margin-top: 15px;
     }
+    .card-chips span .card {
+    	margin: 1.5% !important;
+    	cursor: pointer;
+    }
+    .card-chips span .card .card-content {
+    	padding: 5px;
+    }
+    .explore-avatar {
+    	position: relative;
+		top: -155px;
+    }
+    .explore-circle {
+    	position: relative;
+		top: -150px;
+    }
+    .explore-circle .target .small {
+    	font-size: 45px;
+    }
+    .larger-font {
+    	font-size: 120%;
+    }
+    #explore-carousel .owl-stage-outer .owl-stage .owl-item {
+        height: 11%;
+    }
+    .owl-item.center .card .explore-card {
+    	visibility: visible;
+    }
+    .owl-item .card .explore-card {
+    	visibility: hidden;
+    }
+    .owl-item .card .card-image {
+		-webkit-filter: blur(5px);
+		-moz-filter: blur(5px);
+		-o-filter: blur(5px);
+		-ms-filter: blur(5px);
+		filter: blur(5px);
+    }
+    .owl-item.center .card .card-image {
+		-webkit-filter: blur(0px);
+		-moz-filter: blur(0px);
+		-o-filter: blur(0px);
+		-ms-filter: blur(0px);
+		filter: blur(0px);
+    }
+
 </style>
 <script>
-	function selectChip(chip) {
-		if (chip.className.includes("custom")) {
-			chip.className = "chip active-chip";
+	function selectChip(card) {
+		if (card.className.includes("custom")) {
+			card.className = "card col s2 active-chip";
 		} else {
-			chip.className = "chip custom-chip";
+			card.className = "card col s2 custom-chip";
 		}
 	}
 </script>
@@ -40,37 +88,215 @@
 		    <div class="container">
 		    	<div class="section">
 		    		<div class="row">
-		    			<h3 class="right thick">{{__ 'Explore Creators Worth Sponsering'}}</h3>
+		    			<h5 class="center thick">This Week's Suggested Artists</h5>
 		    		</div>
 		    		<div class="row">
-		    			<h6 class="text-style right">{{__ 'Filter Creators By Category'}}</h6>
+		    			<div id="explore-carousel" class="owl-carousel owl-theme">
+						  	<div>
+								<div class="card">
+								    <div class="card-image">
+								    	<img src="https://lorempixel.com/800/400/nightlife/3">
+								    </div>
+								    <div class="explore-card">
+								    	<p class="grey-text text-lighten-2 col s4 offset-s8" style="position: relative; top: -145px; font-size: 75%;">FEATURED CREATOR</p>
+										<div class="col s9 offset-s3 vertical-align explore-avatar">
+											<div class="col s9 white-text larger-font">
+												<div class="rtl text-align-right thick">
+													<span class="text-style">
+														Kevin Stewart
+													</span>
+													is creating internet videos and podcasts
+												</div>
+											</div>
+											<div class="col">
+												<a><img class="circle" style="width: 50px;" src="https://lorempixel.com/200/200/people/8"></a>
+											</div>
+										</div>
+										<div class="col s6 offset-s6 vertical-align explore-circle">
+											<div class="vertical-align">
+								                <div class="left text-align-right">
+								                    <p class="white-text" style="font-size: 80%;">1,098 Supporters</p>
+								                </div>
+								    			<i class="material-icons right text-style align-middle">group</i>
+								    		</div>
+										    <div class="col s6 white-text">
+										        <div class="text-align-right" style="font-size: 80%;">Target Reached</div>
+										    </div>
+										    <div class="col target">
+												<div class="c100 p75 small custom-color">
+										            <span class="white-text">75%</span>
+										            <div class="slice flip">
+										                <div class="bar"></div>
+										                <div class="fill"></div>
+										            </div>
+										        </div>
+										    </div>
+										</div>
+									</div>
+								</div>
+						  	</div>
+						  	<div>
+								<div class="card">
+								    <div class="card-image">
+								    	<img src="https://lorempixel.com/800/400/nightlife/5">
+								    </div>
+								    <div class="explore-card">
+								    	<p class="grey-text text-lighten-2 col s4 offset-s8" style="position: relative; top: -145px; font-size: 75%;">FEATURED CREATOR</p>
+										<div class="col s9 offset-s3 vertical-align explore-avatar">
+											<div class="col s9 white-text larger-font">
+												<div class="rtl text-align-right thick">
+													<span class="text-style">
+														Kevin Stewart
+													</span>
+													is creating internet videos and podcasts
+												</div>
+											</div>
+											<div class="col">
+												<a><img class="circle" style="width: 50px;" src="https://lorempixel.com/200/200/people/3"></a>
+											</div>
+										</div>
+										<div class="col s6 offset-s6 vertical-align explore-circle">
+											<div class="vertical-align">
+								                <div class="left text-align-right">
+								                    <p class="white-text" style="font-size: 80%;">1,098 Supporters</p>
+								                </div>
+								    			<i class="material-icons right text-style align-middle">group</i>
+								    		</div>
+										    <div class="col s6 white-text">
+										        <div class="text-align-right" style="font-size: 80%;">Target Reached</div>
+										    </div>
+										    <div class="col target">
+												<div class="c100 p75 small custom-color">
+										            <span class="white-text">75%</span>
+										            <div class="slice flip">
+										                <div class="bar"></div>
+										                <div class="fill"></div>
+										            </div>
+										        </div>
+										    </div>
+										</div>
+									</div>
+								</div>
+						  	</div>
+						  	<div>
+								<div class="card">
+								    <div class="card-image">
+								    	<img src="https://lorempixel.com/800/400/nightlife/6">
+								    </div>
+								    <div class="explore-card">
+								    	<p class="grey-text text-lighten-2 col s4 offset-s8" style="position: relative; top: -145px; font-size: 75%;">FEATURED CREATOR</p>
+										<div class="col s9 offset-s3 vertical-align explore-avatar">
+											<div class="col s9 white-text larger-font">
+												<div class="rtl text-align-right thick">
+													<span class="text-style">
+														Kevin Stewart
+													</span>
+													is creating internet videos and podcasts
+												</div>
+											</div>
+											<div class="col">
+												<a><img class="circle" style="width: 50px;" src="https://lorempixel.com/200/200/people/6"></a>
+											</div>
+										</div>
+										<div class="col s6 offset-s6 vertical-align explore-circle">
+											<div class="vertical-align">
+								                <div class="left text-align-right">
+								                    <p class="white-text" style="font-size: 80%;">1,098 Supporters</p>
+								                </div>
+								    			<i class="material-icons right text-style align-middle">group</i>
+								    		</div>
+										    <div class="col s6 white-text">
+										        <div class="text-align-right" style="font-size: 80%;">Target Reached</div>
+										    </div>
+										    <div class="col target">
+												<div class="c100 p75 small custom-color">
+										            <span class="white-text">75%</span>
+										            <div class="slice flip">
+										                <div class="bar"></div>
+										                <div class="fill"></div>
+										            </div>
+										        </div>
+										    </div>
+										</div>
+									</div>
+								</div>
+						  	</div>
 		    		</div>
+		    		<br>
 		    		<div class="row">
-		    			<div class="input-field col s3 explore-search">
-				          	<i class="material-icons prefix">search</i>
-				          	<input id="icon_prefix" type="text" class="validate">
-				          	<label for="icon_prefix">{{__ 'Search Creator By Name'}}</label>
-				        </div>
-			    		<div class="right">
-			    			<div class="chip active-chip" onClick="selectChip(this)" id="all">
-							    View All
+		    			<h6 class="center thick">{{__ 'Explore Creators Worth Sponsering'}}</h6>
+		    		</div>
+		    		<div class="row card-chips">
+		    			<span>
+							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							    <div class="card-content">
+							        <div class="section row card-end">
+							            <div class="center category">
+							            	Music
+							            </div>
+							    		<div class="text-style center">
+							    			198 Creators
+							            </div>
+								    </div>
+							    </div>
 							</div>
-			    			<div class="chip custom-chip" onClick="selectChip(this)">
-							    Music
+						</span>
+						<span>
+							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							    <div class="card-content">
+							        <div class="section row card-end">
+							            <div class="center category">
+							            	Technology
+							            </div>
+							    		<div class="text-style center">
+							    			198 Creators
+							            </div>
+								    </div>
+							    </div>
 							</div>
-							<div class="chip custom-chip" onClick="selectChip(this)">
-							    Technology
+						</span>
+						<span>
+							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							    <div class="card-content">
+							        <div class="section row card-end">
+							            <div class="center category">
+							            	Art
+							            </div>
+							    		<div class="text-style center">
+							    			198 Creators
+							            </div>
+								    </div>
+							    </div>
 							</div>
-							<div class="chip custom-chip" onClick="selectChip(this)">
-							    Art
+						</span>
+						<span>
+							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							    <div class="card-content">
+							        <div class="section row card-end">
+							            <div class="center category">
+							            	Podcasts
+							            </div>
+							    		<div class="text-style center">
+							    			198 Creators
+							            </div>
+								    </div>
+							    </div>
 							</div>
-							<div class="chip custom-chip" onClick="selectChip(this)">
-							    Podcasting
+						</span>
+						<span>
+							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							    <div class="card-content">
+							        <div class="section row card-end">
+							            <div class="center category">
+							            	Comedy
+							            </div>
+							    		<div class="text-style center">
+							    			198 Creators
+							            </div>
+								    </div>
+							    </div>
 							</div>
-							<div class="chip custom-chip" onClick="selectChip(this)">
-							    Comedy
-							</div>
-						</div>
+						</span>
 		    		</div>
 		    	</div>
 		    </div>
@@ -102,12 +328,12 @@
 			    	<div class="row center">
 					  	<ul class="pagination">
 						    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-						    <li class="active"><a href="#!">1</a></li>
-						    <li class="waves-effect"><a href="#!">2</a></li>
-						    <li class="waves-effect"><a href="#!">3</a></li>
-						    <li class="waves-effect"><a href="#!">4</a></li>
-						    <li class="waves-effect"><a href="#!">5</a></li>
-						    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+						    <li class="active"><a href="#1">1</a></li>
+						    <li class="waves-effect"><a href="#2">2</a></li>
+						    <li class="waves-effect"><a href="#3">3</a></li>
+						    <li class="waves-effect"><a href="#4">4</a></li>
+						    <li class="waves-effect"><a href="#5">5</a></li>
+						    <li class="waves-effect"><a href="#6"><i class="material-icons">chevron_right</i></a></li>
 					  	</ul>
 			    	</div>
 		    	</div>
