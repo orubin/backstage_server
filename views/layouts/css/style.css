@@ -21,3 +21,6 @@
   -o-transform: scaleX(-1);
   transform: scaleX(-1);
 }
+.owl-dot.active span {
+  background-color: #ef5350 !important;
+}
