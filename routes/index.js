@@ -205,6 +205,10 @@ routes.get('/messages', function (req, res) {
   });
 });
 
+routes.get('/insertdata', function(req, res) {
+  creator_db_actions.InsertContent(client);
+});
+
 routes.get('/categories', function (req, res) {
   var categories = JSON.parse('{"categories":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
   res.render('layouts/categories', {

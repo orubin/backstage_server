@@ -1,22 +1,29 @@
-/*
-	Creator Table:
-    1. Name - String
-    2. Email - String
-    3. Password - String
-    4. Profile Image - Image
-    8. PayPal Account - String (email)
-    9. Description - String
-    10. Welcome Video - String(Youtube Link)
+var models = require('express-cassandra');
 
-    Reward Table:
-    1. Name - String
-    2. Image - String
-    3. Price - Number
-    4. Description - String
-*/
+models.setDirectory( __dirname + '/models').bind(
+    {
+        clientOptions: {
+            contactPoints: ['127.0.0.1'],
+            protocolOptions: { port: 9042 },
+            keyspace: 'backstage_db',
+            queryOptions: {consistency: models.consistencies.one}
+        },
+        ormOptions: {
+            defaultReplicationStrategy : {
+                class: 'SimpleStrategy',
+                replication_factor: 1
+            },
+            migration: 'drop'
+        }
+    },
+    function(err) {
+        if(err) throw err;
+    }
+);
 
 module.exports = {
 	InsertCreator : function (req, res, client){
+	
         const query = 'INSERT INTO creators (email, name, phone, address, city) VALUES (?,?,?,?,?)'; 
         const params = [ post.email, post.name, post.phone, post.address, post.city ];
 		client.execute(function(err, keyspace){
@@ -78,5 +85,67 @@ module.exports = {
 		// 	return (result.rows[0]);
 		// });
 		return '{"creators":[{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}, {"name":"John2", "description":"Doe2", "profile_picture":"picture2", "cover_picture":"cover_picture2", "intro_video":"intro_video2"}]}';
+	},
+	InsertContent : function (client){
+
+		var creators_names = ['Hadag Nahash','Mosh Ben Ari','Idan Raichel','Jane Bordeaux','Subliminal'];
+		var creators_usernames = ['hadagnahash', 'moshbenari', 'idanraichel', 'janebordeaux', 'subliminal'];
+		var creators_taglines = ['#1 Hip Hop Band in the Middle East', 'Authentic and down to earth', 'Bringing world sound to your ears', 'We are a band from Tel-Aviv, making Live n kickin american folk-country style music in Hebrew.', 'Israel\'s rap wizard'];
+		var overview0 = 'Hadag Nahash has been a major contributor to the Israeli hip-hop scene, and is presently one of Israels most successful bands, with seven studio albums released to date. The bands songs call for peace, tolerance and equality, and include political and social protest. Most songs are written by Shaanan Street, the bands lead vocalist.';
+		var overview1 = 'Ben Ari was born in Afula, Israel in 1970. He comes from a Yemenite and Iraqi Jewish background. He first discovered music as a child through the traditional Jewish and ethnic chants that were part of his everyday life. He started playing music at the age of 16 and since he has studied music around the world, including in India, Sahara and Sinai. He plays various string instruments such as acoustic and classic guitar, Indian sarod, Persian tar, Turkish jumbush, Moroccan ginberi and bass.';
+		var overview2 = 'Idan Raichel was born in Kfar Saba, Israel. He began to play the accordion at the age of nine. He was attracted to gypsy music and tango, and studied jazz piano in high school.Raichel served in the Israel Defense Forces army band at the age of 18, performing covers of Israeli and Western pop hits at military bases around the country.[4] As the musical director of the group, he learned to do arrangements and produce live shows.';
+		var overview3 = '';
+		var overview4 = 'Subliminal was born in Tel Aviv, Israel to a Persian Jewish mother and Tunisian Jewish father. Subliminal started performing music at age 12, and at age 15 met Yoav Eliasi. The two quickly became friends as a result of their mutual love of hip-hop.';
+		var creators_overviews = [overview0, overview1, overview2, overview3, overview4];
+		var i;
+		for (i = 0; i < creators_names.length; i++) {
+			var creator = new models.instance.Creator({
+				id: models.uuid(),
+				name: creators_names[i],
+				username: creators_usernames[i],
+				email: creators_usernames[i] + '@backstage.com',
+				password: '',
+				paypal_address: creators_usernames[i] + '@gmail.com',
+				tagline: creators_taglines[i],
+				overview: creators_overviews[i],
+				video: 'https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+				sponsors: parseInt(5000 / i+1),
+				monthly_income: parseInt(25000 / i+1),
+				profile: 'https://cdn.thinglink.me/api/image/608247153780850690/1240/10/scaletowidth',
+				cover_picture: 'https://lorempixel.com/400/200/city',
+				category_id: 1,
+				updated_at: Date.now(),
+				created_at: Date.now()
+			});
+	
+			creator.save(function(err){
+				if(err) {
+					console.log(err);
+				}
+			});
+		}
+
+		var rewards_titles = ['$5 donation - Starter Bro', '$10 donation - Pro Bro', '15$ donation - Super Bro', '$20 donation - True Bro'];
+		var rewards_price = [5, 10, 15, 20];
+		var rewards_description = ['Become a Starter Bro: you get early access to all the videos we make + weekly updated Spotify secret playlist', 'Become a Pro Bro: you get a free ticket to our show when we perform in your city.', 'Become a Super Bro: you get backstage entry to you and a friend to meet us after the show and talk shit. BYOB.', 'Become a True Bro: you get all rewards + kiss from mooky'];
+		var rewards_images = ['https://lorempixel.com/400/200/city', 'https://lorempixel.com/400/200/city', 'https://media.istockphoto.com/photos/gift-box-with-white-background-picture-id516815936', 'https://media.istockphoto.com/photos/gift-box-with-white-background-picture-id516815936'];
+
+		for (i = 0; i < rewards_titles.length; i++) {
+			var reward = new models.instance.CreatorRewards({
+				id: models.uuid(),
+				title: rewards_titles[i],
+				price: rewards_price[i],
+				description: rewards_description[i],
+				img: rewards_images[i],
+				updated_at: Date.now(),
+				created_at: Date.now()
+			});
+	
+			reward.save(function(err){
+				if(err) {
+					console.log(err);
+				}
+			});
+		}
 	}
 }

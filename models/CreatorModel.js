@@ -14,7 +14,7 @@ module.exports = {
         funding_amount: "int",
         monthly_income: "int",
         sponsors: "int",
-        category_id: "text",
+        category_id: "int",
         created_at: "timestamp",
         updated_at: "timestamp"
     },
