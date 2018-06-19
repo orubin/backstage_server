@@ -316,12 +316,12 @@
 					  </div>
 		    		</div>
 		    		<div class="row">
-			    		{{#each data}}
-			    			{{{renderStart this @index}}}
-			    			<div class="col s4">
-			    				{{>creatorcard data}}
-			    			</div>
-			    			{{{renderEnd this @index data}}}
+						{{#each creators}}
+							{{{renderStart this @index}}}
+								<div class="col s4">
+									{{>creatorcard this}}
+								</div>
+			    			{{{renderEnd this @index}}}
 			    		{{/each}}
 			    		{{{renderCheck data}}}
 			    	</div>

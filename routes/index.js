@@ -32,34 +32,37 @@ routes.get('/thankyou', (request, response) => {
 })
 
 routes.get('/explore', (request, response) => {
-  var data = [1,2,3,4,5,6,7,8,9,10];
-  if (request.cookies.i18n !== undefined){
-    response.setLocale(request.cookies.i18n);
-  }
-  response.render('layouts/explore', {
-    user : request.user, // get the user out of session and pass to template
-    data : data,
-    helpers: {
-            renderStart: function (data, i) {
-              if (i%3==0) {
-                return ("<div class='row'>");
-              }
-            },
-            renderEnd: function (data, i, arr) {
-              if (i%3!=0) {
-                if (i%3==2) {
+  creator_db_actions.LoadCreators(client, function(error, result){
+    var data = [1,2,3,4,5,6,7,8,9,10];
+    if (request.cookies.i18n !== undefined){
+      response.setLocale(request.cookies.i18n);
+    }
+    response.render('layouts/explore', {
+      user : request.user, // get the user out of session and pass to template
+      data : data,
+      creators : JSON.parse(result),
+      helpers: {
+              renderStart: function (data, i) {
+                if (i%3==0) {
+                  return ("<div class='row'>");
+                }
+              },
+              renderEnd: function (data, i) {
+                if (i%3!=0) {
+                  if (i%3==2) {
+                    return ("</div>");
+                  }
+                }
+              },
+              renderCheck: function (data) {
+                if (data.length%3!=0) {
                   return ("</div>");
                 }
               }
-            },
-            renderCheck: function (data) {
-              if (data.length%3!=0) {
-                return ("</div>");
-              }
-            }
-    },
-    title: 'BackStage'
-  })
+      },
+      title: 'BackStage'
+    })
+  });
 })
 
 // Users
