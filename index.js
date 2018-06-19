@@ -106,3 +106,4 @@ app.listen(port, (err) => {
 //owl-carousel
 app.use('/modules', express.static(path.join(__dirname, 'node_modules')))
 app.use('/css', express.static(path.join(__dirname, 'views/layouts/css')))
+app.use('/images', express.static(path.join(__dirname, 'views/images')))

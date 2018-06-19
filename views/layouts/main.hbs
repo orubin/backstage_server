@@ -65,6 +65,9 @@
     .circle-fees.c100 > span {
     	top: -25%;
     }
+    .hompage-image {
+    	width: 100%;
+    }
 </style>
 {{> startfile}}
     {{> header}}
@@ -93,14 +96,9 @@
     	</div>
     {{else}}
 		<div>
-		    <div class="section row intro-section">
-		    	<div class="col s6 carousel-container">
-					<div class="carousel carousel-slider">
-					    <a class="carousel-item"><img src="https://lorempixel.com/400/200/food/1"></a>
-					    <a class="carousel-item"><img src="https://lorempixel.com/400/200/food/2"></a>
-					    <a class="carousel-item"><img src="https://lorempixel.com/400/200/food/3"></a>
-					    <a class="carousel-item"><img src="https://lorempixel.com/400/200/food/4"></a>
-					</div>
+		    <div class="section row intro-section" style="padding:0px !important;">
+		    	<div class="col s7" style="padding:0px !important; position: absolute; z-index: -1;">
+		    		<img class="hompage-image" src="/images/band.jpg">
 		    	</div>
 		    	<div class="col offset-s6">
 		    		<h2 class="text-style rtl header">{{__ 'We Help Artists Like You'}}</h1>
