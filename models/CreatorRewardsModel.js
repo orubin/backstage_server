@@ -7,7 +7,7 @@ module.exports = {
         title: "text",
         description: "text",
         img: "text",
-        creator_id: "int",
+        creator_username: "text",
         created_at: "timestamp",
         updated_at: "timestamp"
     },

@@ -124,11 +124,15 @@ routes.get('/payment_completed', function (req, res) {
 });
 
 routes.get('/creators', function (req, res) {
-  var creators = JSON.parse('{"creators":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
-  res.render('layouts/creators', {
-      user: req.user, // get the user out of session and pass to template
-      creators: creators,
-      title: 'Creators'
+  //var creators = JSON.parse('{"creators":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
+  creator_db_actions.LoadCreators(client, function(error, result){
+    var data = {};
+    data['creators'] = JSON.parse(result);
+    res.render('layouts/creators', {
+        user: req.user, // get the user out of session and pass to template
+        creators: data,
+        title: 'Creators'
+    });
   });
 });
 
@@ -174,7 +178,7 @@ routes.get('/about_us', function (req, res) {
 routes.get('/profile', require('connect-ensure-login').ensureLoggedIn(), function (req, res) {
   var categories_and_creators_ids = user_db_actions.LoadCategoriesAndCreators(req.user.email);
   var categories = category_db_actions.LoadCategories(categories_and_creators_ids[0]);
-  var creators = creator_db_actions.LoadCreators(categories_and_creators_ids[1]);
+  var creators = creator_db_actions.LoadCreators(client, categories_and_creators_ids[1]);
   res.render('layouts/profile', {
       user: req.user, // get the user out of session and pass to template
       categories: categories,
@@ -207,6 +211,7 @@ routes.get('/messages', function (req, res) {
 
 routes.get('/insertdata', function(req, res) {
   creator_db_actions.InsertContent(client);
+  res.redirect('/');
 });
 
 routes.get('/categories', function (req, res) {
