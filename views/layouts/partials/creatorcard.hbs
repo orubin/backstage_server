@@ -31,41 +31,43 @@
         font-size: 75%;
     }
 </style>
-<div class="card">
-    <div class="card-image">
-    	<img src="https://lorempixel.com/400/200/people/1">
-    </div>
-    <div class="red lighten-2 white-text artist chip left">Artist</div>
-    	<a><img class="circle avatar right" src="https://lorempixel.com/200/200/people/9"></a>
-    <div class="card-content">
-    	<div class="section" style="text-align: right;">
-        	<p class="rtl"><span class="text-style">Kevin Stewart</span> is creating internet videos and podcasts</p>
+<a href="/creators/{{username}}">
+    <div class="card">
+        <div class="card-image">
+            <img src="https://lorempixel.com/400/200/people/1">
         </div>
-        <div class="section creator-descrip" style="text-align: right;">
-            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-        </div>
-        <div class="divider"></div>
-        <div class="section row card-end">
-        	<span class="col s6">
-                <div class="left text-align-right">
-                    <p class="card-text">1,098</p>
-                    <p class="card-text">Supporters</p>
-                </div>
-    			<i class="material-icons right text-style align-middle">group</i>
-        	</span>
-        	<span class="col s6 vertical-align">
-                <div class="left text-align-right">
-                    <p class="card-text">Monthly</p>
-                    <p class="card-text">Target</p>
-                </div>
-        		<div class="c100 p75 small right custom-color white">
-                    <span>75%</span>
-                    <div class="slice flip">
-                        <div class="bar"></div>
-                        <div class="fill"></div>
+        <div class="red lighten-2 white-text artist chip left">Artist</div>
+            <a><img class="circle avatar right" src="https://lorempixel.com/200/200/people/9"></a>
+        <div class="card-content">
+            <div class="section" style="text-align: right;">
+                <p class="rtl"><span class="text-style">{{name}}</span> - {{tagline}}</p>
+            </div>
+            <div class="section creator-descrip" style="text-align: right;">
+                <p class="description">{{description}}</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section row card-end">
+                <span class="col s6">
+                    <div class="left text-align-right">
+                        <p class="card-text">{{sponsors}}</p>
+                        <p class="card-text">Supporters</p>
                     </div>
-                </div>
-        	</span>
-	    </div>
+                    <i class="material-icons right text-style align-middle">group</i>
+                </span>
+                <span class="col s6 vertical-align">
+                    <div class="left text-align-right">
+                        <p class="card-text">Monthly</p>
+                        <p class="card-text">Target</p>
+                    </div>
+                    <div class="c100 p75 small right custom-color white">
+                        <span>75%</span>
+                        <div class="slice flip">
+                            <div class="bar"></div>
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
     </div>
-</div>
+</a>
