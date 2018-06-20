@@ -82,7 +82,6 @@ module.exports = {
 						obj['rewards'] = JSON.parse(JSON.stringify(result.rows));
 						obj['category'] = JSON.parse('{"type": "Music","img": "https://musicaustralia.org.au/wp-content/uploads/2017/02/livemusic-portdhiver-web-ed.jpg"}');
 						obj['posts'] = JSON.parse('[{"title": "hello Fish Snake","body": "this is our last tour day, see you next year"},{"title": "hello Pish Snake","body": "this is our last tour week, see you next year"},{"title": "hello Kish Snake","body": "this is our last tour month, see you next year"},{"title": "hello Mish Snake", "body": "this is our last tour season, see you next year"}]');
-						//console.log("DataZZZ:" + JSON.stringify(obj));
 						var result = JSON.stringify(obj);
 						return res(null, result);
 					}
@@ -109,7 +108,17 @@ module.exports = {
 			return res(null, JSON.stringify(result.rows));
 		});
 	},
-	LoadCreatorsWithCategory : function (client, ids){
+	LoadCreatorsWithCategory : function (client, category_id, res){
+		const query = 'SELECT * FROM creator where category_id = ? ALLOW FILTERING';
+		const params = [ category_id ];
+        client.execute(query, params, { prepare: true }, function (err, result) {
+			if(err) {
+				console.log(err);
+			}
+			return res(null, JSON.stringify(result.rows));
+		});
+	},
+	LoadCreatorsWithCategories : function (client, ids){
 		const query = 'SELECT * FROM creator WHERE category_id in (?)';
         // Set the prepare flag in the query options
         // client.execute(query, [ids] function (err, result) {

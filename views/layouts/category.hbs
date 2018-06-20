@@ -1,5 +1,11 @@
 {{> startfile}} 
 {{> header}}
-
+		    		<div class="row">
+						{{#each data}}
+								<div class="col s4">
+									{{>creatorcard this}}
+								</div>
+			    		{{/each}}
+			    	</div>
 {{> footer}}
 {{> endfile}}

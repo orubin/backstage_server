@@ -129,7 +129,7 @@ module.exports = {
 
 	FollowCreator: function (user, creator_id) {
 		var userFollow = new models.instance.UserCreators({
-			id: uuid(), // Check for UUID function
+			id: models.uuid(),
 			user_email: user.email,
 			creator_id: creator_id,
 			updated_at: Date.now(),
@@ -161,7 +161,7 @@ module.exports = {
 		});
 
 		var reward = new models.instance.UserReward({
-			id: uuid(), // Check for UUID function
+			id: models.uuid(),
 			user_email: user.email,
 			creator_id: creator_id,
 			reward_id: reward_id,
