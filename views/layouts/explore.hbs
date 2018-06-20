@@ -314,7 +314,7 @@
 						    	<option value="2">{{__ 'Date'}}</option>
 					    	</select>
 					  	</div>
-					  	<span class="text-style right thick middle">10,760 {{__ 'Creators Found'}}</span>
+					  	<span class="text-style right thick middle">{{creators.length}} {{__ 'Creators Found'}}</span>
 					  </div>
 		    		</div>
 		    		<div class="row">
@@ -325,7 +325,7 @@
 								</div>
 			    			{{{renderEnd this @index}}}
 			    		{{/each}}
-			    		{{{renderCheck data}}}
+			    		{{{renderCheck this @index}}}
 			    	</div>
 			    	<div class="row center">
 					  	<ul class="pagination">
