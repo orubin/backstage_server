@@ -23,7 +23,7 @@ models.setDirectory( __dirname + '/models').bind(
 
 module.exports = {
 	InsertCreator : function (req, res, client){
-		var post = req.body;
+	
         const query = 'INSERT INTO creators (email, name, phone, address, city) VALUES (?,?,?,?,?)'; 
         const params = [ post.email, post.name, post.phone, post.address, post.city ];
 		client.execute(function(err, keyspace){
