@@ -71,7 +71,7 @@ routes.get('/explore', (request, response) => {
 
 routes.post('/signup', passport.authenticate('local-signup', {
   successRedirect : '/', // redirect to the secure profile section
-  failureRedirect : '/', // redirect back to the signup page if there is an error
+  failureRedirect : '/loginfail', // redirect back to the signup page if there is an error
   failureFlash : true // allow flash messages
 }));
 // routes.post('/signin', function (req, res) {
