@@ -47,8 +47,9 @@
     .larger-font {
     	font-size: 120%;
     }
-    #explore-carousel .owl-stage-outer .owl-stage .owl-item {
-        height: 11%;
+    #explore-carousel .owl-dots {
+    	position: relative;
+    	top: -125px;
     }
     .owl-item.center .card .explore-card {
     	visibility: visible;
@@ -221,8 +222,8 @@
 									</div>
 								</div>
 						  	</div>
+						</div>
 		    		</div>
-		    		<br>
 		    		<div class="row">
 		    			<h6 class="center thick">{{__ 'Explore Creators Worth Sponsering'}}</h6>
 		    		</div>
@@ -299,6 +300,7 @@
 						</span>
 		    		</div>
 		    	</div>
+
 		    </div>
 	    </div>
 	    <div class="grey lighten-3">
@@ -312,18 +314,18 @@
 						    	<option value="2">{{__ 'Date'}}</option>
 					    	</select>
 					  	</div>
-					  	<span class="text-style right thick middle">10,760 {{__ 'Creators Found'}}</span>
+					  	<span class="text-style right thick middle">{{creators.length}} {{__ 'Creators Found'}}</span>
 					  </div>
 		    		</div>
 		    		<div class="row">
 						{{#each creators}}
 							{{{renderStart this @index}}}
-								<div class="col s4">
+								<div class="col s4" href="creators/{{username}}">
 									{{>creatorcard this}}
 								</div>
 			    			{{{renderEnd this @index}}}
 			    		{{/each}}
-			    		{{{renderCheck data}}}
+			    		{{{renderCheck this @index}}}
 			    	</div>
 			    	<div class="row center">
 					  	<ul class="pagination">

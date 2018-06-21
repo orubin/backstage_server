@@ -42,7 +42,7 @@ module.exports = {
 
 	findByEmailDb: function (email, cb) {
 		process.nextTick(function () {
-			var select = "SELECT email, password, name FROM user WHERE email=?";
+			var select = "SELECT email, password, name FROM user WHERE email=? ALLOW FILTERING";
 			client.execute(select, [email], function (err, result) {
 				if (err != null) {
 					return cb(err, null);

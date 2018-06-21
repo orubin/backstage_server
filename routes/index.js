@@ -33,13 +33,11 @@ routes.get('/thankyou', (request, response) => {
 
 routes.get('/explore', (request, response) => {
   creator_db_actions.LoadCreators(client, function(error, result){
-    var data = [1,2,3,4,5,6,7,8,9,10];
     if (request.cookies.i18n !== undefined){
       response.setLocale(request.cookies.i18n);
     }
     response.render('layouts/explore', {
       user : request.user, // get the user out of session and pass to template
-      data : data,
       creators : JSON.parse(result),
       helpers: {
               renderStart: function (data, i) {
@@ -71,8 +69,8 @@ routes.get('/explore', (request, response) => {
 });*/
 
 routes.post('/signup', passport.authenticate('local-signup', {
-  successRedirect : '/profile', // redirect to the secure profile section
-  failureRedirect : '/login', // redirect back to the signup page if there is an error
+  successRedirect : '/', // redirect to the secure profile section
+  failureRedirect : '/', // redirect back to the signup page if there is an error
   failureFlash : true // allow flash messages
 }));
 // routes.post('/signin', function (req, res) {
@@ -104,8 +102,8 @@ routes.post('/signup', passport.authenticate('local-signup', {
 
 // process the login form
 routes.post('/login', passport.authenticate('local-login', {
-  successRedirect: '/profile', // redirect to the secure profile section
-  failureRedirect: '/login', // redirect back to the signup page if there is an error
+  successRedirect: '/', // redirect to the secure profile section
+  failureRedirect: '/', // redirect back to the signup page if there is an error
   failureFlash: true // allow flash messages
 }));
 
