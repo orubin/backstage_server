@@ -69,6 +69,7 @@
     	width: 100%;
     }
 </style>
+
 {{> startfile}}
     {{> header}}
 	{{#if user}}
@@ -199,6 +200,9 @@
 		{{>recommended}}
 		<div id="modalSignup" class="modal">
         	{{> signup registrationType=true }}
+    	</div>
+    	<div id="modal1" class="modal msgModal">
+    		<h1>{{msg}}</h1>
     	</div>
 	{{/if}}
     {{> footer}}

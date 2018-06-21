@@ -36,6 +36,7 @@ routes.get('/explore', (request, response) => {
     if (request.cookies.i18n !== undefined){
       response.setLocale(request.cookies.i18n);
     }
+    console.log(request.user);
     response.render('layouts/explore', {
       user : request.user, // get the user out of session and pass to template
       creators : JSON.parse(result),
@@ -103,9 +104,17 @@ routes.post('/signup', passport.authenticate('local-signup', {
 // process the login form
 routes.post('/login', passport.authenticate('local-login', {
   successRedirect: '/', // redirect to the secure profile section
-  failureRedirect: '/', // redirect back to the signup page if there is an error
+  failureRedirect: '/loginfail', // redirect back to the signup page if there is an error
   failureFlash: true // allow flash messages
 }));
+routes.get('/loginfail', function(req, res) {
+  var theMsg = req.flash('signupMessage');
+  res.render('layouts/main', {
+    user: req.user, // get the user out of session and pass to template
+    title: 'BackStage',
+    msg: theMsg
+  });
+});
 
 routes.post('/update_user', function (req, res) {
   user_db_actions.UpdateUser(req, res, client);

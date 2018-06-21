@@ -136,10 +136,10 @@
     </div>
 </nav>
 <div id="modalSignup" class="modal fullscreen-modal">
-    {{> signup registrationType=true }}
+    {{> signup}}
 </div>
 <div id="modalLogin" class="modal fullscreen-modal">
-    {{> signup registrationType=false }}
+    {{> login}}
 </div>
 <ul id='dropdown' class='dropdown-content'>
     <li><a href="/" class="grey-text text-darken-3 text-align-right">{{__  'Home'}}</a></li>
@@ -149,5 +149,5 @@
 <ul id='user-dropdown' class='dropdown-content'>
     <li><a href="" class="grey-text text-darken-3 text-align-right">Create On BackStage</a></li>
     <li><a href="" class="grey-text text-darken-3 text-align-right">My Account</a></li>
-    <li><a href="" class="grey-text text-darken-3 text-align-right">Sign Out</a></li>
+    <li><a href="/logout" class="grey-text text-darken-3 text-align-right">Sign Out</a></li>
 </ul>

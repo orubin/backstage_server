@@ -91,6 +91,11 @@
             margin: 50,
             autoplay: true
         });
+        {{#if msg}}
+            $(document).ready(function(){
+              $('#modal1').modal('open');
+            });
+        {{/if}}
     </script> 
 </body>
 
