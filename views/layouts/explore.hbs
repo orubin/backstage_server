@@ -116,6 +116,11 @@
 			document.getElementById("pageUp_button").className= "waves-effect";
 		}
 	}
+	function updateActivePage(num){
+		var actPage = document.getElementsByClassName('page active_page')[0];
+		document.getElementById('page'+num).className = 'page active_page';
+		actPage.className = 'page';
+	}
 	function pageUp(obj) {
 		if (obj.className.indexOf("disabled") < 0) {
 			var actEle = document.getElementsByClassName('page_button active')[0];
@@ -125,6 +130,7 @@
 			setLeftRight(checkPageDownUp(currActiveNum));
 
 			setActive(document.getElementById(actEle.id.replace(/.$/,currActiveNum)));
+			updateActivePage(currActiveNum);
 		}
 	}
 	function pageDown(obj) {
@@ -136,6 +142,7 @@
 			setLeftRight(checkPageDownUp(currActiveNum));
 
 			setActive(document.getElementById(actEle.id.replace(/.$/,currActiveNum)));
+			updateActivePage(currActiveNum);
 
 		}
 	}
@@ -148,6 +155,7 @@
 			setLeftRight(checkPageDownUp(currActiveNum));
 
 			setActive(obj);
+			updateActivePage(currActiveNum);
 
 		}
 	}
