@@ -92,7 +92,7 @@
 			  categoryArr.splice(index, 1);
 			}
 		}
-		getReq('/test', {categories : categoryArr});
+		getReq('/getCreatorsWithCategories', {categories : categoryArr});
 	}
 	function turnOffActive(ele) {
 		ele.className = ele.className.replace("active","waves-effect");
@@ -125,8 +125,7 @@
 		if (obj.className.indexOf("disabled") < 0) {
 			var actEle = document.getElementsByClassName('page_button active')[0];
 			turnOffActive(actEle);
-			
-			var currActiveNum = Number(actEle.id.slice(-1)+1);
+			var currActiveNum = Number(actEle.id.replace('page_button',''))+1;
 			setLeftRight(checkPageDownUp(currActiveNum));
 
 			setActive(document.getElementById(actEle.id.replace(/.$/,currActiveNum)));
@@ -138,7 +137,7 @@
 			var actEle = document.getElementsByClassName('page_button active')[0];
 			turnOffActive(actEle);
 			
-			var currActiveNum = Number(actEle.id.slice(-1)-1);
+			var currActiveNum = Number(actEle.id.replace('page_button',''))-1;
 			setLeftRight(checkPageDownUp(currActiveNum));
 
 			setActive(document.getElementById(actEle.id.replace(/.$/,currActiveNum)));
@@ -151,7 +150,7 @@
 			var actEle = document.getElementsByClassName('page_button active')[0];
 			turnOffActive(actEle);
 			
-			var currActiveNum = Number(obj.id.slice(-1));
+			var currActiveNum = Number(obj.id.replace('page_button',''));
 			setLeftRight(checkPageDownUp(currActiveNum));
 
 			setActive(obj);
@@ -424,6 +423,5 @@
 		    </div>
 	   </div>
     </div>
-    {{log this.creators.length}}
     {{> footer}}
 {{> endfile}}
