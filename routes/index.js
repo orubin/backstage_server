@@ -41,23 +41,32 @@ routes.get('/explore', (request, response) => {
       user : request.user, // get the user out of session and pass to template
       creators : JSON.parse(result),
       helpers: {
-              renderStart: function (data, i) {
-                if (i%3==0) {
-                  return ("<div class='row'>");
-                }
-              },
-              renderEnd: function (data, i) {
-                if (i%3!=0) {
-                  if (i%3==2) {
-                    return ("</div>");
-                  }
-                }
-              },
-              renderCheck: function (data) {
-                if (data.length%3!=0) {
-                  return ("</div>");
-                }
-              }
+        renderPage: function(data) {
+          var returnArrayTest =[];
+          for(var m = 0; m<data.length; m+=9) {
+            var pageArray = data.slice(m,m+9);
+            returnArrayTest.push([]);
+            for (var i=0; i<pageArray.length; i+=3) {
+                var temparray = pageArray.slice(i,i+3);
+                returnArrayTest[m/9].push(temparray);
+            }
+          }
+          return returnArrayTest;
+        },
+        setAsActivePage: function(i) {
+          if(i==0){
+            return "class='page active_page'";
+          } else {
+            return "class='page'";
+          }
+        },
+        calcNumPages: function(data) {
+          var htmlStr = '';
+          for(var i=0;i<data.length/9;i++) {
+            htmlStr+="<li class='waves-effect page_button'"+( 'id='+('page_button'+i))+" onClick='thisPage(this)'><a>"+(i+1)+"</a></li>";
+          }
+          return htmlStr;
+        }
       },
       title: 'BackStage'
     })
@@ -113,6 +122,14 @@ routes.get('/loginfail', function(req, res) {
     user: req.user, // get the user out of session and pass to template
     title: 'BackStage',
     msg: theMsg
+  });
+});
+
+routes.get('/test', function(req, res) {
+  creator_db_actions.LoadCreatorsWithCategory(client, req.query.categories[0], function(error, result){
+    var data = {};
+    data['creators'] = JSON.parse(result);
+    console.log(data);
   });
 });
 
