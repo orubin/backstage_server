@@ -1,0 +1,31 @@
+<div>
+    <a href="#!" class="modal-close btn-flat right"><i class="material-icons">close</i></a>
+    <br>
+    <div class="container row">
+        <div class="right col s4">
+            <h2 class="center"><span class="text-style">Back</span>Stage</h2>
+            <h6 class="center">Welcome Back</h6>
+            <p class="center">Log into Your Account Here</p>
+            <form action="/login" method="post">
+                <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                    >
+                    <label for="icon_prefix">Your Email Address</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">lock_outline</i>
+                    <input id="password" name="password" type="password" required>
+                    <label for="password">Password (Min 6 Characters)</label>
+                </div>
+
+                <button class="btn-large red lighten-1 waves-effect col s12" type="submit" name="action">Log In</button>
+                <p class="center">Don't Have An Account? <a class="modal-close modal-trigger" href="#modalSignup">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+</div>

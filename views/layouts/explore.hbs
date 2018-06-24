@@ -71,14 +71,92 @@
 		-ms-filter: blur(0px);
 		filter: blur(0px);
     }
+    .pages .page {
+    	display: none;
+    }
+    .pages .page.active_page {
+    	display: block;
+    }
 
 </style>
 <script>
+	var categoryArr = [];
 	function selectChip(card) {
 		if (card.className.includes("custom")) {
 			card.className = "card col s2 active-chip";
+			categoryArr.push(card.id);
 		} else {
 			card.className = "card col s2 custom-chip";
+			var index = categoryArr.indexOf(card.id);
+			if (index > -1) {
+			  categoryArr.splice(index, 1);
+			}
+		}
+		getReq('/test', {categories : categoryArr});
+	}
+	function turnOffActive(ele) {
+		ele.className = ele.className.replace("active","waves-effect");
+	}
+	function setActive(ele) {
+		ele.className = ele.className.replace("waves-effect","active");
+	}
+	function checkPageDownUp(num) {
+		return [document.getElementById('page_button'+(num-1)), document.getElementById('page_button'+(num+1))];
+	}
+	function setLeftRight(arr) {
+		if(arr[0]==null) {
+			document.getElementById("pageDown_button").className= "pageDown_button disabled";
+		} else {
+			document.getElementById("pageDown_button").className= "pageDown_button waves-effect";
+		}
+
+		if(arr[1]==null) {
+			document.getElementById("pageUp_button").className= "disabled";
+		} else {
+			document.getElementById("pageUp_button").className= "waves-effect";
+		}
+	}
+	function updateActivePage(num){
+		var actPage = document.getElementsByClassName('page active_page')[0];
+		document.getElementById('page'+num).className = 'page active_page';
+		actPage.className = 'page';
+	}
+	function pageUp(obj) {
+		if (obj.className.indexOf("disabled") < 0) {
+			var actEle = document.getElementsByClassName('page_button active')[0];
+			turnOffActive(actEle);
+			
+			var currActiveNum = Number(actEle.id.slice(-1)+1);
+			setLeftRight(checkPageDownUp(currActiveNum));
+
+			setActive(document.getElementById(actEle.id.replace(/.$/,currActiveNum)));
+			updateActivePage(currActiveNum);
+		}
+	}
+	function pageDown(obj) {
+		if (obj.className.indexOf("disabled") < 0) {
+			var actEle = document.getElementsByClassName('page_button active')[0];
+			turnOffActive(actEle);
+			
+			var currActiveNum = Number(actEle.id.slice(-1)-1);
+			setLeftRight(checkPageDownUp(currActiveNum));
+
+			setActive(document.getElementById(actEle.id.replace(/.$/,currActiveNum)));
+			updateActivePage(currActiveNum);
+
+		}
+	}
+	function thisPage(obj) {
+		if (obj.className.indexOf("active") < 0) {
+			var actEle = document.getElementsByClassName('page_button active')[0];
+			turnOffActive(actEle);
+			
+			var currActiveNum = Number(obj.id.slice(-1));
+			setLeftRight(checkPageDownUp(currActiveNum));
+
+			setActive(obj);
+			updateActivePage(currActiveNum);
+
 		}
 	}
 </script>
@@ -229,7 +307,7 @@
 		    		</div>
 		    		<div class="row card-chips">
 		    			<span>
-							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							<div id="1" class="card col s2 custom-chip" onClick="selectChip(this)">
 							    <div class="card-content">
 							        <div class="section row card-end">
 							            <div class="center category">
@@ -243,7 +321,7 @@
 							</div>
 						</span>
 						<span>
-							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							<div id="2" class="card col s2 custom-chip" onClick="selectChip(this)">
 							    <div class="card-content">
 							        <div class="section row card-end">
 							            <div class="center category">
@@ -257,7 +335,7 @@
 							</div>
 						</span>
 						<span>
-							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							<div id="3" class="card col s2 custom-chip" onClick="selectChip(this)">
 							    <div class="card-content">
 							        <div class="section row card-end">
 							            <div class="center category">
@@ -271,7 +349,7 @@
 							</div>
 						</span>
 						<span>
-							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							<div id="4" class="card col s2 custom-chip" onClick="selectChip(this)">
 							    <div class="card-content">
 							        <div class="section row card-end">
 							            <div class="center category">
@@ -285,7 +363,7 @@
 							</div>
 						</span>
 						<span>
-							<div class="card col s2 custom-chip" onClick="selectChip(this)">
+							<div id="5" class="card col s2 custom-chip" onClick="selectChip(this)">
 							    <div class="card-content">
 							        <div class="section row card-end">
 							            <div class="center category">
@@ -317,30 +395,35 @@
 					  	<span class="text-style right thick middle">{{creators.length}} {{__ 'Creators Found'}}</span>
 					  </div>
 		    		</div>
-		    		<div class="row">
-						{{#each creators}}
-							{{{renderStart this @index}}}
-								<div class="col s4" href="creators/{{username}}">
-									{{>creatorcard this}}
-								</div>
-			    			{{{renderEnd this @index}}}
-			    		{{/each}}
-			    		{{{renderCheck this @index}}}
+		    		<div class="row pages">
+						{{#each (renderPage creators) }}
+							<div id='page{{@index}}' {{{setAsActivePage @index}}}>
+								{{#each this}}
+									<div class="row">
+										{{#each this}}
+											<div class="col s4" href="creators/{{username}}">
+												{{>creatorcard this}}
+											</div>
+										{{/each}}
+									</div>
+								{{/each}}
+							</div>
+						{{/each}}
 			    	</div>
 			    	<div class="row center">
 					  	<ul class="pagination">
-						    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-						    <li class="active"><a href="#1">1</a></li>
-						    <li class="waves-effect"><a href="#2">2</a></li>
-						    <li class="waves-effect"><a href="#3">3</a></li>
-						    <li class="waves-effect"><a href="#4">4</a></li>
-						    <li class="waves-effect"><a href="#5">5</a></li>
-						    <li class="waves-effect"><a href="#6"><i class="material-icons">chevron_right</i></a></li>
+						    <li id="pageDown_button" class="disabled" onClick="pageDown(this)"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+						    {{{calcNumPages creators}}}
+						    <script>
+								document.getElementById('page_button0').className ='page_button active';
+							</script>
+						    <li id="pageUp_button" class="waves-effect" onClick="pageUp(this)"><a><i class="material-icons">chevron_right</i></a></li>
 					  	</ul>
 			    	</div>
 		    	</div>
 		    </div>
 	   </div>
     </div>
+    {{log this.creators.length}}
     {{> footer}}
 {{> endfile}}

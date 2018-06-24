@@ -128,15 +128,15 @@ module.exports = {
 	},
 	InsertContent : function (client){
 
-		var creators_names = ['Hadag Nahash','Mosh Ben Ari','Idan Raichel','Jane Bordeaux','Subliminal'];
-		var creators_usernames = ['hadagnahash', 'moshbenari', 'idanraichel', 'janebordeaux', 'subliminal'];
-		var creators_taglines = ['#1 Hip Hop Band in the Middle East', 'Authentic and down to earth', 'Bringing world sound to your ears', 'We are a band from Tel-Aviv, making Live n kickin american folk-country style music in Hebrew.', 'Israel\'s rap wizard'];
+		var creators_names = ['Hadag Nahash','Mosh Ben Ari','Idan Raichel','Jane Bordeaux','Subliminal','Uravity','Poirot','Khan','KittyCat GoMeowMeow','Garou'];
+		var creators_usernames = ['hadagnahash', 'moshbenari', 'idanraichel', 'janebordeaux', 'subliminal','uraraka', 'hercules', 'hermit', 'meowmeow', 'villian'];
+		var creators_taglines = ['#1 Hip Hop Band in the Middle East', 'Authentic and down to earth', 'Bringing world sound to your ears', 'We are a band from Tel-Aviv, making Live n kickin american folk-country style music in Hebrew.', 'Israel\'s rap wizard','A Hero in the making','Who needs Sherlock','Nemisis of James T. Kirk','Meow','The next greatest monster'];
 		var overview0 = 'Hadag Nahash has been a major contributor to the Israeli hip-hop scene, and is presently one of Israels most successful bands, with seven studio albums released to date. The bands songs call for peace, tolerance and equality, and include political and social protest. Most songs are written by Shaanan Street, the bands lead vocalist.';
 		var overview1 = 'Ben Ari was born in Afula, Israel in 1970. He comes from a Yemenite and Iraqi Jewish background. He first discovered music as a child through the traditional Jewish and ethnic chants that were part of his everyday life. He started playing music at the age of 16 and since he has studied music around the world, including in India, Sahara and Sinai. He plays various string instruments such as acoustic and classic guitar, Indian sarod, Persian tar, Turkish jumbush, Moroccan ginberi and bass.';
 		var overview2 = 'Idan Raichel was born in Kfar Saba, Israel. He began to play the accordion at the age of nine. He was attracted to gypsy music and tango, and studied jazz piano in high school.Raichel served in the Israel Defense Forces army band at the age of 18, performing covers of Israeli and Western pop hits at military bases around the country.[4] As the musical director of the group, he learned to do arrangements and produce live shows.';
 		var overview3 = '';
 		var overview4 = 'Subliminal was born in Tel Aviv, Israel to a Persian Jewish mother and Tunisian Jewish father. Subliminal started performing music at age 12, and at age 15 met Yoav Eliasi. The two quickly became friends as a result of their mutual love of hip-hop.';
-		var creators_overviews = [overview0, overview1, overview2, overview3, overview4];
+		var creators_overviews = [overview0, overview1, overview2, overview3, overview4, overview3, overview3, overview3, overview3, overview3];
 		var i;
 		for (i = 0; i < creators_names.length; i++) {
 			var creator = new models.instance.Creator({

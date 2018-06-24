@@ -91,6 +91,20 @@
             margin: 50,
             autoplay: true
         });
+        {{#if msg}}
+            $(document).ready(function(){
+              $('#modalSignup').modal('open');
+            });
+            $(document).ready(function(){
+              $('#msgModal').modal('open');
+            });
+        {{/if}}
+        function postReq(url, data){
+            $.post(url, data);
+        }
+        function getReq(url, data){
+            $.get(url, data);
+        }
     </script> 
 </body>
 
