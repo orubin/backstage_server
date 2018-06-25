@@ -242,6 +242,9 @@
   float: none;
   margin: 0 auto;
 }
+.c100.big-homepage {
+  font-size: 300px;
+}
 .c100.big {
   font-size: 240px;
 }
