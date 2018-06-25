@@ -68,6 +68,10 @@
     .hompage-image {
     	width: 100%;
     }
+    .sales {
+    	padding-left:5% !important;
+    	padding-right:5% !important;
+    }
 </style>
 
 {{> startfile}}
@@ -137,18 +141,18 @@
 		    	<br>
 		    	<br>
 		    	<br>
-		    	<div class="promo">
-				    <div class="center col s2 offset-s3">
+		    	<div class="promo col s10 offset-s1">
+				    <div class="center col s4 sales">
 				        <i class="material-icons red-text text-lighten-1 large">attach_money</i>
 				        <h6 class="text-style">Sales Point</h6>
 				        <p class="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				    </div>
-				    <div class="center col s2">
+				    <div class="center col s4 sales">
 				      	<i class="material-icons red-text text-lighten-1 large">group</i>
 				        <h6 class="text-style">Sales Point</h6>
 				        <p class="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				    </div>
-				    <div class="center col s2">
+				    <div class="center col s4 sales">
 				      	<i class="material-icons red-text text-lighten-1 large">settings</i>
 				        <h6 class="text-style">Sales Point</h6>
 				        <p class="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -190,7 +194,7 @@
 		    		<p class="rtl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lrm;</p>
 		    		<p class="rtl">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lrm;</p>
 		    		<div class="right">
-		    			<a class="btn-large waves-effect waves-light" href="/explore">Explore Artists</a>
+		    			<a class="btn-large waves-effect waves-light" style="background-color: rgba(0, 0, 0, 0); border: 1px solid white;" href="/explore">Explore Artists</a>
 		    			<a class="btn-large white waves-effect blue-grey-text text-darken-4 modal-trigger" href="#modalSignup">Sign up</a>
 		    		</div>
 		    	</div>
@@ -199,6 +203,12 @@
 		    </div>
 		</div>
 		{{>recommended}}
+		<div style="background-image: url('../band.jpg');background-size: 100%;">
+		    <div class="center" style="margin:10%;">
+				<h3 class="white-text" style="text-shadow: 1px 1px 2px black; margin:3%;">Start Getting Paid Today</h3>
+				<button class="thick btn-large red-text text-lighten-1 white waves-effect waves-light modal-trigger" href="#modalSignup">Sign Up Today</button>
+			</div>
+		</div>
 		<div id="modalSignup" class="modal">
         	{{> signup registrationType=true }}
     	</div>
