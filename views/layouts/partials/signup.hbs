@@ -18,7 +18,7 @@
             <form action="/signup" method="post">
                 <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="first-name" type="text" required>
+                    <input id="first-name" name="username" type="text" required>
                     <label for="first-name">First Name</label>
                 </div>
                 <div class="input-field">
@@ -54,7 +54,7 @@
                     <label for="password-confirm">Re-enter Password</label>
                 </div>
 
-                <button class="btn-large red lighten-1 waves-effect col s12" type="submit" name="action">Sign up</button>
+                <button class="btn-large red lighten-1 waves-effect col s12" type="submit">Sign up</button>
                 <p class="center">Already Have An Account? <a class="modal-close modal-trigger" href="#modalLogin">Log In</a></p>
             </form>
         </div>
