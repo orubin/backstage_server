@@ -56,6 +56,16 @@
 	      }
 	  });
 	});
+	function updateProfile() {
+		var data = {
+						'pic': document.getElementById("input-file").value,
+						'name': document.getElementById("first-name").value,
+						'last-name': document.getElementById("last-name").value,
+						'email': document.getElementById("email").value,
+						'phone': document.getElementById("phone").value,
+					};
+		postReq('/update_profile',data);
+	}
 </script>
 <div class="card col s12 right">
     <div class="card-content">
@@ -84,7 +94,17 @@
 				<div class="col s6">
 				    <span class="right">First Name</span>
 				    <div class="input-field">
-				        <input class="prof-input rtl" id="first-name" placeholder="First Name" type="text" required>
+				        <input
+				        	class="prof-input rtl"
+				        	id="first-name"
+				        	{{#if user.name}}
+				        		value ={{user.name}}
+				        	{{else}}
+				        		placeholder="First Name"
+				        	{{/if}}
+				        	type="text"
+				        	required
+				        >
 				    </div>
 				</div>
 				<div class="col s6">
@@ -98,7 +118,17 @@
 				<div class="col s6">
 				    <span class="right">Your Email</span>
 				    <div class="input-field">
-				        <input class="prof-input rtl" id="email" placeholder="Email" type="text" required>
+				        <input
+				        	class="prof-input rtl"
+				        	id="email"
+				        	{{#if user.name}}
+				        		value ={{user.email}}
+				        	{{else}}
+				        		placeholder="Email"
+				        	{{/if}}
+				        	type="text"
+				        	required
+				        >
 				    </div>
 				</div>
 				<div class="col s6">
@@ -106,6 +136,11 @@
 				    <div class="input-field">
 				        <input class="prof-input rtl" id="phone" placeholder="Phone Number" type="text" required>
 				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="right">
+					<button class="btn-large red lighten-1 waves-effect waves-light" onClick="updateProfile()">Update Profile</button>
 				</div>
 			</div>
 		</div>
@@ -302,6 +337,13 @@
 				      	</div>
 				    </li>
 				</ul>
+			</div>
+			<div class="row">
+				<h6 class="text-align-right thick blue-grey-text text-darken-4">Add a New Payment Card</h6>
+				<p class="text-align-right grey-text">Giftround accepts most major card types, Master card, Maestro Visa, and American Express</p>
+				<div class="right">
+					<span style="border-bottom: 2px solid #263238; padding-bottom: 10px; cursor: pointer;"><a class="blue-grey-text text-darken-4">Add a New Card</a></span
+				</div>
 			</div>
     	</div>
     </div>
