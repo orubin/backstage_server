@@ -66,6 +66,15 @@ routes.get('/explore', (request, response) => {
             htmlStr+="<li class='waves-effect page_button'"+( 'id='+('page_button'+i))+" onClick='thisPage(this)'><a>"+(i+1)+"</a></li>";
           }
           return htmlStr;
+        },
+        getNumberCreators: function(id, arr) {
+          var sum =0;
+          for(var i=0; i<arr.length; i++) {
+            if(arr[i].category_id==id) {
+              sum+=1;
+            }
+          }
+          return sum;
         }
       },
       title: 'BackStage'
@@ -127,6 +136,11 @@ routes.get('/loginfail', function(req, res) {
 
 routes.get('/getCreatorsWithCategories', function(req, res) {
  /* creator_db_actions.LoadCreatorsWithCategories(client, req.query.categories, function(error, result){
+    console.log(result);
+  });*/
+});
+routes.post('/update-profile', function(req, res) {
+/*  user_db_actions.UpdateUser(req, res, client, function(error, result){
     console.log(result);
   });*/
 });

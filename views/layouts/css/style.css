@@ -24,3 +24,6 @@
 .owl-dot.active span {
   background-color: #ef5350 !important;
 }
+.input-field input {
+  padding-right: 1% !important;
+}
