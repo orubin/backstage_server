@@ -151,7 +151,6 @@ routes.get('/getCreatorsWithCategories', function(req, res) {
 });
 
 routes.post('/update_profile', function(req, res) {
-  console.log(req.body);
   user_db_actions.UpdateUser(req, client, function(error, result){
     console.log(error);
   });
@@ -167,11 +166,9 @@ routes.get('/load_user', function (req, res) {
   user_db_actions.LoadUser(req, res, client);
 });
 routes.get('/payment_completed', function (req, res) {
-  user_db_actions.ClaimReward(req, res, client);
-  res.render('layouts/payment_completed', {
-    user: req.user, // get the user out of session and pass to template
-    title: 'Payment Completed'
-  });
+/*  user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_id, req.query.reward_amount, function(error, result){
+    console.log("success");
+  });*/
 });
 
 routes.get('/creators', function (req, res) {
@@ -308,7 +305,7 @@ routes.get('/creators/:id', function (req, res) {
     if (error) {
       console.log(error);
     } else {
-      console.log('Result: ' + result);
+      //console.log('Result: ' + result);
       res.render('layouts/creator', {
           user : req.user, // get the user out of session and pass to template
           data: JSON.parse(result),

@@ -158,9 +158,8 @@ module.exports = {
 		userFollow.DeleteUser;
 	},
 
-	ClaimReward: function (user, reward_id, creator_id, amount) {
+	ClaimReward: function (userEmail, reward_id, creator_id, amount) {
 		// increase amount of creator funding
-		
 		const query = 'SELECT funding_amount FROM creator where id = ' + creator_id;
 		// Set the prepare flag in the query options
 		client.execute(query, function (err, result) {
@@ -173,16 +172,16 @@ module.exports = {
 
 		var reward = new models.instance.UserReward({
 			id: models.uuid(),
-			user_email: user.email,
-			creator_id: creator_id,
-			reward_id: reward_id,
-			amount: amount,
+			user_email: userEmail,
+			creator_id: Number(creator_id),
+			reward_id: Number(reward_id),
+			amount: Number(amount),
 			updated_at: Date.now(),
 			created_at: Date.now()
 		});
 		reward.save(function(err){
 			if(err) {
-				return done(err);
+				console.log(err);
 			}
 		});
 	},

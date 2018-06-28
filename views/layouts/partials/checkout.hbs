@@ -45,6 +45,15 @@
 			document.getElementById('card'+selectedValue).classList.remove('selected');
 		}
 	}
+	function claimReward() {
+		var selected = document.getElementById('card'+selectedValue);
+		var data = {};
+		data.reward_id = selected.dataset.rewardid;
+		data.reward_amount = selected.dataset.rewardamount;
+		data.user_email = "{{user.email}}";
+		data.creator_id = "{{data.id}}"
+		getReq('/payment_completed', data);
+	}
 </script>
 <div class="container">
 	<div class="section row">
@@ -95,7 +104,7 @@
     		</div>
     		<div id="notSelectedCard">
 				{{#each data.rewards}}
-					<div class="card" id='card{{@index}}' onClick="updateSelectedPackage(this)">
+					<div class="card" id='card{{@index}}' data-rewardid='{{this.reward_id}}' data-rewardamount='{{this.price}}' onClick="updateSelectedPackage(this)">
 				        <div class="card-content">
 				        	<div class="section">
 					        	<h6 class="left">{{this.price}}</h6>
@@ -120,7 +129,7 @@
 				</div>
 	            <div class="row">
 	            	<div class="col s4 offset-s8">
-	            		<button class="btn white black-text wide waves-effect">
+	            		<button class="btn white black-text wide waves-effect" onClick="claimReward()">
 		        			Pay With PayPal
 		        		</button>
 	            	</div>
