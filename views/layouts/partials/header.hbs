@@ -96,7 +96,7 @@
     }
 </style>
 
-<nav>
+<nav style="z-index: 100;">
     <div class="nav-wrapper white">
         <div class="row">
             <ul class="right header-right">
@@ -112,7 +112,11 @@
                     <li>
                         <a class="vertical-align dropdown-trigger" data-target='user-dropdown'>
                             <img class="circle header-avatar" src="https://lorempixel.com/200/200/people/9">
-                            <span class="grey-text text-darken-3">Kevin</span>
+                            {{#if user.name}}
+                                <span class="grey-text text-darken-3">{{user.name}}</span>
+                            {{else}}
+                                <span class="grey-text text-darken-3">N/A</span>
+                            {{/if}}
                         </a>
                     </li>
                 {{else}}

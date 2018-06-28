@@ -20,7 +20,24 @@
 		border: .5px solid grey !important;
 	    border-radius: 2px !important;
 	}
+	#notSelectedCard .card {
+		cursor: pointer;
+	}
 </style>
+<script>
+	function updateSelectedPackage(obj) {
+
+		var currPackage = document.getElementById('card'+selectedValue);
+		currPackage.classList.remove('selected');
+		document.getElementById('notSelectedCard').appendChild(currPackage);
+		
+
+
+		document.getElementById('selectedCard').appendChild(obj);
+		obj.className += ' selected';
+		selectedValue=Number(obj.id.replace('card',''));
+	}
+</script>
 <div class="container">
 	<div class="section row">
 		<div class="modal-close btn-flat left" onClick="document.getElementById('notSelectedCard').appendChild(
@@ -40,7 +57,7 @@
     	<div class="col s4">
     		<div>
     			<div class="row">
-    				<h6 class="right">Artist Name</h6>
+    				<h6 class="right">{{data.name}}</h6>
     			</div>
     			<div>
     				<img src={{data.profile}}>
@@ -64,7 +81,7 @@
     		</div>
     		<div id="notSelectedCard">
 				{{#each data.rewards}}
-					<div class="card" id='card{{@index}}'>
+					<div class="card" id='card{{@index}}' onClick="updateSelectedPackage(this)">
 				        <div class="card-content">
 				        	<div class="section">
 					        	<h6 class="left">{{this.price}}</h6>

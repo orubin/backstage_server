@@ -119,12 +119,14 @@ module.exports = {
 		});
 	},
 	LoadCreatorsWithCategories : function (client, ids, res){
-		const query = 'SELECT * FROM creator WHERE category_id in (?)';
+		const query = 'SELECT * FROM creator WHERE category_id in (?,?,?) ALLOW FILTERING';
         // Set the prepare flag in the query options
-        client.execute(query, [ids], function (err, result) {
-		 	return res(null, result.rows[0]);
+        client.execute(query, [ids], { prepare: true }, function (err, result) {
+        	if(err) {
+				console.log(err);
+			}
+		 	return res(null, result.rows);
 		});
-		return '{"creators":[{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}, {"name":"John2", "description":"Doe2", "profile_picture":"picture2", "cover_picture":"cover_picture2", "intro_video":"intro_video2"}]}';
 	},
 	InsertContent : function (client){
 

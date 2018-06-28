@@ -140,7 +140,11 @@
 	    <div class="card-content">
 	    	<div class="section center">
 	    		<a><img id="profile-pic" width="60" height="60" class="circle" src="https://lorempixel.com/200/200/people/9"></a>
-	    		<p class="thick" id="username">Kevin Stewart</p>
+	    		{{#if user.name}}
+	                <p class="thick" id="username">{{user.name}}</p>
+	            {{else}}
+	                <p class="thick" id="username">N/A</p>
+	            {{/if}}
 	    	</div>
 	    	<div class="divider"></div>
 	    	<div class="section row">

@@ -1,16 +1,25 @@
+<style>
+    #modalSignUp {
+        overflow: hidden;
+    }
+    .signup-form {
+        padding-left:5% !important;
+        padding-right:5% !important;
+    }
+</style>
 <div>
-    <a class="modal-close btn-flat right"><i class="material-icons">close</i></a>
-    <br>
-    <div class="container row">
-        <div class="right col s4">
+    <div class="row">
+        <a class="modal-close btn-flat right"><i class="material-icons">close</i></a>
+        <div class="col s8" style="background-image: url('../band.jpg');height: 100%;background-size:150%;"></div>
+        <div class="col s4 signup-form">
             <h2 class="center"><span class="text-style">Back</span>Stage</h2>
             <h6 class="center">Create a Free BackStage Account</h6>
             <p class="center">Create Your Own Gig or Sponsors Others</p>
             <form action="/signup" method="post">
                 <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="name" type="text" required>
-                    <label for="name">Name</label>
+                    <input id="first-name" name="username" type="text" required>
+                    <label for="first-name">First Name</label>
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">email</i>
@@ -45,7 +54,7 @@
                     <label for="password-confirm">Re-enter Password</label>
                 </div>
 
-                <button class="btn-large red lighten-1 waves-effect col s12" type="submit" name="action">Sign up</button>
+                <button class="btn-large red lighten-1 waves-effect col s12" type="submit">Sign up</button>
                 <p class="center">Already Have An Account? <a class="modal-close modal-trigger" href="#modalLogin">Log In</a></p>
             </form>
         </div>

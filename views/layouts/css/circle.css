@@ -242,6 +242,9 @@
   float: none;
   margin: 0 auto;
 }
+.c100.big-homepage {
+  font-size: 300px;
+}
 .c100.big {
   font-size: 240px;
 }
@@ -1008,18 +1011,6 @@
 .c100:hover {
   cursor: default;
 }
-.c100:hover > span {
-  width: 3.33em;
-  line-height: 3.33em;
-  font-size: 0.3em;
-  color: #307bbb;
-}
-.c100:hover:after {
-  top: 0.04em;
-  left: 0.04em;
-  width: 0.92em;
-  height: 0.92em;
-}
 
 .c100.custom-color .bar,
 .c100.custom-color .fill {
@@ -1041,4 +1032,9 @@
 }
 .c100.custom-blue:hover > span {
   color: #263238;
+}
+
+.c100.transparent .bar,
+.c100.transparent .fill {
+  border-color: rgba(0,0,0,0) !important;
 }
