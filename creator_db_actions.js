@@ -115,7 +115,7 @@ module.exports = {
 			if(err) {
 				console.log(err);
 			}
-			return res(null, JSON.stringify(result.rows));
+			return res(null, result.rows);
 		});
 	},
 	LoadCreatorsWithCategories : function (client, ids, res){
