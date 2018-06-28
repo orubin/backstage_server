@@ -40,7 +40,7 @@
             $('.tabs').tabs();
         });
         $(document).ready(function(){
-            $('.collapsible').collapsible({
+            $('#faq-collapse .collapsible').collapsible({
                 onOpenStart: function(el) {
                     $(el).find('.collapsible-header i').text('remove_circle_outline');
                 },
@@ -48,6 +48,9 @@
                     $(el).find('.collapsible-header i').text('add_circle_outline');
                 }
             });
+        });
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
         });
         $(document).ready(function(){
             $('.modal').modal();

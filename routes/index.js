@@ -17,7 +17,16 @@ routes.get('/', (request, response) => {
   }
   response.render('layouts/main', {
       user : request.user, // get the user out of session and pass to template
-      title: 'BackStage'
+      title: 'BackStage',
+      helpers: {
+        getFirstName: function(name) {
+          return name.split(' ')[0];
+        },
+        getLastName: function(name) {
+          var fullName = name.split(' ');
+          return fullName[fullName.length-1];
+        }
+      }
   })
 })
 

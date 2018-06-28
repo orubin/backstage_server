@@ -98,7 +98,7 @@
 				        	class="prof-input rtl"
 				        	id="first_name"
 				        	{{#if user.name}}
-				        		value ={{user.name}}
+				        		value ={{getFirstName user.name}}
 				        	{{else}}
 				        		placeholder="First Name"
 				        	{{/if}}
@@ -110,7 +110,17 @@
 				<div class="col s6">
 				    <span class="right">Last Name</span>
 				    <div class="input-field">
-				        <input class="prof-input rtl" id="last_name" placeholder="Last Name" type="text" required>
+				        <input
+				        	class="prof-input rtl"
+				        	id="last_name"
+				        	{{#if user.name}}
+				        		value ={{getLastName user.name}}
+				        	{{else}}
+				        		placeholder="Last Name"
+				        	{{/if}}
+				        	type="text"
+				        	required
+				        >
 				    </div>
 				</div>
 			</div>
@@ -121,7 +131,7 @@
 				        <input
 				        	class="prof-input rtl"
 				        	id="email"
-				        	{{#if user.name}}
+				        	{{#if user.email}}
 				        		value ={{user.email}}
 				        	{{else}}
 				        		placeholder="Email"

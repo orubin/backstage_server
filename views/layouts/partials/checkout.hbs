@@ -26,24 +26,29 @@
 </style>
 <script>
 	function updateSelectedPackage(obj) {
-
-		var currPackage = document.getElementById('card'+selectedValue);
-		currPackage.classList.remove('selected');
-		document.getElementById('notSelectedCard').appendChild(currPackage);
-		
-
-
+		if (selectedValue!=undefined) {
+			var currPackage = document.getElementById('card'+selectedValue);
+			currPackage.classList.remove('selected');
+			document.getElementById('notSelectedCard').appendChild(currPackage);
+		} else {
+			document.getElementById('card-1').style.display='none';
+		}
+	
+	
 		document.getElementById('selectedCard').appendChild(obj);
 		obj.className += ' selected';
 		selectedValue=Number(obj.id.replace('card',''));
 	}
+	function removeSelectedPackage() {
+		if (selectedValue!=null) {
+			document.getElementById('notSelectedCard').appendChild(document.getElementById('card'+selectedValue));
+			document.getElementById('card'+selectedValue).classList.remove('selected');
+		}
+	}
 </script>
 <div class="container">
 	<div class="section row">
-		<div class="modal-close btn-flat left" onClick="document.getElementById('notSelectedCard').appendChild(
-								    			document.getElementById('card'+selectedValue)
-								  			);
-								  			document.getElementById('card'+selectedValue).classList.remove('selected');">
+		<div class="modal-close btn-flat left" onClick="removeSelectedPackage()">
 			<i class="fa fa-times-circle"></i>
 			<span>Close</span>
 		</div>
@@ -74,6 +79,15 @@
     			<div class="text-align-right check">
     				<i class="material-icons text-style" id="checkmark">check_circle</i>
     			</div>
+    			
+    			<div class="card" id='card-1'>
+			        <div class="card-content">
+			        	<div class="section">
+				        	<h6 class="center">No Package Selected</h6>
+				        </div>
+			        </div>
+			    </div>
+				
 		    </div>
 			<div class="divider"></div>
 			<div class="row">
