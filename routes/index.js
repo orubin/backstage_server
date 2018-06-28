@@ -151,6 +151,7 @@ routes.get('/getCreatorsWithCategories', function(req, res) {
 });
 
 routes.post('/update_profile', function(req, res) {
+  console.log(req.body);
   user_db_actions.UpdateUser(req, client, function(error, result){
     console.log(error);
   });
