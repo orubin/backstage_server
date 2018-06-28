@@ -83,7 +83,7 @@ module.exports = function (passport) {
                             } else {
                                 var user = new models.instance.User({
                                     id: models.uuid(),
-                                    name: req.body.name,
+                                    name: req.body.username,
                                     email: email,
                                     password: hash,
                                     updated_at: Date.now(),

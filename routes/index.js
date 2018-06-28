@@ -140,10 +140,11 @@ routes.get('/getCreatorsWithCategories', function(req, res) {
     console.log(result);
   });*/
 });
-routes.post('/update-profile', function(req, res) {
-/*  user_db_actions.UpdateUser(req, res, client, function(error, result){
-    console.log(result);
-  });*/
+
+routes.post('/update_profile', function(req, res) {
+  user_db_actions.UpdateUser(req, client, function(error, result){
+    console.log(error);
+  });
 });
 
 routes.post('/update_user', function (req, res) {
