@@ -47,12 +47,14 @@ module.exports = {
 		// });
 		return '{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}';
 	},
-	LoadCategories : function (client, id){
-		const query = 'SELECT * FROM categories WHERE id in (?)' + id;
+	LoadCategories : function (client, ids, res){
+		const query = 'SELECT * FROM category WHERE category_id in (?)';
+		const params = [ ids ]
         // Set the prepare flag in the query options
-        // client.execute(query, function (err, result) {
-		// 	return (result.rows);
-		// });
-		return '{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}';
+        client.execute(query, params, { prepare: true }, function (err, result) {
+			console.log(result);
+			return res(null, result.rows);
+		});
+		//return '{"name":"John", "description":"Doe", "profile_picture":"picture", "cover_picture":"cover_picture", "intro_video":"intro_video"}';
 	}
 }

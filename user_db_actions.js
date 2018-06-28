@@ -47,7 +47,11 @@ module.exports = {
 				if (err != null) {
 					return cb(err, null);
 				}
-				// console.log('Got user profile:  ' + result.rows[0].email + ' / ' + result.rows[0].password);
+				// if(result.rows[0]!==undefined){
+				// 	console.log(result.rows);
+				// 	console.log(result.rows[0]);
+				// 	console.log('Got user profile:  ' + result.rows[0].email + ' / ' + result.rows[0].password);
+				// }
 				return cb(null, result.rows[0]);
 			});
 		});
@@ -91,7 +95,7 @@ module.exports = {
 		});
 	},
 
-	LoadCategoriesAndCreators: function (email) {
+	LoadCategoriesAndCreators: function (email, res) {
 		// var categories = models.instance.UserCategory.find({email: email}, function(err, result){
 		// 	if(err) {
 		// 		console.log(err);
@@ -110,7 +114,7 @@ module.exports = {
 		// 	return result;
 		// });
 		// return [categories, creators];
-		return [0,0];
+		return res(null, [1,1]);
 	},
 
 	LoadMessages: function (user) {

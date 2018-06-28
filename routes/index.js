@@ -32,6 +32,7 @@ routes.get('/thankyou', (request, response) => {
 })
 
 routes.get('/explore', (request, response) => {
+  console.log(request.user);
   creator_db_actions.LoadCreators(client, function(error, result){
     if (request.cookies.i18n !== undefined){
       response.setLocale(request.cookies.i18n);
@@ -181,7 +182,6 @@ routes.get('/payment_completed', function (req, res) {
 });
 
 routes.get('/creators', function (req, res) {
-  //var creators = JSON.parse('{"creators":[{"id":"1", "name":"one","description":"desc1","img_src":"img_src_1"},{"id":"2", "name":"two","description":"desc2","img_src":"img_src_2"},{"id":"3", "name":"three","description":"desc3","img_src":"img_src_3"}]}');
   creator_db_actions.LoadCreators(client, function(error, result){
     var data = {};
     data['creators'] = JSON.parse(result);
@@ -233,14 +233,28 @@ routes.get('/about_us', function (req, res) {
 });
 
 routes.get('/profile', require('connect-ensure-login').ensureLoggedIn(), function (req, res) {
-  var categories_and_creators_ids = user_db_actions.LoadCategoriesAndCreators(req.user.email);
-  var categories = category_db_actions.LoadCategories(categories_and_creators_ids[0]);
-  var creators = creator_db_actions.LoadCreatorsWithCategories(client, categories_and_creators_ids[1]);
-  res.render('layouts/profile', {
-      user: req.user, // get the user out of session and pass to template
-      categories: categories,
-      creators: creators,
-      title: 'Profile'
+  user_db_actions.LoadCategoriesAndCreators(req.user.email, function (error, result) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Result: ' + result);
+      category_db_actions.LoadCategories(client, result[0], function (error, categories) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Result: ' + categories);
+          creator_db_actions.LoadCreatorsWithCategories(client, result[1], function (error, creators) {
+
+            res.render('layouts/profile', {
+              user: req.user, // get the user out of session and pass to template
+              categories: JSON.parse(categories),
+              creators: JSON.parse(creators),
+              title: 'Profile'
+            });
+          });
+        }
+      });
+    }
   });
 });
 

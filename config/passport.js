@@ -66,7 +66,6 @@ module.exports = function (passport) {
 
             // asynchronous
             process.nextTick(function () {
-
                 // find a user whose email is the same as the forms email
                 // we are checking to see if the user trying to login already exists
                 user_db_actions.findByEmailDb(email, function (err, user) {
@@ -84,7 +83,7 @@ module.exports = function (passport) {
                             } else {
                                 var user = new models.instance.User({
                                     id: models.uuid(),
-                                    name: req.body.username,
+                                    name: req.body.name,
                                     email: email,
                                     password: hash,
                                     updated_at: Date.now(),
