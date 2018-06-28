@@ -57,13 +57,29 @@
 	  });
 	});
 	function updateProfile() {
-		var data = {
-						'pic': document.getElementById("input-file").value,
-						'first_name': document.getElementById("first_name").value,
-						'last_name': document.getElementById("last_name").value,
-						'email': document.getElementById("email").value,
-						'phone': document.getElementById("phone").value,
-					};
+		var data = {};
+		if(document.getElementById("email").value!='') {
+			data['email'] = document.getElementById("email").value;
+		} else {
+			data['email'] = '{{user.email}}';
+		}
+		if(document.getElementById("first_name").value!='') {
+			data['first_name'] = document.getElementById("first_name").value;
+		} else {
+			var fullName = '{{user.name}}'.split(' ');
+			data['first_name'] = fullName[0];
+		}
+		if(document.getElementById("last_name").value!='') {
+			data['last_name'] = document.getElementById("last_name").value;
+		} else {
+			var fullName = '{{user.name}}'.split(' ');
+			data['last_name'] = fullName[fullName.length-1];
+		}
+		if(document.getElementById("phone").value!='') {
+			data['phone'] = document.getElementById("phone").value;
+		} else {
+			data['phone'] = '{{user.phone}}';
+		}
 		postReq('/update_profile', data);
 	}
 </script>
@@ -98,7 +114,7 @@
 				        	class="prof-input rtl"
 				        	id="first_name"
 				        	{{#if user.name}}
-				        		value ={{user.name}}
+				        		value ={{getFirstName user.name}}
 				        	{{else}}
 				        		placeholder="First Name"
 				        	{{/if}}
@@ -110,7 +126,17 @@
 				<div class="col s6">
 				    <span class="right">Last Name</span>
 				    <div class="input-field">
-				        <input class="prof-input rtl" id="last_name" placeholder="Last Name" type="text" required>
+				        <input
+				        	class="prof-input rtl"
+				        	id="last_name"
+				        	{{#if user.name}}
+				        		value ={{getLastName user.name}}
+				        	{{else}}
+				        		placeholder="Last Name"
+				        	{{/if}}
+				        	type="text"
+				        	required
+				        >
 				    </div>
 				</div>
 			</div>
@@ -121,7 +147,7 @@
 				        <input
 				        	class="prof-input rtl"
 				        	id="email"
-				        	{{#if user.name}}
+				        	{{#if user.email}}
 				        		value ={{user.email}}
 				        	{{else}}
 				        		placeholder="Email"
@@ -146,7 +172,7 @@
 			</div>
 			<div class="row">
 				<div class="right">
-					<button class="btn-large red lighten-1 waves-effect waves-light" onClick="updateProfile()">Update Profile</button>
+					<button class="btn-large red lighten-1 waves-effect waves-light modal-trigger" href="#modalUpdate" onClick="updateProfile()">Update Profile</button>
 				</div>
 			</div>
 		</div>
@@ -353,4 +379,8 @@
 			</div>
     	</div>
     </div>
+    <div id="modalUpdate" class="modal">
+		<h5 class="center">Profile Updated</h5>
+		<div class="center"><a class="waves-effect waves-light btn red lighten-1 modal-close">Close</a></div>
+	</div>
 </div>

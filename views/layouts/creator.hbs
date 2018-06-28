@@ -348,7 +348,13 @@
 				    <div class="card">
 				        <div class="card-content">
 					        <div class="section center">
-					        	<button class="btn-large red lighten-1 waves-effect waves-light modal-trigger" href="#modalCheckout">Sponser This Creator</button>
+					        	<button
+					        		class="btn-large red lighten-1 waves-effect waves-light modal-trigger"
+					        		href="#modalCheckout"
+					        		onClick="selectedValue=null;document.getElementById('card-1').style.display='block';"
+					        	>
+					        		Sponser This Creator
+					        	</button>
 					        </div>
 				        </div>
 				    </div>
@@ -434,7 +440,7 @@
 								    			document.getElementById('card'+this.value)
 								  			);
 								  			document.getElementById('card'+this.value).className += ' selected';
-								  			selectedValue=this.value;"
+								  			selectedValue=this.value;document.getElementById('card-1').style.display='none';"
 					        	>
 					        		Sponser
 					        	</button>
