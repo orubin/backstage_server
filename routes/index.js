@@ -7,7 +7,7 @@ require('../config/passport')(passport); // pass passport for configuration
 
 var cassandra = require('cassandra-driver');
 //Connect to the cluster
-var client = new cassandra.Client({ contactPoints: ['127.0.0.1'], keyspace: 'backstage_db' });
+var client = new cassandra.Client({ contactPoints: ['34.252.248.215'], keyspace: 'backstage_db' });
 
 const routes = require('express').Router();
 

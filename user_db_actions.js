@@ -1,13 +1,13 @@
 var cassandra = require('cassandra-driver');
 //Connect to the cluster
-var client = new cassandra.Client({ contactPoints: ['127.0.0.1'], keyspace: 'backstage_db' });
+var client = new cassandra.Client({ contactPoints: ['34.252.248.215'], keyspace: 'backstage_db' });
 
 var models = require('express-cassandra');
 
 models.setDirectory( __dirname + '/../models').bind(
     {
         clientOptions: {
-            contactPoints: ['127.0.0.1'],
+            contactPoints: ['34.252.248.215'],
             protocolOptions: { port: 9042 },
             keyspace: 'backstage_db',
             queryOptions: {consistency: models.consistencies.one}
@@ -68,19 +68,6 @@ module.exports = {
 			}
 			return res(null, 'ok');
 		});
-		// client.execute(function (err, keyspace) {
-		// 	if (err) {
-		// 		throw (err);
-		// 	} else {
-		// 		var post = req.body;
-		// 		client.cql("UPDATE user SET name = ?, phone = ?, address = ?, city = ? WHERE email = ?", [post.name, post.phone, post.address, post.city, post.usersEdit], function (err, results) {
-		// 			res.render('layouts/profile', {
-		// 				user : req.user, // get the user out of session and pass to template
-		// 				message: req.flash('profile_details', 'Details Updated!')
-		// 			});
-		// 		});
-		// 	}
-		// });
 	},
 
 	DeleteUser: function (req, res, client) {
