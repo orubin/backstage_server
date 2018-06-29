@@ -172,45 +172,41 @@ module.exports = {
 		userFollow.DeleteUser;
 	},
 
-<<<<<<< HEAD
-	ClaimReward: function (userEmail, reward_id, creator_id, amount) {
+	ClaimReward: function (user_email, reward_id, creator_username, amount) {
 		// increase amount of creator funding
-		const query = 'SELECT funding_amount FROM creator where id = ' + creator_id;
-=======
-	ClaimReward: function (user, reward_id, creator_username, amount) {
-		// increase amount of creator funding
-		
-		const query = 'SELECT funding_amount FROM creator where username = ' + creator_username;
->>>>>>> e77382b3396004df1048e8bc60c7a6e25dfe9d2f
+		const query = 'SELECT * FROM creator WHERE username = ?';
+		const params = [ creator_username ];
+		client.execute(query, params, { prepare: true }, function (err, result) {
 		// Set the prepare flag in the query options
-		client.execute(query, function (err, result) {
-			var funding_amount = result.rows[0];
-			const query = 'UPDATE creator where username = ' + creator_username + ' SET funding_amount = ' + funding_amount + amount;
-			client.execute(query, function (err, result) {
-				console.log('Error + ' + err);
+			if (result.rows[0].funding_amount==null) {
+				var funding_amount = 0;
+			} else {
+				var funding_amount = result.rows[0].funding_amount;
+			}
+			var total = (Number(funding_amount)+Number(amount));
+			const query = 'UPDATE creator SET funding_amount = '+ total +' WHERE username = ' + "'" + creator_username + "'";
+			client.execute(query, { prepare: true }, function (err, result) {
+				if(err) {
+					console.log(err);
+				}
+				return result.rows;
 			});
 		});
 
 		var reward = new models.instance.UserReward({
-			id: models.uuid(),
-<<<<<<< HEAD
-			user_email: userEmail,
-			creator_id: Number(creator_id),
-			reward_id: Number(reward_id),
-			amount: Number(amount),
-=======
-			user_email: user.email,
-			creator_username: creator_username,
-			reward_id: reward_id,
-			amount: amount,
->>>>>>> e77382b3396004df1048e8bc60c7a6e25dfe9d2f
-			updated_at: Date.now(),
-			created_at: Date.now()
+        	id: models.uuid(),
+			user_email: user_email,
+        	reward_id: Number(reward_id),
+        	amount: Number(amount),
+        	creator_username: creator_username,
+       		created_at: Date.now(),
+			updated_at: Date.now()
 		});
 		reward.save(function(err){
 			if(err) {
 				console.log(err);
 			}
+			console.log("success");
 		});
 	},
 
@@ -231,5 +227,16 @@ module.exports = {
 			console.log('Error + ' + err);
 		});
 
+	},
+
+	GetRewards: function (email) {
+		const query = 'SELECT * FROM userreward WHERE user_email = ? ALLOW FILTERING';
+		const params = [ email ];
+		client.execute(query, params, { prepare: true }, function (err, result) {
+			if(err) {
+				console.log(err);
+			}
+			return result.rows;
+		});
 	}
 }
