@@ -169,6 +169,9 @@ routes.get('/payment_completed', function (req, res) {
 /*  user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_id, req.query.reward_amount, function(error, result){
     console.log("success");
   });*/
+  user_db_actions.getRewards(req.query.user_email, function(error, result){
+    console.log("success");
+  });
 });
 
 routes.get('/creators', function (req, res) {
