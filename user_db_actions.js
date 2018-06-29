@@ -4,6 +4,8 @@ var client = new cassandra.Client({ contactPoints: ['34.252.248.215'], keyspace:
 
 var models = require('express-cassandra');
 
+const bcrypt = require('bcrypt');
+
 models.setDirectory( __dirname + '/../models').bind(
     {
         clientOptions: {
@@ -50,9 +52,10 @@ module.exports = {
 				if(result.rows[0]!==undefined){
 					// console.log(result.rows);
 					// console.log(result.rows[0]);
+					return cb(null, result.rows[0]);
 					// console.log('Got user profile:  ' + result.rows[0].email + ' / ' + result.rows[0].password);
 				}
-				return cb(null, result.rows[0]);
+				return cb(null, null);
 			});
 		});
 	},
@@ -67,6 +70,30 @@ module.exports = {
 				return res(err, null);
 			}
 			return res(null, 'ok');
+		});
+	},
+
+	UpdateUserPassword: function (req, client, res) {
+		var post = req.body;
+
+		//check for existing password
+		if (!bcrypt.compareSync(post.current_password, req.user.password))
+			return res('Wrong current password', null);
+
+		bcrypt.hash(post.new_password, 10, (err, hash) => {
+			if (err) {
+				return res(err, null); 
+			} else {
+				const query = 'UPDATE user SET password = ? WHERE email = ?';
+
+				const params = [hash, req.user.email];
+				client.execute(query, params, { prepare: true }, function (err, result) {
+					if (err != null) {
+						return res(err, null);
+					}
+					return res(null, 'ok');
+				});
+			}
 		});
 	},
 

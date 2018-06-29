@@ -44,10 +44,12 @@ module.exports = function (passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function (email, done) {
-        user_db_actions.findByEmailDb(email, function (err, user) {
-            if (err) { return done(err); }
-            done(null, user);
-        });
+        setTimeout(function() {
+            user_db_actions.findByEmailDb(email, function (err, user) {
+                if (err) { return done(err); }
+                done(null, user);
+            });
+        }, 500);
     });
 
     // // =========================================================================
