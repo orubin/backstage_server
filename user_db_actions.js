@@ -6,7 +6,7 @@ var models = require('express-cassandra');
 
 const bcrypt = require('bcrypt');
 
-models.setDirectory( __dirname + '/../models').bind(
+models.setDirectory( __dirname + '/models').bind(
     {
         clientOptions: {
             contactPoints: ['34.252.248.215'],
