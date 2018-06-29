@@ -4,6 +4,8 @@ var client = new cassandra.Client({ contactPoints: ['34.252.248.215'], keyspace:
 
 var models = require('express-cassandra');
 
+const bcrypt = require('bcrypt');
+
 models.setDirectory( __dirname + '/../models').bind(
     {
         clientOptions: {
@@ -50,9 +52,10 @@ module.exports = {
 				if(result.rows[0]!==undefined){
 					// console.log(result.rows);
 					// console.log(result.rows[0]);
+					return cb(null, result.rows[0]);
 					// console.log('Got user profile:  ' + result.rows[0].email + ' / ' + result.rows[0].password);
 				}
-				return cb(null, result.rows[0]);
+				return cb(null, null);
 			});
 		});
 	},
@@ -67,6 +70,30 @@ module.exports = {
 				return res(err, null);
 			}
 			return res(null, 'ok');
+		});
+	},
+
+	UpdateUserPassword: function (req, client, res) {
+		var post = req.body;
+
+		//check for existing password
+		if (!bcrypt.compareSync(post.current_password, req.user.password))
+			return res('Wrong current password', null);
+
+		bcrypt.hash(post.new_password, 10, (err, hash) => {
+			if (err) {
+				return res(err, null); 
+			} else {
+				const query = 'UPDATE user SET password = ? WHERE email = ?';
+
+				const params = [hash, req.user.email];
+				client.execute(query, params, { prepare: true }, function (err, result) {
+					if (err != null) {
+						return res(err, null);
+					}
+					return res(null, 'ok');
+				});
+			}
 		});
 	},
 
@@ -125,11 +152,11 @@ module.exports = {
 		return {};//messages;
 	},
 
-	FollowCreator: function (user, creator_id) {
+	FollowCreator: function (user, creator_username) {
 		var userFollow = new models.instance.UserCreators({
 			id: models.uuid(),
 			user_email: user.email,
-			creator_id: creator_id,
+			creator_username: creator_username,
 			updated_at: Date.now(),
 			created_at: Date.now()
 		});
@@ -140,18 +167,25 @@ module.exports = {
 		});
 	},
 
-	UnFollowCreator: function (user, creator_id) {
+	UnFollowCreator: function (user, creator_username) {
 		var userFollow = models.instance.UserCreator.find(user.email);
 		userFollow.DeleteUser;
 	},
 
+<<<<<<< HEAD
 	ClaimReward: function (userEmail, reward_id, creator_id, amount) {
 		// increase amount of creator funding
 		const query = 'SELECT funding_amount FROM creator where id = ' + creator_id;
+=======
+	ClaimReward: function (user, reward_id, creator_username, amount) {
+		// increase amount of creator funding
+		
+		const query = 'SELECT funding_amount FROM creator where username = ' + creator_username;
+>>>>>>> e77382b3396004df1048e8bc60c7a6e25dfe9d2f
 		// Set the prepare flag in the query options
 		client.execute(query, function (err, result) {
 			var funding_amount = result.rows[0];
-			const query = 'UPDATE creator where id = ' + creator_id + ' SET funding_amount = ' + funding_amount + amount;
+			const query = 'UPDATE creator where username = ' + creator_username + ' SET funding_amount = ' + funding_amount + amount;
 			client.execute(query, function (err, result) {
 				console.log('Error + ' + err);
 			});
@@ -159,10 +193,17 @@ module.exports = {
 
 		var reward = new models.instance.UserReward({
 			id: models.uuid(),
+<<<<<<< HEAD
 			user_email: userEmail,
 			creator_id: Number(creator_id),
 			reward_id: Number(reward_id),
 			amount: Number(amount),
+=======
+			user_email: user.email,
+			creator_username: creator_username,
+			reward_id: reward_id,
+			amount: amount,
+>>>>>>> e77382b3396004df1048e8bc60c7a6e25dfe9d2f
 			updated_at: Date.now(),
 			created_at: Date.now()
 		});
@@ -173,19 +214,19 @@ module.exports = {
 		});
 	},
 
-	UnClaimReward: function (user, reward_id, creator_id, amount) {
+	UnClaimReward: function (user, reward_id, creator_username, amount) {
 		// decrease amount of creator funding
-		const query = 'SELECT funding_amount FROM creator where id = ' + creator_id;
+		const query = 'SELECT funding_amount FROM creator where username = ' + creator_username;
 		// Set the prepare flag in the query options
 		client.execute(query, function (err, result) {
 			var funding_amount = result.rows[0];
-			const query = 'UPDATE creator where id = ' + creator_id + ' SET funding_amount = ' + funding_amount - amount;
+			const query = 'UPDATE creator where username = ' + creator_username + ' SET funding_amount = ' + funding_amount - amount;
 			client.execute(query, function (err, result) {
 				console.log('Error + ' + err);
 			});
 		});
 
-		const query2 = 'DELETE from user_reward where creator_id = ' + creator_id + ' AND user_email = ' + user.email;
+		const query2 = 'DELETE from userreward where creator_username = ' + creator_username + ' AND user_email = ' + user.email;
 		client.execute(query2, function (err, result) {
 			console.log('Error + ' + err);
 		});

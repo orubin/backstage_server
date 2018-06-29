@@ -82,6 +82,21 @@
 		}
 		postReq('/update_profile', data);
 	}
+	function updatePassword() {
+		var data = {};
+		
+		if(document.getElementById("current_password").value!='') {
+			data['current_password'] = document.getElementById("current_password").value;
+		} else {
+			
+		}
+		if(document.getElementById("new_password").value!='') {
+			data['new_password'] = document.getElementById("new_password").value;
+		} else {
+			
+		}
+		postReq('/update_password', data);
+	}
 </script>
 <div class="card col s12 right">
     <div class="card-content">
@@ -190,13 +205,13 @@
 				<div class="col s6">
 				    <span class="right">New Password</span>
 				    <div class="input-field">
-				        <input class="prof-input rtl" id="new-password" type="text" required>
+				        <input class="prof-input rtl" id="new_password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(if(this.checkValidity()) form.confirm_password.pattern = this.value;" required>
 				    </div>
 				</div>
 				<div class="col s6">
 				    <span class="right">Confirm New Password</span>
 				    <div class="input-field">
-				        <input class="prof-input rtl" id="confirm-new-password" type="text" required>
+				        <input class="prof-input rtl" id="confirm_password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
 				    </div>
 				</div>
 			</div>
@@ -204,7 +219,7 @@
 				<div class="col s12">
 				    <span class="right">Current Password</span>
 				    <div class="input-field">
-				        <input class="prof-input rtl" id="curr-password" type="text" required>
+				        <input class="prof-input rtl" id="current_password" type="password" required>
 				    </div>
 				</div>
 			</div>
@@ -215,7 +230,7 @@
 			</div>
 			<div class="row">
 				<div class="right">
-					<button class="btn-large red lighten-1 waves-effect waves-light">Update Password</button>
+					<button class="btn-large red lighten-1 waves-effect waves-light" onClick="updatePassword()">Update Password</button>
 				</div>
 			</div>
 		</div>

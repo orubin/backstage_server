@@ -41,12 +41,10 @@ routes.get('/thankyou', (request, response) => {
 })
 
 routes.get('/explore', (request, response) => {
-  console.log(request.user);
   creator_db_actions.LoadCreators(client, function(error, result){
     if (request.cookies.i18n !== undefined){
       response.setLocale(request.cookies.i18n);
     }
-    console.log(request.user);
     response.render('layouts/explore', {
       user : request.user, // get the user out of session and pass to template
       creators : JSON.parse(result),
@@ -152,6 +150,12 @@ routes.get('/getCreatorsWithCategories', function(req, res) {
 
 routes.post('/update_profile', function(req, res) {
   user_db_actions.UpdateUser(req, client, function(error, result){
+    console.log(error);
+  });
+});
+
+routes.post('/update_password', function(req, res) {
+  user_db_actions.UpdateUserPassword(req, client, function(error, result){
     console.log(error);
   });
 });
@@ -292,7 +296,6 @@ routes.get('/categories/:id', function (req, res) {
     if (error) {
       console.log(error);
     } else {
-      console.log('Result: ' + result);
       res.render('layouts/category', {
         user : req.user, // get the user out of session and pass to template
         data: JSON.parse(result),
@@ -308,7 +311,6 @@ routes.get('/creators/:id', function (req, res) {
     if (error) {
       console.log(error);
     } else {
-      //console.log('Result: ' + result);
       res.render('layouts/creator', {
           user : req.user, // get the user out of session and pass to template
           data: JSON.parse(result),
