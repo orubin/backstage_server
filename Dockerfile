@@ -20,5 +20,7 @@ RUN npm install
 # add app
 COPY . /usr/src/app
 
+EXPOSE 3001 9042
+
 # start app
 CMD node index.js
