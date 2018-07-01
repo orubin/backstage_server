@@ -229,14 +229,15 @@ module.exports = {
 
 	},
 
-	GetRewards: function (email) {
+	GetRewards: function (email, res) {
 		const query = 'SELECT * FROM userreward WHERE user_email = ? ALLOW FILTERING';
 		const params = [ email ];
 		client.execute(query, params, { prepare: true }, function (err, result) {
 			if(err) {
 				console.log(err);
 			}
-			return result.rows;
+			console.log(result);
+			return res(null, result);
 		});
 	}
 }

@@ -12,22 +12,36 @@ var client = new cassandra.Client({ contactPoints: ['34.252.248.215'], keyspace:
 const routes = require('express').Router();
 
 routes.get('/', (request, response) => {
-  if (request.cookies.i18n !== undefined){
-    response.setLocale(request.cookies.i18n);
-  }
-  response.render('layouts/main', {
-      user : request.user, // get the user out of session and pass to template
-      title: 'BackStage',
-      helpers: {
-        getFirstName: function(name) {
-          return name.split(' ')[0];
-        },
-        getLastName: function(name) {
-          var fullName = name.split(' ');
-          return fullName[fullName.length-1];
-        }
+  if (request.user == undefined) {
+    if (request.cookies.i18n !== undefined){
+      response.setLocale(request.cookies.i18n);
+    }
+    response.render('layouts/main', {
+        user : request.user, // get the user out of session and pass to template
+        title: 'BackStage'
+    })
+  } else {
+    user_db_actions.GetRewards(request.user.email, function(error, result){
+      var rewards = result.rows;
+      if (request.cookies.i18n !== undefined){
+        response.setLocale(request.cookies.i18n);
       }
-  })
+      response.render('layouts/main', {
+          user : request.user, // get the user out of session and pass to template
+          title: 'BackStage',
+          rewards: result.rows,
+          helpers: {
+            getFirstName: function(name) {
+              return name.split(' ')[0];
+            },
+            getLastName: function(name) {
+              var fullName = name.split(' ');
+              return fullName[fullName.length-1];
+            }
+          }
+      })
+    });
+  }
 })
 
 routes.get('/thankyou', (request, response) => {
@@ -170,13 +184,17 @@ routes.get('/load_user', function (req, res) {
   user_db_actions.LoadUser(req, res, client);
 });
 routes.get('/payment_completed', function (req, res) {
-  user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.reward_amount, function(error, result){
-    console.log("success1");
-  });
-  user_db_actions.GetRewards(req.query.user_email, function(error, result){
-    console.log("success2");
-  });
+  user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.reward_amount);
 });
+/*routes.get('/get_rewards', function (req, res) {
+  user_db_actions.GetRewards(req.query.user_email, function(error, result){
+    var rewards = result.rows;
+    res.render('layouts/partials/homepage/support', {
+        rewards: rewards,
+        title: 'BackStage'
+    });
+  });
+});*/
 
 routes.get('/creators', function (req, res) {
   creator_db_actions.LoadCreators(client, function(error, result){
