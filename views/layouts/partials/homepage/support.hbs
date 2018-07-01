@@ -21,7 +21,6 @@
 	              	<th class="text-align-right grey-text">Creator</th>
 	          	</tr>
 	        </thead>
-
 	        <tbody>
 	          	<tr>
 	          		<td>
@@ -54,6 +53,39 @@
         				</div>
         			</td>
 	          	</tr>
+				{{#each rewards}}
+				  	<tr>
+				  		<td>
+				  			<div class="row">
+				      			<button class="btn-flat waves-effect">
+						        	<span class="text-style">Cancel</span>
+						        </button>
+						        <button class="btn-flat waves-effect">
+						        	Edit
+						        </button>
+					        <div>
+				  		</td>
+				    	<td>
+				    		<div class="text-align-right">
+				    			None
+				    		</div>
+				    	<td>
+				    		<div class="text-align-right">
+								<p class="text-align-right">Sponser Package</p>
+								<p class="text-align-right">${{this.amount}} Per Month</p>
+							</div>
+				    	</td>
+				    	<td>
+				    		<div class="section vertical-align right">
+								<div class="left widen">
+									<p class="text-align-right">{{this.creator_username}}</p>
+									<p class="text-align-right subtitle">Tagline Missing</p>
+								</div>
+								<a class="creators"><img width="50" height="50" class="circle" src="../people_9.jpeg"></a>
+							</div>
+						</td>
+				  	</tr>
+				{{/each}}
 	        </tbody>
 	    </table>
     </div>
