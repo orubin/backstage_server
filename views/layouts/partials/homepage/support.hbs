@@ -10,9 +10,21 @@
     	width: 200px;
     }
 </style>
+<script>
+	function unclaimReward(btn) {
+		var data = {};
+		data.user_email = '{{user.email}}'
+		data.reward_id = btn.dataset.reward_id;
+		data.creator_username = btn.dataset.creator_username;
+		data.amount = btn.dataset.amount;
+		var index = btn.parentNode.parentNode.parentNode.rowIndex;
+		getReq('/unclaim_reward', data);
+		document.getElementById("sponserTable").deleteRow(index); 
+	}
+</script>
 <div class="card col s12 right">
     <div class="card-content">
-		<table>
+		<table id="sponserTable">
 	        <thead>
 	          	<tr>
 	          		<th></th>
@@ -22,42 +34,17 @@
 	          	</tr>
 	        </thead>
 	        <tbody>
-	          	<tr>
-	          		<td>
-	          			<div class="row">
-		          			<button class="btn-flat waves-effect">
-					        	<span class="text-style">Cancel</span>
-					        </button>
-					        <button class="btn-flat waves-effect">
-					        	Edit
-					        </button>
-				        <div>
-	          		</td>
-	            	<td>
-	            		<div class="text-align-right">
-	            			None
-	            		</div>
-	            	<td>
-	            		<div class="text-align-right">
-    						<p class="text-align-right">Custom</p>
-    						<p class="text-align-right">$50 Per Month</p>
-    					</div>
-	            	</td>
-	            	<td>
-	            		<div class="section vertical-align right">
-    						<div class="left widen">
-        						<p class="text-align-right">Kevin Stewart</p>
-        						<p class="text-align-right subtitle">Creating Online Podcasts</p>
-        					</div>
-        					<a class="creators"><img width="50" height="50" class="circle" src="../people_9.jpeg"></a>
-        				</div>
-        			</td>
-	          	</tr>
 				{{#each rewards}}
 				  	<tr>
 				  		<td>
 				  			<div class="row">
-				      			<button class="btn-flat waves-effect">
+				      			<button
+				      				class="btn-flat waves-effect"
+				      				onclick="unclaimReward(this)"
+				      				data-reward_id={{this.id}}
+				      				data-amount={{this.amount}}
+				      				data-creator_username={{this.creator_username}}
+				      			>
 						        	<span class="text-style">Cancel</span>
 						        </button>
 						        <button class="btn-flat waves-effect">
@@ -67,7 +54,7 @@
 				  		</td>
 				    	<td>
 				    		<div class="text-align-right">
-				    			None
+				    			Missing
 				    		</div>
 				    	<td>
 				    		<div class="text-align-right">
