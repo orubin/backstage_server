@@ -186,6 +186,10 @@ routes.get('/load_user', function (req, res) {
 routes.get('/payment_completed', function (req, res) {
   user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.reward_amount);
 });
+
+routes.get('/unclaim_reward', function (req, res) {
+  user_db_actions.UnClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.amount);
+});
 /*routes.get('/get_rewards', function (req, res) {
   user_db_actions.GetRewards(req.query.user_email, function(error, result){
     var rewards = result.rows;
