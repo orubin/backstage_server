@@ -6,7 +6,7 @@ var models = require('express-cassandra');
 
 const bcrypt = require('bcrypt');
 
-models.setDirectory( __dirname + '/../models').bind(
+models.setDirectory( __dirname + '/models').bind(
     {
         clientOptions: {
             contactPoints: ['34.252.248.215'],
@@ -172,51 +172,83 @@ module.exports = {
 		userFollow.DeleteUser;
 	},
 
-	ClaimReward: function (user, reward_id, creator_username, amount) {
+	ClaimReward: function (user_email, reward_id, creator_username, amount) {
 		// increase amount of creator funding
-		
-		const query = 'SELECT funding_amount FROM creator where username = ' + creator_username;
+		const query = 'SELECT * FROM creator WHERE username = ?';
+		const params = [ creator_username ];
+		client.execute(query, params, { prepare: true }, function (err, result) {
 		// Set the prepare flag in the query options
-		client.execute(query, function (err, result) {
-			var funding_amount = result.rows[0];
-			const query = 'UPDATE creator where username = ' + creator_username + ' SET funding_amount = ' + funding_amount + amount;
-			client.execute(query, function (err, result) {
-				console.log('Error + ' + err);
+			if (result.rows[0].funding_amount==null) {
+				var funding_amount = 0;
+			} else {
+				var funding_amount = result.rows[0].funding_amount;
+			}
+			var total = (Number(funding_amount)+Number(amount));
+			const query = 'UPDATE creator SET funding_amount = '+ total +' WHERE username = ' + "'" + creator_username + "'";
+			client.execute(query, { prepare: true }, function (err, result) {
+				if(err) {
+					console.log(err);
+				}
+				return result.rows;
 			});
 		});
 
 		var reward = new models.instance.UserReward({
-			id: models.uuid(),
-			user_email: user.email,
-			creator_username: creator_username,
-			reward_id: reward_id,
-			amount: amount,
-			updated_at: Date.now(),
-			created_at: Date.now()
+        	id: models.uuid(),
+			user_email: user_email,
+        	reward_id: Number(reward_id),
+        	amount: Number(amount),
+        	creator_username: creator_username,
+       		created_at: Date.now(),
+			updated_at: Date.now()
 		});
 		reward.save(function(err){
 			if(err) {
-				return done(err);
+				console.log(err);
 			}
+			console.log("success");
 		});
 	},
 
-	UnClaimReward: function (user, reward_id, creator_username, amount) {
+	UnClaimReward: function (user_email, id, creator_username, amount) {
 		// decrease amount of creator funding
-		const query = 'SELECT funding_amount FROM creator where username = ' + creator_username;
+		const query = 'SELECT * FROM creator WHERE username = ?';
+		const params = [ creator_username ];
 		// Set the prepare flag in the query options
-		client.execute(query, function (err, result) {
-			var funding_amount = result.rows[0];
-			const query = 'UPDATE creator where username = ' + creator_username + ' SET funding_amount = ' + funding_amount - amount;
-			client.execute(query, function (err, result) {
-				console.log('Error + ' + err);
+		client.execute(query, params, { prepare: true }, function (err, result) {
+			if (result.rows[0].funding_amount==null) {
+				var funding_amount = 0;
+			} else {
+				var funding_amount = result.rows[0].funding_amount;
+			}
+			var total = (Number(funding_amount)-Number(amount));
+			const query = 'UPDATE creator SET funding_amount = '+ total +' WHERE username = ' + "'" + creator_username + "'";
+			client.execute(query, { prepare: true }, function (err, result) {
+				if(err) {
+					console.log(err);
+				}
+				return result.rows;
 			});
 		});
-
-		const query2 = 'DELETE from userreward where creator_username = ' + creator_username + ' AND user_email = ' + user.email;
-		client.execute(query2, function (err, result) {
-			console.log('Error + ' + err);
+		const query2 = 'DELETE FROM userreward WHERE id = ?';
+		var param = [ id ]
+		client.execute(query2, param, { prepare: true }, function (err, result) {
+			if(err) {
+				console.log(err);
+			}
+			console.log(result);
 		});
 
+	},
+
+	GetRewards: function (email, res) {
+		const query = 'SELECT * FROM userreward WHERE user_email = ? ALLOW FILTERING';
+		const params = [ email ];
+		client.execute(query, params, { prepare: true }, function (err, result) {
+			if(err) {
+				console.log(err);
+			}
+			return res(null, result);
+		});
 	}
 }
