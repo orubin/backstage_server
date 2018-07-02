@@ -206,7 +206,6 @@ module.exports = {
 			if(err) {
 				console.log(err);
 			}
-			console.log("success");
 		});
 	},
 

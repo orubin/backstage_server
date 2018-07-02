@@ -44,7 +44,7 @@ app.use(session({
     secret: "i18n_demo",
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 6000000 }
 }));
 
 app.use(i18n.init);
