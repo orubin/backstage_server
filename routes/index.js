@@ -184,7 +184,9 @@ routes.get('/load_user', function (req, res) {
   user_db_actions.LoadUser(req, res, client);
 });
 routes.get('/payment_completed', function (req, res) {
-  user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.reward_amount);
+  user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.reward_amount, function(error, result){
+    console.log('success');
+  });
 });
 
 routes.get('/unclaim_reward', function (req, res) {
