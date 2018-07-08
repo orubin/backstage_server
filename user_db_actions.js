@@ -172,7 +172,11 @@ module.exports = {
 		userFollow.DeleteUser;
 	},
 
+<<<<<<< HEAD
 	ClaimReward: function (user_email, reward_id, creator_username, amount, subscriptionid) {
+=======
+	ClaimReward: function (user_email, reward_id, creator_username, amount, res) {
+>>>>>>> 91fcad8173f6cc8ddbd8e3c79773ce4e310ddf33
 		// increase amount of creator funding
 		const query = 'SELECT * FROM creator WHERE username = ?';
 		const params = [ creator_username ];
@@ -189,7 +193,7 @@ module.exports = {
 				if(err) {
 					console.log(err);
 				}
-				return result.rows;
+				return res(null, result);
 			});
 		});
 
