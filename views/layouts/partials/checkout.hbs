@@ -33,8 +33,6 @@
 		} else {
 			document.getElementById('card-1').style.display='none';
 		}
-	
-	
 		document.getElementById('selectedCard').appendChild(obj);
 		obj.className += ' selected';
 		selectedValue=Number(obj.id.replace('card',''));
@@ -51,9 +49,20 @@
 		data.reward_id = selected.dataset.rewardid;
 		data.reward_amount = selected.dataset.rewardamount;
 		data.user_email = "{{user.email}}";
-		data.creator_username = "{{data.username}}"
-		console.log(data);
-		getReq('/payment_completed', data);
+		data.creator_username = "{{data.username}}";
+		var creator_name = "{{data.name}}";
+		// getReq('/payment_completed', data);
+		var redirect = function(redirectUrl) {
+			var form = $('<form action="' + redirectUrl + '" method="post">' +
+			'<input type="hidden" name="amount" value="' + selected.dataset.rewardamount + '"></input>' + 
+			'<input type="hidden" name="title" value="Monthly ' + selected.dataset.title + ' - ' + creator_name +'"></input>' +
+			'<input type="hidden" name="creator_username" value="' + data.creator_username +'"></input>' +
+			'<input type="hidden" name="reward_id" value="' + selected.dataset.rewardid +'"></input>' +
+			'</form>');
+			$('body').append(form);
+			$(form).submit();
+		};
+		redirect('/pay_with_paypal');
 	}
 </script>
 <div class="container">
@@ -105,7 +114,7 @@
     		</div>
     		<div id="notSelectedCard">
 				{{#each data.rewards}}
-					<div class="card" id='card{{@index}}' data-rewardid='{{this.reward_id}}' data-rewardamount='{{this.price}}' onClick="updateSelectedPackage(this)">
+					<div class="card" id='card{{@index}}' data-rewardid={{this.id}} data-title='{{this.title}}' data-rewardamount='{{this.price}}' onClick="updateSelectedPackage(this)">
 				        <div class="card-content">
 				        	<div class="section">
 					        	<h6 class="left">{{this.price}}</h6>
@@ -129,7 +138,7 @@
 	            	<h6 class="col s4 offset-s8">Payment Details</h6>
 				</div>
 	            <div class="row">
-	            	<div class="col s4 offset-s8">
+	            	<div class="col s8 offset-s8">
 	            		<button class="btn white black-text wide waves-effect" onClick="claimReward()">
 		        			Pay With PayPal
 		        		</button>

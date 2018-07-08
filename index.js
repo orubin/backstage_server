@@ -16,7 +16,7 @@ var session = require('express-session');
 var morgan = require('morgan');
 var flash    = require('connect-flash');
 const routes = require('./routes');
-const port = 3001
+const port = process.env.PORT || 3001;
 
 app.engine('.hbs', exphbs({
     //   defaultLayout: 'main',
@@ -35,6 +35,7 @@ i18n.configure({
 });
 
 app.use(express.json());
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser()); // read cookies (needed for auth)
 
@@ -44,7 +45,7 @@ app.use(session({
     secret: "i18n_demo",
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 6000000 }
+    cookie: { maxAge: 5 * 60 * 1000, expires: false }
 }));
 
 app.use(i18n.init);

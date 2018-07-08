@@ -38,6 +38,7 @@
     "hbs": "^4.0.1",
     "i18n": "^0.8.3",
     "jquery-validation": "^1.17.0",
+    "jquery.redirect": "^1.1.4",
     "jsonwebtoken": "^8.2.1",
     "material-ui": "^0.20.0",
     "material-ui-next": "^1.0.0-beta.42",
@@ -47,7 +48,9 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "paypal-express-checkout": "^1.6.3",
+    "paypal-recurring": "^1.1.0",
     "react": "^16.3.2",
-    "sendmail": "^1.4.1"
+    "sendmail": "^1.4.1",
+    "uuid-parse": "^1.0.0"
   }
 }

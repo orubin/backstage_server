@@ -3,6 +3,7 @@ const creator_db_actions = require('../creator_db_actions');
 const category_db_actions = require('../category_db_actions');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
+const paypal = require('../lib/paypal_checkout');
 require('../config/passport')(passport); // pass passport for configuration
 
 var cassandra = require('cassandra-driver');
@@ -42,6 +43,40 @@ routes.get('/', (request, response) => {
       })
     });
   }
+})
+
+
+
+routes.post('/pay_with_paypal', (request, response) => {
+  paypal.PayWithPaypal(request.body.amount, request.body.title, function(error, url){
+    if(error) { console.log("Error in paypal.PayWithPaypal:" + error); }
+    else{
+      request.session.desc = request.body.title;
+      request.session.amount = request.body.amount;
+      request.session.reward_id = request.body.reward_id;
+      request.session.creator_username = request.body.creator_username;
+      response.redirect(url);
+    }
+  });
+  //response.render('/');
+})
+
+routes.get('/purchase/success', (request, response) => {
+  var url = require('url');
+  var url_parts = url.parse(request.url, true);
+  var query = url_parts.query;
+  paypal.CreateSubscription(request.session.amount, request.session.desc, query.token, query.PayerID, function(error, result){
+    if (error) { console.log("ERRRR: " + error); }
+    else { 
+      user_db_actions.ClaimReward(request.user.email, request.session.reward_id, 
+        request.session.creator_username, request.session.amount, result.PROFILEID);
+      response.send('Payment done.');
+    }
+  });
+})
+
+routes.get('/purchase/fail', (request, response) => {
+  console.log(request);
 })
 
 routes.get('/thankyou', (request, response) => {
@@ -164,13 +199,13 @@ routes.get('/getCreatorsWithCategories', function(req, res) {
 
 routes.post('/update_profile', function(req, res) {
   user_db_actions.UpdateUser(req, client, function(error, result){
-    console.log(error);
+    if(error) { console.log(error); }
   });
 });
 
 routes.post('/update_password', function(req, res) {
   user_db_actions.UpdateUserPassword(req, client, function(error, result){
-    console.log(error);
+    if(error) { console.log(error); }
   });
 });
 
@@ -184,11 +219,18 @@ routes.get('/load_user', function (req, res) {
   user_db_actions.LoadUser(req, res, client);
 });
 routes.get('/payment_completed', function (req, res) {
-  user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.reward_amount);
+  user_db_actions.ClaimReward(req.query.user_email, req.query.reward_id, 
+    req.query.creator_username, req.query.reward_amount, '');
 });
 
 routes.get('/unclaim_reward', function (req, res) {
-  user_db_actions.UnClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.amount);
+  console.log(req.query);
+  paypal.CancelSubscription(req.query.subscriptionid, function (err, res) {
+    if(!err) {
+      console.log(res);
+      user_db_actions.UnClaimReward(req.query.user_email, req.query.reward_id, req.query.creator_username, req.query.amount);
+    }
+  });
 });
 /*routes.get('/get_rewards', function (req, res) {
   user_db_actions.GetRewards(req.query.user_email, function(error, result){

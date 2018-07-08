@@ -87,6 +87,7 @@ module.exports = {
 				client.execute(query2, params, { prepare: true }, function (err, result) {
 					if(err) {
 						console.log(err);
+						return res(err, {});
 					}
 					else{
 						obj['rewards'] = JSON.parse(JSON.stringify(result.rows));
@@ -107,6 +108,7 @@ module.exports = {
         client.execute(query, function (err, result) {
 			if(err) {
 				console.log(err);
+				return res(err, {});
 			}
 			return res(null, JSON.stringify(result.rows));
 		});
@@ -117,6 +119,7 @@ module.exports = {
         client.execute(query, params, { prepare: true }, function (err, result) {
 			if(err) {
 				console.log(err);
+				return res(err, {});
 			}
 			return res(null, result.rows);
 		});
@@ -127,6 +130,7 @@ module.exports = {
         client.execute(query, [ids], { prepare: true }, function (err, result) {
         	if(err) {
 				console.log(err);
+				return res(err, {});
 			}
 		 	return res(null, result.rows);
 		});

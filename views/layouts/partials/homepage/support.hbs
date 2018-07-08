@@ -16,6 +16,7 @@
 		data.user_email = '{{user.email}}'
 		data.reward_id = btn.dataset.reward_id;
 		data.creator_username = btn.dataset.creator_username;
+		data.subscriptionid = btn.dataset.subscriptionid;
 		data.amount = btn.dataset.amount;
 		var index = btn.parentNode.parentNode.parentNode.rowIndex;
 		getReq('/unclaim_reward', data);
@@ -43,6 +44,7 @@
 				      				onclick="unclaimReward(this)"
 				      				data-reward_id={{this.id}}
 				      				data-amount={{this.amount}}
+				      				data-subscriptionid={{this.subscriptionid}}
 				      				data-creator_username={{this.creator_username}}
 				      			>
 						        	<span class="text-style">Cancel</span>
