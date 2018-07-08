@@ -162,7 +162,7 @@ module.exports = {
 		});
 		userFollow.save(function(err){
 			if(err) {
-				return done(err); // FIX THIS
+				console.log(err);
 			}
 		});
 	},
@@ -172,16 +172,11 @@ module.exports = {
 		userFollow.DeleteUser;
 	},
 
-<<<<<<< HEAD
 	ClaimReward: function (user_email, reward_id, creator_username, amount, subscriptionid) {
-=======
-	ClaimReward: function (user_email, reward_id, creator_username, amount, res) {
->>>>>>> 91fcad8173f6cc8ddbd8e3c79773ce4e310ddf33
 		// increase amount of creator funding
 		const query = 'SELECT * FROM creator WHERE username = ?';
 		const params = [ creator_username ];
 		client.execute(query, params, { prepare: true }, function (err, result) {
-		// Set the prepare flag in the query options
 			if (result!== undefined && result.rows[0].funding_amount==null) {
 				var funding_amount = 0;
 			} else {
