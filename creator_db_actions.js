@@ -22,6 +22,9 @@ models.setDirectory( __dirname + '/models').bind(
 );
 
 module.exports = {
+
+	models : models,
+	
 	InsertCreator : function (req, res, client){
 		var post = req.body;
         const params = [ post.email, post.name, post.phone, post.address, post.city ];

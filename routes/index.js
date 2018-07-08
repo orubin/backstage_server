@@ -68,9 +68,22 @@ routes.get('/purchase/success', (request, response) => {
   paypal.CreateSubscription(request.session.amount, request.session.desc, query.token, query.PayerID, function(error, result){
     if (error) { console.log("ERRRR: " + error); }
     else { 
-      user_db_actions.ClaimReward(request.user.email, request.session.reward_id, 
-        request.session.creator_username, request.session.amount, result.PROFILEID);
-      response.send('Payment done.');
+      creator_db_actions.models.instance.Creator.findOne({username: request.session.creator_username}, function(err, result2){
+				if(err) {
+					console.log('Error: ' + err);
+				}
+        else{
+          user_db_actions.ClaimReward(request.user.email, request.session.reward_id, 
+            request.session.creator_username, request.session.amount, result.PROFILEID, result2.category_id);
+          response.render('layouts/thankyou', {
+                          user: request.user,
+                          data: result2,
+                          pkg_name: request.session.desc,
+                          amount: request.session.amount,
+                          title: 'Thank You'
+          });
+        }
+			});
     }
   });
 })
@@ -84,10 +97,13 @@ routes.get('/thankyou', (request, response) => {
   if (request.cookies.i18n !== undefined){
     response.setLocale(request.cookies.i18n);
   }
-  response.render('layouts/thankyou', {
-      user : request.user, // get the user out of session and pass to template
-      title: 'Thank You'
-  })
+  creator_db_actions.models.instance.Creator.findOne({username: 'moshbenari'}, function(err, result){
+    response.render('layouts/thankyou', {
+        user : request.user,
+        data: result,
+        title: 'Thank You'
+    });
+  });
 })
 
 routes.get('/explore', (request, response) => {

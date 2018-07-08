@@ -172,7 +172,7 @@ module.exports = {
 		userFollow.DeleteUser;
 	},
 
-	ClaimReward: function (user_email, reward_id, creator_username, amount, subscriptionid) {
+	ClaimReward: function (user_email, reward_id, creator_username, amount, subscriptionid, category_id) {
 		// increase amount of creator funding
 		const query = 'SELECT * FROM creator WHERE username = ?';
 		const params = [ creator_username ];
@@ -183,7 +183,7 @@ module.exports = {
 				var funding_amount = result.rows[0].funding_amount;
 			}
 			var total = (Number(funding_amount)+ Number(amount));
-			const query = 'UPDATE creator SET funding_amount = '+ total +' WHERE username = ' + "'" + creator_username + "'";
+			const query = 'UPDATE creator SET funding_amount = '+ total +' WHERE username = ' + "'" + creator_username + "' AND category_id = "+category_id;
 			client.execute(query, { prepare: true }, function (err, result) {
 				if(err) {
 					console.log(err);
