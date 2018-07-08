@@ -76,7 +76,8 @@ routes.get('/purchase/success', (request, response) => {
 })
 
 routes.get('/purchase/fail', (request, response) => {
-  console.log(request);
+  // console.log(request);
+  response.redirect('/');
 })
 
 routes.get('/thankyou', (request, response) => {
@@ -192,9 +193,9 @@ routes.get('/loginfail', function(req, res) {
 });
 
 routes.get('/getCreatorsWithCategories', function(req, res) {
- /* creator_db_actions.LoadCreatorsWithCategories(client, req.query.categories, function(error, result){
-    console.log(result);
-  });*/
+  creator_db_actions.LoadCreatorsWithCategories(client, req.query.categories, function(error, result){
+    res.json(result);
+  });
 });
 
 routes.post('/update_profile', function(req, res) {

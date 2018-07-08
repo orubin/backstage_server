@@ -18,5 +18,5 @@ module.exports = {
         created_at: "timestamp",
         updated_at: "timestamp"
     },
-    key: ["username"]
+    key: [["username"],"category_id"]
 }

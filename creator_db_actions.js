@@ -125,9 +125,13 @@ module.exports = {
 		});
 	},
 	LoadCreatorsWithCategories : function (client, ids, res){
-		const query = 'SELECT * FROM creator WHERE category_id in (?,?,?) ALLOW FILTERING';
+		var vars = '?';
+		for (i = 1; i < ids.length; i++) {
+			vars = vars + ',?'
+		}
+		const query = 'SELECT * FROM creator WHERE category_id in ('+vars+') ALLOW FILTERING';
         // Set the prepare flag in the query options
-        client.execute(query, [ids], { prepare: true }, function (err, result) {
+        client.execute(query, ids, { prepare: true }, function (err, result) {
         	if(err) {
 				console.log(err);
 				return res(err, {});

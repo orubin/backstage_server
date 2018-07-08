@@ -54,7 +54,15 @@
 			  categoryArr.splice(index, 1);
 			}
 		}
-		getReq('/getCreatorsWithCategories', {categories : categoryArr});
+		$.ajax({
+          url: '/getCreatorsWithCategories',
+          data: {categories : categoryArr},
+          dataType: "json",
+          type: 'GET'
+        }).success(function(data){
+          console.log("DATA:");
+          console.log(data);
+        });
 	}
 	function turnOffActive(ele) {
 		ele.className = ele.className.replace("active","waves-effect");
