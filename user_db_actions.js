@@ -182,13 +182,13 @@ module.exports = {
 			} else {
 				var funding_amount = result.rows[0].funding_amount;
 			}
-			var total = (Number(funding_amount)+Number(amount));
+			var total = (Number(funding_amount)+ Number(amount));
 			const query = 'UPDATE creator SET funding_amount = '+ total +' WHERE username = ' + "'" + creator_username + "'";
 			client.execute(query, { prepare: true }, function (err, result) {
 				if(err) {
 					console.log(err);
 				}
-				return res(null, result);
+				//return result(null, result);
 			});
 		});
 

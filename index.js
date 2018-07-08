@@ -59,7 +59,7 @@ hbs.registerHelper('__n', function () {
 });
 
 // required for passport
-app.use(session({ secret: 'backstagekey', resave: false, saveUninitialized: false })); // session secret
+app.use(session({ secret: 'backstagekey', resave: false, saveUninitialized: false, cookie: { maxAge: 5 * 60 * 1000, expires: false } })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(bodyParser.urlencoded({ extended: false }));
