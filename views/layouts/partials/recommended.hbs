@@ -33,13 +33,9 @@
 		<a class="btn-floating btn-small waves-effect waves-light grey lighten-4 am-prev"><i class="material-icons black-text">keyboard_arrow_left</i></a>
 		<a class="btn-floating btn-small waves-effect waves-light grey lighten-4 am-next"><i class="material-icons black-text">keyboard_arrow_right</i></a>
 		<div class="owl-carousel owl-theme">
-		  	<div> {{> creatorcard}} </div>
-		  	<div> {{> creatorcard}} </div>
-		  	<div> {{> creatorcard}} </div>
-		  	<div> {{> creatorcard}} </div>
-		  	<div> {{> creatorcard}} </div>
-		  	<div> {{> creatorcard}} </div>
+			{{#each creators}}
+				{{>creatorcard this}}
+			{{/each}}
 		</div>
-		
 	</div>
 </div>

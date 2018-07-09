@@ -17,10 +17,19 @@ routes.get('/', (request, response) => {
     if (request.cookies.i18n !== undefined){
       response.setLocale(request.cookies.i18n);
     }
-    response.render('layouts/main', {
-        user : request.user, // get the user out of session and pass to template
-        title: 'BackStage'
-    })
+    creator_db_actions.models.instance.Creator.find({}, function(err, result){
+      if(err) {
+        console.log('Error: ' + err);
+      }
+      else{
+        response.render('layouts/main', {
+          user : request.user,
+          creators: result,
+          title: 'BackStage'
+        })
+      }
+    });
+    
   } else {
     user_db_actions.GetRewards(request.user.email, function(error, result){
       var rewards = result.rows;
@@ -89,7 +98,6 @@ routes.get('/purchase/success', (request, response) => {
 })
 
 routes.get('/purchase/fail', (request, response) => {
-  // console.log(request);
   response.redirect('/');
 })
 
