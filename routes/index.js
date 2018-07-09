@@ -203,10 +203,12 @@ routes.post('/signup', passport.authenticate('local-signup', {
 
 // process the login form
 routes.post('/login', passport.authenticate('local-login', {
-  successRedirect: '/', // redirect to the secure profile section
   failureRedirect: '/loginfail', // redirect back to the signup page if there is an error
   failureFlash: true // allow flash messages
-}));
+}), (req, res) => {
+  res.redirect(req.headers.referer);
+});
+
 routes.get('/loginfail', function(req, res) {
   var theMsg = req.flash('signupMessage');
   res.render('layouts/main', {

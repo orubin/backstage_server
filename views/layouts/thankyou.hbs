@@ -20,12 +20,12 @@
     {{> header}}
     <div>
     	<div>
-    		<img class="cover-image" src="https://lorempixel.com/800/800/city/1">
+    		<img class="cover-image" src={{data.cover_picture}}>
     	</div>
     	<div class="container">
 			<div class="center section video-section">
 				<video width="640" height="360" controls>
-					<source src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
+					<source src={{data.video}} type="video/mp4" />
 				</video>
 			</div>
 			<div class="section center">
