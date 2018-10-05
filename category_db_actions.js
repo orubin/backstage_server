@@ -52,6 +52,9 @@ module.exports = {
 		const params = [ ids ]
         // Set the prepare flag in the query options
         client.execute(query, params, { prepare: true }, function (err, result) {
+			if(err){
+				return res(err, null);
+			}
 			console.log(result);
 			return res(null, result.rows);
 		});
