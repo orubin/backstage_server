@@ -16,6 +16,8 @@ var session = require('express-session');
 var morgan = require('morgan');
 var flash    = require('connect-flash');
 const routes = require('./routes');
+const helmet = require('helmet');
+
 const port = process.env.PORT || 3001;
 
 app.engine('.hbs', exphbs({
@@ -35,7 +37,8 @@ i18n.configure({
 });
 
 app.use(express.json());
-app.use(morgan('dev'));
+app.use(morgan('combined'));
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser()); // read cookies (needed for auth)
 
