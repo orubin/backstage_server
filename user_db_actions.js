@@ -4,7 +4,7 @@ var client = new cassandra.Client({ contactPoints: ['34.252.248.215'], keyspace:
 
 var models = require('express-cassandra');
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 models.setDirectory( __dirname + '/models').bind(
     {
