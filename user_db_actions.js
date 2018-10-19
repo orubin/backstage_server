@@ -1,6 +1,6 @@
 var cassandra = require('cassandra-driver');
 //Connect to the cluster
-var client = new cassandra.Client({ contactPoints: ['34.252.248.215'], keyspace: 'backstage_db' });
+var client = new cassandra.Client({ contactPoints: [process.env.DB_HOST], keyspace: 'backstage_db' });
 
 var models = require('express-cassandra');
 
@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs');
 models.setDirectory( __dirname + '/models').bind(
     {
         clientOptions: {
-            contactPoints: ['34.252.248.215'],
+            contactPoints: [process.env.DB_HOST],
             protocolOptions: { port: 9042 },
             keyspace: 'backstage_db',
             queryOptions: {consistency: models.consistencies.one}
