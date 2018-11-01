@@ -8,8 +8,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/orubin/backstage_server#readme",
   "dependencies": {
+    "jest": "^22.4.2",
     "bcryptjs": "^2.4.3",
     "cassandra-driver": "^3.5.0",
     "cassandra-migrate": "^1.2.333",
