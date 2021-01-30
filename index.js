@@ -12,7 +12,7 @@ var passport = require('passport');
 require('./config/passport')(passport); // pass passport for configuration
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-// const checkAuth = require('check-auth');
+const checkAuth = require('check-auth');
 var morgan = require('morgan');
 var flash    = require('connect-flash');
 const routes = require('./routes');
