@@ -7,14 +7,14 @@ var hbs = require('hbs');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 const app = express();
-const jwt = require ('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 var passport = require('passport');
 require('./config/passport')(passport); // pass passport for configuration
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 const checkAuth = require('check-auth');
 var morgan = require('morgan');
-var flash    = require('connect-flash');
+var flash = require('connect-flash');
 const routes = require('./routes');
 const helmet = require('helmet');
 
