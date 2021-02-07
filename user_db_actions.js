@@ -1,5 +1,5 @@
 var cassandra = require('cassandra-driver');
-//Connect to the cluster
+// Connect to the cluster
 var client = new cassandra.Client({ contactPoints: [process.env.DB_HOST], keyspace: 'backstage_db' });
 
 var models = require('express-cassandra');
