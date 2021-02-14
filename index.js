@@ -21,7 +21,6 @@ const helmet = require('helmet');
 const port = process.env.PORT || 3001;
 
 app.engine('.hbs', exphbs({
-    //   defaultLayout: 'main',
     extname: '.hbs',
     layoutsDir: path.join(__dirname, 'views/layouts'),
     partialsDir: [
