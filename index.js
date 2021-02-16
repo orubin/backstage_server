@@ -87,7 +87,6 @@ filenames.forEach(function (filename) {
     hbs.registerPartial(name, template);
 });
 
-//  Connect all our routes to our application
 app.use('/', routes);
 
 app.get('/he', function (req, res) {
