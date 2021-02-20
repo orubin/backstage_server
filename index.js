@@ -1,4 +1,3 @@
-// index.js
 const path = require('path');
 const i18n = require('i18n');
 const exphbs = require('express-handlebars');
