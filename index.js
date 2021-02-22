@@ -63,7 +63,7 @@ hbs.registerHelper('__n', function () {
 // required for passport
 app.use(session({ secret: 'backstagekey', resave: false, saveUninitialized: false, cookie: { maxAge: 365 * 24 * 60 * 60 * 1000 } })); // session secret
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, '/views/images')));
