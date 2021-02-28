@@ -105,6 +105,6 @@ app.listen(port, (err) => {
     console.log(`server is listening on ${port}`)
 })
 
-//owl-carousel
+// owl-carousel
 app.use('/modules', express.static(path.join(__dirname, 'node_modules')))
 app.use('/css', express.static(path.join(__dirname, 'views/layouts/css')))
