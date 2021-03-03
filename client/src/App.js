@@ -10,7 +10,7 @@ class App extends Component {
       <MuiThemeProvider>
       <div>
         <NavBar />
-        <p>BODY</p>
+        <p>body</p>
         <Footer />
       </div>
       </MuiThemeProvider>
