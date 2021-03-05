@@ -41,7 +41,6 @@ module.exports = {
 	},
 	LoadCategory : function (client, id){
 		const query = 'SELECT * FROM categories WHERE id = ' + id;
-        // Set the prepare flag in the query options
         // client.execute(query, function (err, result) {
 		// 	return (result.rows[0]);
 		// });
