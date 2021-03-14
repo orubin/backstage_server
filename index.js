@@ -40,7 +40,7 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser()); // read cookies (needed for auth)
 
-app.use(cookieParser("i18n_demo"));//demo
+app.use(cookieParser("i18n_demo")); //demo
 
 
 app.use(session({
