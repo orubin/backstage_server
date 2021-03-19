@@ -36,7 +36,6 @@ module.exports = {
         var post = req.body;
         const query = 'DELETE FROM categories WHERE id = ?'; 
         const params = [ post.id ];
-        // Set the prepare flag in the query options
         client.execute(query, params, { prepare: true })
 	},
 	LoadCategory : function (client, id){
