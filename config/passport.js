@@ -1,10 +1,7 @@
 // load all the things we need
 var LocalStrategy = require('passport-local').Strategy;
-
 const user_db_actions = require('../user_db_actions');
-
 const bcrypt = require('bcryptjs');
-
 var models = require('express-cassandra');
 
 models.setDirectory( __dirname + '/../models').bind(
