@@ -1,6 +1,5 @@
 node_modules
 .git
 .vscode
-logs
 *.log
 /logs
